@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.permanent-marker-regular,h1{
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .text-viola {
+    color: #8a2be2 !important
+     /* Colore viola */
+  }
+
+  nav li a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    border-bottom: none; /* Assicurati che non ci sia un bordo sotto */
+  }
+  
+  /* Aggiungi hover senza la linea sotto */
+  nav li a:hover {
+    text-decoration: none; /* Rimuove la sottolineatura al passaggio del mouse */
+    border-bottom: none; /* Assicurati che il bordo non venga visualizzato */
+  }
+  
