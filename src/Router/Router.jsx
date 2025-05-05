@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { TransitionProvider } from '../context/TransitionContext';
+import { TransitionProvider } from '../Context/TransitionContext';
 import TransitionComponent from '../components/Transition';
 import Home from '../views/Home';
 import ChiSiamo from '../views/ChiSiamo';
