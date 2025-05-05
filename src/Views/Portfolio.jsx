@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 
 
 
-import TransitionContext from '../context/TransitionContext';
+import TransitionContext from '../Context/TransitionContext';
 
 export default function Layers() {
   const main = useRef();

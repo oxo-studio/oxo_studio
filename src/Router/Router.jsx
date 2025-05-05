@@ -1,9 +1,9 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { TransitionProvider } from '../Context/TransitionContext';
 import TransitionComponent from '../components/Transition';
-import Home from '../views/Home';
-import ChiSiamo from '../views/ChiSiamo';
-import Portfolio from '../views/Portfolio';
+import Home from '../Views/Home';
+import ChiSiamo from '../Views/ChiSiamo';
+import Portfolio from '../Views/Portfolio';
 
 const Router = () => {
   const location = useLocation();

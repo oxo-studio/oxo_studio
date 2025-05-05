@@ -3,7 +3,7 @@ import { SwitchTransition, Transition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 
-import TransitionContext from '../context/TransitionContext';
+import TransitionContext from '../Context/TransitionContext';
 
 const TransitionComponent = ({ children }) => {
   const location = useLocation();
