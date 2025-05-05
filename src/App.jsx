@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { useGSAP } from '@gsap/react';
 
-import Router from './router/Router';
+import Router from './Router/Router';
 import Header from './components/Header';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP);
