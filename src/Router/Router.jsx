@@ -1,37 +1,37 @@
-
-import { Routes, Route } from 'react-router-dom';
-
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { TransitionProvider } from '../context/TransitionContext';
 import TransitionComponent from '../components/Transition';
-import Boxes from '../views/Boxes';
-import Scroll from '../Views/Scroll';
-import Layers from '../Views/Layers';
+import Home from '../views/Home';
+import ChiSiamo from '../views/ChiSiamo';
+import Portfolio from '../views/Portfolio';
 
 const Router = () => {
+  const location = useLocation();
+
   return (
     <TransitionProvider>
-      <Routes>
+      <Routes location={location}>
         <Route
           index
           element={
             <TransitionComponent>
-              <Boxes/>
+              <Home />
             </TransitionComponent>
           }
         />
         <Route
-          path="/scroll"
+          path="/ChiSiamo"
           element={
             <TransitionComponent>
-              <Scroll />
+              <ChiSiamo />
             </TransitionComponent>
           }
         />
         <Route
-          path="/layers"
+          path="/Portfolio"
           element={
             <TransitionComponent>
-              <Layers />
+              <Portfolio />
             </TransitionComponent>
           }
         />

@@ -6,30 +6,11 @@
     box-sizing: border-box;
   }
   
-  @font-face {
-    font-display: block;
-    font-family: Mori;
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://gsap.com/fonts/Mori/PPMori-Regular.woff) format('woff');
-  }
   
-  @font-face {
-    font-display: block;
-    font-family: Mori;
-    font-style: normal;
-    font-weight: 600;
-    src: url(https://gsap.com/fonts/Mori/PPMori-SemiBold.woff) format('woff');
-  }
   
-  @font-face {
-    font-display: block;
-    font-family: Fraktion Mono;
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://gsap.com/fonts/Fraktion/PPFraktionMono-Bold.woff)
-      format('woff');
-  }
+
+  
+
   
   :root {
     --color-shockingly-green: #0ae448;

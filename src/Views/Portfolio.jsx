@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+
+
 import TransitionContext from '../context/TransitionContext';
 
 export default function Layers() {
@@ -62,10 +64,12 @@ export default function Layers() {
   });
 
   return (
+
+
     <main ref={main}>
       <section className="description panel light">
         <div>
-          <h1 className='text-9xl'>PORTFOLIO</h1>
+          <h1 className='lg:text-9xl'>PORTFOLIO</h1>
           
           <div className="scroll-down">
             Scroll down<div className="arrow"></div>
@@ -77,5 +81,7 @@ export default function Layers() {
       <section className="panel orange">THREE</section>
       <section className="panel red">FOUR</section>
     </main>
+
+ 
   );
 }
