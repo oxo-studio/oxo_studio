@@ -2,25 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
+/*font */
 .permanent-marker-regular,h1{
     font-family: "Permanent Marker", cursive;
     font-weight: 400;
     font-style: normal;
   }
-  
-  .text-viola {
-    color: #8a2be2 !important
-     /* Colore viola */
-  }
+  .orbitron {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
 
-  nav li a {
-    text-decoration: none; /* Rimuove la sottolineatura */
-    border-bottom: none; /* Assicurati che non ci sia un bordo sotto */
-  }
+  
+a{
+  text-decoration: none;
+  border-bottom: none;
+} 
   
   /* Aggiungi hover senza la linea sotto */
   nav li a:hover {
     text-decoration: none; /* Rimuove la sottolineatura al passaggio del mouse */
     border-bottom: none; /* Assicurati che il bordo non venga visualizzato */
+  
+
   }
+
+
+/* Glitch */
+.glitch {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-glitch);
+  position: absolute;
+  left: 12px;
+  top: 10;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: #0ff;
+  z-index: -1;
+}
+
+.glitch::after {
+  color: #f0f;
+  z-index: -2;
+}
+
+.glitch:hover::before {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
+}
+
+.glitch:hover::after {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
+}
+
+/* Media query */
+@media only screen and (max-width: 400px) {
+  .glitch {
+    font-size: 3em;
+  }
+}
+
+/* Animation */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    transform: translate(-5px, -5px);
+  }
+  60% {
+    transform: translate(5px, 5px);
+  }
+  80% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+  
   
