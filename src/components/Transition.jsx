@@ -1,4 +1,4 @@
-import  { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { SwitchTransition, Transition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 import gsap from 'gsap';
@@ -8,13 +8,19 @@ import TransitionContext from '../Context/TransitionContext';
 const TransitionComponent = ({ children }) => {
   const location = useLocation();
   const { toggleCompleted } = useContext(TransitionContext);
+
+  // Crea un ref per il nodo DOM animato
+  const nodeRef = useRef(null);
+
   return (
     <SwitchTransition>
       <Transition
         key={location.pathname}
+        nodeRef={nodeRef}         // PASSA IL REF QUI
         timeout={500}
-        onEnter={(node) => {
+        onEnter={() => {
           toggleCompleted(false);
+          const node = nodeRef.current;   // usa nodeRef.current
           gsap.set(node, { autoAlpha: 0, scale: 0.8, xPercent: -100 });
           gsap
             .timeline({
@@ -25,7 +31,8 @@ const TransitionComponent = ({ children }) => {
             .to(node, { scale: 1, duration: 0.25 })
             .play();
         }}
-        onExit={(node) => {
+        onExit={() => {
+          const node = nodeRef.current;
           gsap
             .timeline({ paused: true })
             .to(node, { scale: 0.8, duration: 0.2 })
@@ -33,7 +40,10 @@ const TransitionComponent = ({ children }) => {
             .play();
         }}
       >
-        {children}
+        {/* assegna il ref all'elemento che verrà animato */}
+        <div ref={nodeRef}>
+          {children}
+        </div>
       </Transition>
     </SwitchTransition>
   );

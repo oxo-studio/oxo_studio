@@ -1,49 +1,167 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import gsap from 'gsap';
+import { Power2 } from 'gsap';
+import CSSRulePlugin from 'gsap/CSSRulePlugin';
 import '../index.css';
 
 export default function Header() {
-  const xRef = useRef(null);
 
-  useEffect(() => {
-    gsap.to(xRef.current, { rotation: 180, duration: 1 });
-  }, []);
+useEffect(() => {
+  const tl = gsap.timeline({ paused: true });
+
+  let path = document.querySelector("path");
+  let spanBefore = CSSRulePlugin.getRule("#hamburger span::before");
+
+  gsap.set(spanBefore, { background: "#fffbfb" });
+
+  const hamburger = document.getElementById("hamburger");
+  const toggleBtn = document.getElementById("toggle-btn");
+  const menu = document.querySelector(".menu");
+  const overlay = document.querySelector(".overlay");
+  const menuLinks = document.querySelectorAll(".menu a");
+  const chars = document.querySelectorAll("#oxo-studio .split-char");
+
+  // CALLBACK onReverseComplete: animazione scritta alla chiusura del menu (solo mobile)
+  tl.eventCallback("onReverseComplete", () => {
+    if (window.innerWidth < 768) {
+      gsap.to(chars, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.05,
+        duration: 0.5,
+        ease: "power3.out"
+      });
+    }
+  });
+
+  if (toggleBtn) {
+    toggleBtn.onclick = function () {
+      hamburger.classList.toggle("active");
+
+      const isOpen = hamburger.classList.contains("active");
+      menu.classList.toggle("open", isOpen);
+      overlay.classList.toggle("active", isOpen);
+
+      // Blocca lo scroll del body quando il menu è aperto
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+
+      if (tl.reversed()) {
+        tl.play();
+
+        // Nascondi scritta su mobile all'apertura menu
+        if (window.innerWidth < 768) {
+          gsap.to(chars, { opacity: 0, y: 50, duration: 0.3, ease: "power1.in" });
+        }
+      } else {
+        tl.reverse();
+        // NOTA: callback onReverseComplete gestito sopra, non qui
+      }
+    };
+  }
+
+  // Chiudi menu cliccando su link
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      menu.classList.remove("open");
+      overlay.classList.remove("active");
+      if (!tl.reversed()) {
+        tl.reverse();
+      }
+      document.body.style.overflow = ''; // Riabilita scroll anche se chiudi cliccando link
+    });
+  });
+
+  const start = "M0 -100 S175 -330 500 -330 s500 230 500 230 V0 H0 Z";
+  const end = "M0 1300 S175 1070 500 1070 s500 230 500 230 V0 H0 Z";
+
+  tl.to("#hamburger", 1.25, {
+    marginTop: "5px",
+    x: -110,
+    y: 40,
+    ease: "power4.inOut"
+  });
+
+  tl.to("#hamburger span", 1, {
+    background: "#fffbfb",
+    ease: "power2.inOut",
+  }, "<");
+
+  tl.to(spanBefore, 1, {
+    background: "#fffbfb",
+    ease: "power2.inOut",
+  }, "<");
+
+  tl.to(".btn .btn-outline", 1, {
+    x: -110,
+    y: 40,
+    width: "140px",
+    height: "140px",
+    border: "1px solid",
+    ease: "power4.inOut"
+  }, "<");
+
+  tl.to(path, 0.8, {
+    attr: { d: start },
+    ease: Power2.easeIn
+  }, "<");
+
+  tl.to(path, 0.8, {
+    attr: { d: end },
+    ease: Power2.easeIn
+  }, "-=0.5");
+
+  tl.reverse(); // parte chiuso
+
+}, []);
+
 
   return (
-    <header className="w-full z-50 top-0 left-0 header lg:fixed relative px-4 py-2 flex justify-between items-center">
-<h1 className="lg:text-4xl md:text-4xl text-2xl lg:ml-6 md:ml-6 md:block hidden">
-  {/* Visibile solo su lg: OXO-STUDIO */}
-  <span className="glitch md:hidden hidden lg:inline orbitron" data-text="OXO-STUDIO">
-    OXO-STUDIO
-  </span>
-
-  {/* Visibile solo su md (non lg, non sm): OXO */}
-  <span className="glitch hidden md:inline lg:hidden orbitron" data-text="OXO">
-    OXO
-  </span>
-</h1>
-
+    <header className="w-full z-50 top-0 left-0 header lg:fixed relative px-4 py-2 flex justify-between items-center bg-black">
+      <h1 className="lg:text-4xl md:text-4xl text-5xl mt-20 md:mt-2 lg:ml-6 md:ml-6 md:block">
+        <span className="antonio lg:inline text-white" id="oxo-studio">
+          {"OXO-STUDIO".split("").map((char, i) => (
+            <span key={i} className="split-char inline-block">
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </span>
+      </h1>
 
       <nav className="ml-auto">
-        <ul className="flex gap-2 md:mr-6">
-          <li>
-            <Link to="/" className="glitch orbitron text-32xl lg:text-4xl md:text-3xl" data-glitch="Home">
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link to="/ChiSiamo" className="glitch orbitron text-1xl lg:text-4xl md:text-3xl" data-glitch="Chi Siamo">
-              CHI SIAMO
-            </Link>
-          </li>
-          <li>
-            <Link to="/Portfolio" className="glitch orbitron text-1xl lg:text-4xl md:text-3xl" data-glitch="Portfolio">
-              PORTFOLIO
-            </Link>
-          </li>
+        <ul className="gap-2 md:gap-8 lg:gap-8 md:mr-6 hidden md:flex">
+          <li><Link to="/" className="antonio roll-link" data-text="HOME"><span>HOME</span></Link></li>
+          <li><Link to="/ChiSiamo" className="antonio roll-link" data-text="CHI SIAMO"><span>CHI SIAMO</span></Link></li>
+          <li><Link to="/Portfolio" className="antonio roll-link" data-text="PORTFOLIO"><span>PORTFOLIO</span></Link></li>
         </ul>
       </nav>
+
+      <div className="btn" id="toggle-btn">
+        <div className="btn-outline btn-outline-1"></div>
+        <div className="btn-outline btn-outline-2"></div>
+        <div id="hamburger">
+          <span></span>
+        </div>
+      </div>
+
+      <div className="overlay">
+        <svg viewBox="0 0 1000 1000">
+          <path d="M0 -100 S175 -330 500 -330 s500 230 500 230 V0 H0 Z"></path>
+        </svg>
+      </div>
+
+      <div className="menu">
+        <div className="menu-items flex flex-col justify-center items-center gap-8 h-screen text-white text-3xl antonio">
+          <Link to="/">HOME</Link>
+          <Link to="/ChiSiamo">CHI SIAMO</Link>
+          <Link to="/Portfolio">PORTFOLIO</Link>
+        </div>
+      </div>
     </header>
   );
 }

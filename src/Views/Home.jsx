@@ -1,16 +1,9 @@
-import { useEffect } from 'react';
+
 import Container from '../components/Container';
-import initializeHoverHeader from '../threejs/HoverHeader';
+
 
 export default function Boxes() {
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    initializeHoverHeader();
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, []);
-
+  
   return (
     <Container>
       <main
@@ -32,7 +25,7 @@ export default function Boxes() {
             height: '100%',
             zIndex: 5,
           }}
-        ></div>
+        > </div>
       </main>
     </Container>
   );

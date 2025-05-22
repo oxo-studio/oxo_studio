@@ -2,105 +2,228 @@
 @tailwind components;
 @tailwind utilities;
 
-/*font */
-.permanent-marker-regular,h1{
-    font-family: "Permanent Marker", cursive;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .orbitron {
-  font-family: "Orbitron", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
+:root {
+  --overlay-bg: #393838;
+  --bianco: #fffbfb;
+}
+body.menu-open {
+  overflow: hidden;
+  height: 100vh;
 }
 
-  
-a{
+
+/* Link base */
+a {
   text-decoration: none;
   border-bottom: none;
-} 
-  
-  /* Aggiungi hover senza la linea sotto */
-  nav li a:hover {
-    text-decoration: none; /* Rimuove la sottolineatura al passaggio del mouse */
-    border-bottom: none; /* Assicurati che il bordo non venga visualizzato */
-  
+  color: var(--bianco);
+}
 
-  }
+nav li a:hover {
+  text-decoration: none;
+  border-bottom: none;
+}
 
-
-/* Glitch */
-.glitch {
+/* Rolling Text Effect */
+.roll-link {
   position: relative;
   display: inline-block;
-  color: #fff;
-  text-decoration: none;
+  font-size: 1.5rem;
+  height: 1.5em;
+  overflow: hidden;
   text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 2px;
-  
+  color: var(--bianco);
 }
 
-.glitch::before,
-.glitch::after {
-  content: attr(data-glitch);
+.roll-link span {
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.1, 0.1, 0.5, 1.4);
+  transform: translateY(0%);
+}
+
+.roll-link::before {
+  content: attr(data-text);
   position: absolute;
-  left: 12px;
-  top: 10;
+  top: 100%;
+  left: 0;
   width: 100%;
-  height: 100%;
-  opacity: 0.8;
-  text-transform: uppercase;
+  color: var(--bianco);
+  transition: transform 0.4s cubic-bezier(0.1, 0.1, 0.5, 1.4);
+  transform: translateY(0%);
+}
+
+.roll-link:hover span {
+  transform: translateY(-100%);
+}
+
+.roll-link:hover::before {
+  transform: translateY(-100%);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--overlay-bg);
+  z-index: 998;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-.glitch::before {
-  color: #0ff;
-  z-index: -1;
+.overlay.active {
+  pointer-events: auto;
+  opacity: 1;
 }
 
-.glitch::after {
-  color: #f0f;
-  z-index: -2;
+/* SVG Path */
+svg path {
+  fill: var(--bianco);
 }
 
-.glitch:hover::before {
-  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
+/* Toggle Button Container */
+#toggle-btn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  user-select: none;
 }
 
-.glitch:hover::after {
-  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
+/* Button Outline */
+.btn-outline {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--bianco);
+  pointer-events: none; /* evita interferenze col click */
 }
 
-/* Media query */
-@media only screen and (max-width: 400px) {
-  .glitch {
-    font-size: 3em;
-  }
+.btn-outline-1 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morph 4s linear infinite;
 }
 
-/* Animation */
-@keyframes glitch {
+.btn-outline-2 {
+  border-radius: 53% 47% 43% 57% / 51% 39% 61% 49%;
+}
+
+/* Morfismo animato */
+@keyframes morph {
   0% {
-    transform: translate(0);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
-  20% {
-    transform: translate(-5px, 5px);
-  }
-  40% {
-    transform: translate(-5px, -5px);
-  }
-  60% {
-    transform: translate(5px, 5px);
-  }
-  80% {
-    transform: translate(5px, -5px);
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
   }
   100% {
-    transform: translate(0);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
 }
 
-  
-  
+/* Hamburger Icon */
+#hamburger {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  z-index: 1001;
+  user-select: none;
+}
+
+#hamburger span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--bianco);
+  transform: translateY(-50%);
+  transition: transform 0.25s ease, background 0.25s ease;
+  display: inline-block;
+}
+
+#hamburger span::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 18px;
+  height: 2px;
+  background: var(--bianco);
+  transform: translateY(-4px);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+#hamburger.active span::before {
+  width: 24px;
+  top: unset;
+  transform: rotate(-90deg);
+}
+
+/* Menu */
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--overlay-bg);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: "Antonio", sans-serif;
+  color: var(--bianco);
+  font-size: 3.75rem; /* 60px */
+  text-align: center;
+}
+
+.menu-items > a {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.menu.open .menu-items > a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--bianco);
+  margin-left: -12px; /* se serve mantenere */
+}
+
+/* Mobile Only */
+@media (min-width: 768px) {
+  #toggle-btn {
+    display: none !important;
+  }
+
+  .menu {
+    display: none !important;
+  }
+}

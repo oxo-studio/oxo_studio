@@ -5,16 +5,21 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
-  
-  
+
+
+.antonio {
+  font-family: "Antonio", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: 500;
+}
 
   
 
   
   :root {
     --color-shockingly-green: #0ae448;
-    --color-just-black:#0e100f ;
+    --color-just-black: #0e100f;
     --color-surface-white: white;
     --color-pink: #fec5fb;
     --color-shockingly-pink: #f100cb;
@@ -658,19 +663,4 @@
 
 
   
-  
-  .noise {
-    position: relative;
-  }
-  .noise:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: url('https://gsap.com/_img/codepen/flair/noise.png');
-    opacity: 0.4;
-    pointer-events: none;
-  }
   

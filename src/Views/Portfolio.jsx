@@ -67,19 +67,15 @@ export default function Layers() {
 
 
     <main ref={main}>
-      <section className="description panel light">
-        <div>
-          <h1 className='lg:text-9xl'>PORTFOLIO</h1>
-          
-          <div className="scroll-down">
-            Scroll down<div className="arrow"></div>
-          </div>
-        </div>
-      </section>
-      <section className="panel dark">ONE</section>
-      <section className="panel purple">TWO</section>
-      <section className="panel orange">THREE</section>
-      <section className="panel red">FOUR</section>
+      <section className="description panel light h-screen flex flex-col items-center justify-center text-center z-10" >
+  <h1 className="text-5xl md:text-7xl lg:text-9xl">PORTFOLIO</h1>
+
+  <div className="mt-6 scroll-down">
+    Scroll down
+    <div className="arrow"></div>
+  </div>
+</section>
+
     </main>
 
  
