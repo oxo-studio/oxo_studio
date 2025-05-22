@@ -1,83 +1,85 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-
-
-
 import TransitionContext from '../Context/TransitionContext';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Layers() {
   const main = useRef();
   const { completed } = useContext(TransitionContext);
   const scrollTween = useRef();
   const snapTriggers = useRef([]);
-  const { contextSafe } = useGSAP(
-    () => {
-      if (!completed) return;
-      let panels = gsap.utils.toArray('.panel'),
-          scrollStarts = [0],
-          snapScroll = value => value; // for converting a pixel-based scroll value to the closest panel scroll position
-      
-      // create a ScrollTrigger for each panel that's only concerned about figuring out when its top hits the top of the viewport. We'll use the "start" of that ScrollTrigger to figure out snapping positions.
-      panels.forEach((panel, i) => {
-        snapTriggers.current[i] = ScrollTrigger.create({
-          trigger: panel,
-          start: "top top"
-        });
-      });
 
-      // once all the triggers have calculated their start/end, create the snap function that'll accept an overall progress value for the overall page, and then return the closest panel snapping spot based on the direction of scroll
-      ScrollTrigger.addEventListener("refresh", () => {
-        scrollStarts = snapTriggers.current.map(trigger => trigger.start); // build an Array with just the starting positions where each panel hits the top of the viewport
-        snapScroll = ScrollTrigger.snapDirectional(scrollStarts); // get a function that we can feed a pixel-based scroll value to and a direction, and then it'll spit back the closest snap position (in pixels)
-      });
+  const { contextSafe } = useGSAP(() => {
+    if (!completed) return;
 
-      ScrollTrigger.observe({
-        type: "wheel,touch",
-        onChangeY(self) {
-          if (!scrollTween.current) {
-            // find the closest snapping spot based on the direction of scroll
-            let scroll = snapScroll(self.scrollY() + self.deltaY, self.deltaY > 0 ? 1 : -1);
-            goToSection(scrollStarts.indexOf(scroll)); // scroll to the index of the associated panel
-          }
-        }
+    let panels = gsap.utils.toArray('.panel');
+    let scrollStarts = [0];
+    let snapScroll = value => value;
+
+    // Crea ScrollTriggers
+    snapTriggers.current = panels.map((panel) =>
+      ScrollTrigger.create({
+        trigger: panel,
+        start: "top top",
       })
+    );
 
-      ScrollTrigger.refresh();
-    },
-    {
-      dependencies: [completed],
-      scope: main,
-      revertOnUpdate: true,
-    }
-  );
+    // Setup snapping dopo che tutti gli ScrollTrigger sono pronti
+    const updateSnap = () => {
+      scrollStarts = snapTriggers.current.map(trigger => trigger.start);
+      snapScroll = ScrollTrigger.snapDirectional(scrollStarts);
+    };
+
+    ScrollTrigger.addEventListener("refresh", updateSnap);
+    ScrollTrigger.refresh(); // Forza calcolo posizioni iniziali
+
+    // Observer per scroll snapping
+    ScrollTrigger.observe({
+      type: "wheel,touch",
+      onChangeY(self) {
+        if (!scrollTween.current) {
+          const scroll = snapScroll(
+            self.scrollY() + self.deltaY,
+            self.deltaY > 0 ? 1 : -1
+          );
+          goToSection(scrollStarts.indexOf(scroll));
+        }
+      }
+    });
+
+    return () => {
+      ScrollTrigger.removeEventListener("refresh", updateSnap);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, {
+    dependencies: [completed],
+    scope: main,
+    revertOnUpdate: true,
+  });
 
   const goToSection = contextSafe((i) => {
-    console.log("scroll to", i);
     scrollTween.current = gsap.to(window, {
       scrollTo: { y: snapTriggers.current[i].start, autoKill: false },
       duration: 1,
-      onComplete: () => (scrollTween.current = null),
-      overwrite: true
+      overwrite: true,
+      onComplete: () => scrollTween.current = null
     });
   });
 
   return (
-
-
     <main ref={main}>
-      <section className="description panel light h-screen flex flex-col items-center justify-center text-center z-10" >
-  <h1 className="text-5xl md:text-7xl lg:text-9xl">PORTFOLIO</h1>
-
-  <div className="mt-6 scroll-down">
-    Scroll down
-    <div className="arrow"></div>
-  </div>
-</section>
-
+      <section className="description panel light h-screen flex flex-col items-center justify-center text-center z-10">
+        <h1 className="text-5xl md:text-7xl lg:text-9xl">PORTFOLIO</h1>
+        <div className="mt-6 scroll-down">
+          Scroll down
+          <div className="arrow"></div>
+        </div>
+      </section>
+      <div className="h-screen panel">uno</div>
+     
     </main>
-
- 
   );
 }

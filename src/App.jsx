@@ -1,4 +1,3 @@
-
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -19,3 +18,4 @@ function App() {
 }
 
 export default App;
+
