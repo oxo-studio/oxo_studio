@@ -34,7 +34,7 @@ const TransitionChiSiamo = ({onComplete})=>{
     },[onComplete])
 
      return (
-    <div ref={containerRef} className='fixed top-0 left-0 w-full h-full z-[9999] bg-black flex items-center justify-center'>
+    <div ref={containerRef} className='h-full w-full min-h-screen z-[9999] bg-white flex items-center relative justify-start'>
       <img src="" alt="" />
     </div>
   )

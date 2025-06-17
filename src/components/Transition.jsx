@@ -1,6 +1,7 @@
 import { useContext, useRef } from 'react';
 import { SwitchTransition, Transition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
+import PropTypes from "prop-types";
 import gsap from 'gsap';
 
 import TransitionContext from '../Context/TransitionContext';
@@ -48,5 +49,9 @@ const TransitionComponent = ({ children }) => {
     </SwitchTransition>
   );
 };
+Transition.propTypes = {
+  onComplete: PropTypes.func.isRequired,
+
+}
 
 export default TransitionComponent;

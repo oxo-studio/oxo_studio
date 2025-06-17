@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import Sezione1 from "../components/Home/Sezione1";
-import TransitionHome from "../components/transitionpage/TransitionHome";
+import TransitionHome from "../components/transitionpage/TransitionHome"
 
 export default function Boxes() {
   const [showTransition, setShowTransition] = useState(true);
@@ -20,6 +20,7 @@ export default function Boxes() {
   return (
     <>
       {showTransition && <TransitionHome onComplete={handleTransitionEnd} />}
+
       <main ref={mainRef}>
         <Sezione1 />
       </main>

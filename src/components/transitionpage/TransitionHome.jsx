@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import gsap from "gsap";
@@ -11,27 +12,169 @@ const TransitionHome = ({ onComplete }) => {
   useEffect(() => {
     const tl = gsap.timeline();
 
-    // Scroll automatico verso l'alto
+    // Step 1: Posizione iniziale invisibile
+    gsap.set("#hdihome", { x: -900, opacity: 0 });
+    gsap.set("#odihome", { y: 900, opacity: 0 });
+    gsap.set(["#mdihome","nerom"], { y: -900, opacity: 0 });
+    gsap.set("#edihome", { x: 900, opacity: 0 });
+    gsap.set("#sotto1", { y: 900, opacity: 0 });
+    gsap.set("#sotto2", { y: 900, opacity: 0 });
+    gsap.set("#sotto3", { y: 900, opacity: 0 });
+    gsap.set("#sotto4", { y: 900, opacity: 0 });
+    gsap.set("#o1", { y: 900, opacity: 0 });
+    gsap.set("#o2",{y:900, opacity:0})
+    gsap.set("#o3",{y:900, opacity:0})
+    gsap.set("#o4",{y:900, opacity:0})
+    gsap.set("#o5",{y:900, opacity:0})
+    gsap.set("#o6",{y:900, opacity:0})
+    gsap.set("#o7",{y:900, opacity:0})
+    gsap.set("#o8",{y:900, opacity:0})
+    
+    // Step 2: Entrata degli elementi
+    tl.to("#hdihome", {
+      delay: 1,
+      duration: 1.5,
+      x: 0,
+      opacity: 1,
+      ease: "power2.out",
+    });
+
+    tl.to("#odihome", {
+      duration: 1.5,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    }, "<");
+
+    tl.to(["#mdihome","nerom"], {
+      duration: 1.5,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    }, "<");
+
+    tl.to("#edihome", {
+      duration: 1.5,
+      x: 0,
+      opacity: 1,
+      ease: "power2.out",
+    }, "<");
+
+    tl.to("#sotto1", {
+      delay:0.3,
+      duration: 1.5,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    }, "<");
+
+    tl.to("#sotto2", {
+      delay:0.3,
+      duration: 1.5,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    }, "<");
+
+    tl.to("#sotto3", {
+      delay:0.3,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    }, "<");
+
+    tl.to("#sotto4", {
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    }, "<");
+
+    tl.to("#o1", {
+
+      delay: 0.5,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    }, "<");
+
+    tl.to("#o2",{
+      delay: 0.2,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    },"<")
+
+     tl.to("#o3",{
+      delay: 0.2,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    },"<")
+
+    
+     tl.to("#o4",{
+      delay: 0.2,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    },"<")
+
+
+     tl.to("#o5",{
+      delay: 0.2,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    },"<")
+
+
+     tl.to("#o6",{
+      delay: 0.2,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    },"<")
+
+
+     tl.to("#o7",{
+      delay: 0.2,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    },"<")
+
+     tl.to("#o8",{
+      delay: 0.2,
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.out",
+    },"<")
+
+    // Step 3: Scroll automatico verso l'alto
     tl.to(window, {
       duration: 0.7,
       scrollTo: { y: 0 },
       ease: "power2.inOut",
-   
-    });
+    }, "+=0.2");
 
-    // Animazione di uscita verso l'alto del container
-    tl.to(
-      containerRef.current,
-      {
-        duration: 0.7,
-        y: "-100%",   // sposta verso l'alto fuori schermo
-      
-        ease: "power2.in",
-      },
-      "+=0.3" // piccola pausa dopo lo scroll
-    );
+    // Step 4: Uscita del container verso l'alto
+    tl.to(containerRef.current, {
+      duration: 0.7,
+      y: "-100%",
+      ease: "power2.in",
+    }, "+=0.3");
 
-    // Al termine timeline chiama onComplete
+    // Step 5: Chiamata alla funzione di completamento
     tl.eventCallback("onComplete", () => {
       onComplete();
     });
@@ -39,22 +182,45 @@ const TransitionHome = ({ onComplete }) => {
   }, [onComplete]);
 
   return (
-    <>
     <div
       ref={containerRef}
-      className="fixed top-0 left-0 w-full h-full z-[9999] bg-black flex items-center justify-center"
+      className="w-full h-full min-h-screen z-[9999] bg-black flex items-center relative justify-start"
     >
+     <img src="/public/SvgCode/HomePageSvg/home2.0.svg" alt="hdiHome" id="hdihome"  className="lg:w-[1600px] absolute  top-[-20px] hidden lg:block  right-[30px]"/>
+<img src="/SvgCode/HomePageSvg/HomepageGrange2.svg" alt="odiHome" id="odihome" className="lg:w-[1600px]  absolute      top-[-20px] hidden lg:block right-[30px]" />
+<img src="/SvgCode/HomePageSvg/HomepageGrange3.svg" alt="mdihome" id="mdihome" className="lg:w-[1600px] absolute       top-[-20px] hidden lg:block right-[30px]" />
+<img src="/public/SvgCode/HomePageSvg/home2.1.svg" alt="edihome" id="edihome" className="lg:w-[1600px]  absolute top-[-5px] hidden  lg:block right-[30px] " />
 
-<img src="/SvgCode/hdihome.svg" alt="H" />
-<img src="/SvgCode/Odihome.svg" alt="O" />
-<img src="/SvgCode/Mdihome.svg" alt="M" />
-<img src="/SvgCode/Edihome.svg" alt="E" />
+<img src="/public/SvgCode/HomePageSvg/HomePagelatoH.svg" alt="lato destro macchie" id="sotto2" className="lg:w-[1600px] absolute hidden lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/HomepageGrange4svg.svg" alt="prima sctriscia sotto sinistra" id="sotto1" className="lg:w-[1800px]  absolute hidden lg:block left-[70px]" />
+<img src="/SvgCode/HomePageSvg/HomepageGrange6svg.svg" alt="seconda da sinistra" id="sotto3" className="lg:w-[1800px] absolute   top-[30px] left-0 z-30 hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageGrange7.svg" alt="3 sinistra" id="sotto4" className="lg:w-[1800px] absolute hidden top-[30px] lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/Homepage1o.svg" id="o1" alt="prima o da sinistra" className="lg:w-[1800px] absolute hidden  lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/Homepage2o.svg" id="o2" alt="seconda o da sinistra" className="lg:w-[1800px] absolute hidden lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/Homepage3o.svg" id="o3" alt="terza o da sinistra" className="lg:w-[1800px] absolute hidden  lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/Homepage4o.svg" id="o4" alt="quarta o da sinistra" className="lg:w-[1800px] absolute hidden lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/Homepage5o.svg" id="o5" alt="quinta o da sinistra" className="lg:w-[8800px] absolute hidden lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/Homepage6o.svg" id="o6" alt="sesta o da sinistra" className="lg:w-[1800px] absolute hidden  lg:block" />
+<img src="/public/SvgCode/HomePageSvg/Homepage7o.svg" id="o7" alt="settima o da sinistra" className="lg:w-[1800px] absolute hidden  lg:block" />
+<img src="/public/SvgCode/HomePageSvg/Homepage8o.svg" id="o8" alt="" className="w-[1800px] absolute hidden  lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageLatoE.svg" alt=""  className="lg:w-[1900px] absolute hidden lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/HomepageNeroM.svg" id="nerom" alt="" className="lg:w-[1900px] absolute hidden lg:block"/>
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta.svg"  id="soprahome1" alt="ScrittaHomesoprah" className="lg:w-[1800px] absolute hidden lg:block " />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta2.svg" id="soprahome2" alt="ScrittaHomesoprao" className="lg:w-[1800px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta3.svg" id="soprahome3" alt="ScrittaHomesopram" className="lg:w-[1800px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta4.svg" id="soprahome4" alt="ScrittaHomesoprae" className="lg:w-[1800px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta5.svg" id="soprahome5" alt="ScrittaHomesopra" className=" lg:w-[1800px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta6svg.svg" alt="" className="lg:w-[1800px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta8.svg" alt="" className="lg:w-[1800px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta9.svg" alt="" className="lg:w-[1800px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta10.svg" alt="" className="lg:w-[1900px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta11.svg" alt="" className="lg:w-[1900px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta12.svg" alt="" className="lg:w-[1900px] absolute hidden lg:block" />
+<img src="/public/SvgCode/HomePageSvg/HomepageSopraDresta13.svg" alt="" className="lg:w-[1900px] absolute hidden lg:block"  />
+</div>
 
-   
-    </div>
-    
-    <div className="w-full h-20 bg-white"></div>
-    </>
+
+  
   );
 };
 
@@ -63,3 +229,4 @@ TransitionHome.propTypes = {
 };
 
 export default TransitionHome;
+

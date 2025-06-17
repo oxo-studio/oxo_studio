@@ -1,12 +1,26 @@
+import { useState, useRef } from "react";
+import TransitionChiSiamo from "../components/transitionpage/TransitionChiSiamo";
 
 
 export default function Scroll() {
-  return (
+  const [showTransition, setShowTransition]= useState(true)
+  const mainRef = useRef(null)
 
-      <section className="h-screen flex items-center justify-center z-0">
-  <h1 className="text-5xl md:text-7xl lg:text-9xl text-center">CHI SIAMO</h1>
- 
-</section>
-   
+  const handleTransitionEnd = ()=>{
+    setShowTransition(false)
+
+    setTimeout(()=>{
+      if (mainRef.current){
+        mainRef.current.scrollIntoView({behavior: "smooth"})
+      }
+    },100)
+  }
+  return (
+  <>
+  {showTransition && <TransitionChiSiamo onComplete={handleTransitionEnd}/>}
+  <main ref={mainRef}>
+
+  </main>
+  </>
   );
 }
