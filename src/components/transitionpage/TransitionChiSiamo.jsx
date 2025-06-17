@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollToPlugin)
 
 const TransitionChiSiamo = ({onComplete})=>{
   const containerRef = useRef(null)
+
   
   useEffect(()=>{
     const tl = gsap.timeline()    
