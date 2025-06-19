@@ -40,7 +40,15 @@ const TransitionHome = ({ onComplete }) => {
     gsap.set("#sopradadestra2",{y:-900, opacity:0})
     gsap.set("#sopradadestra",{y:-900, opacity:0})
 
-    gsap.to("#sopradestra3",{y:-900, opacity:0})
+    gsap.set("#sopradestra3",{y:-900, opacity:0})
+    gsap.set("#sopradestra4",{y:-900, opacity:0})
+    gsap.set("#sopradestra5",{y:-900,opacity:0})
+    gsap.set("#sopradestra6",{y:-900,opacity:0})
+
+    gsap.set("#sopradestra9",{y:-900,opacity:0})
+    gsap.set("#sopradestra8",{y:-900,opacity:0})
+    gsap.set("#sopradestra7",{y:-900, opacity:0})
+
 
 
     
@@ -221,14 +229,56 @@ tl.to("#sopradadestra",{
 
 tl.to("#sopradestra3",{
   delay:0.3,
+  
   duration:1,
   y:0,
   opacity:1,
   ease:"power2.out"
 },"<")
 
+tl.to("#sopradestra4",{
+  duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+},"<")
 
+tl.to("#sopradestra5",{
+  duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
 
+},"<")
+
+tl.to("#sopradestra6",{
+  delay:0.3,
+  duration:1,
+  opacity:1,
+  y:0,
+  ease: "power2.out"
+},"<")
+
+tl.to("#sopradestra9",{
+
+  duration:1,
+  y:0,
+  opacity:1,
+  esase:"powe2.out"
+},"<")
+
+gsap.to("#sopradestra8",{
+  duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+},"<")
+gsap.to("#sopradestra7",{
+  duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+},"<")
 
     // Step 3: Scroll automatico verso l'alto
     tl.to(window, {
@@ -284,7 +334,12 @@ tl.to("#sopradestra3",{
  <img src="/public/SvgCode/HomePageSvg/sopradadestra2.svg" id="sopradadestra2" alt="sopradadestra" className="w-[1600px] absolute hidden lg:block top-[-20px]" />
 
  <img src="/public/SvgCode/HomePageSvg/sopradadestra3.svg" id="sopradestra3" alt="sopradestra3" className="w-[1600px] absolute hidden lg:block top-[-20px]" />
-
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra4.svg" id="sopradestra4" alt="sopradestra4" className="w-[1600px] absolute hidden lg:block top-[-20px]" />
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra5.svg" id="sopradestra5" alt="sopradestra5" className="w-[1600px] absolute hidden lg:block top-[-30px]" />
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra6.svg" id="sopradestra6" alt="sopradestra6" className="w-[1600px] absolute hidden lg:block top-[-30px]" />
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra7.svg" id="sopradestra7" alt="sopradestra7" className="w-[1600px] absolute hidden lg:block top-[-65px]" />
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra8svg.svg" id="sopradestra8" alt="sopradestra8" className="w-[1600px] absolute hidden lg:block top-[-65px]" />
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra9.svg" id="sopradestra9" alt="sopradestra9" className="w-[1600px] absolute hidden lg:block top-[-65px]"/>
 </div>
 
 
