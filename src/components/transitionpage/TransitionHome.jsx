@@ -45,9 +45,29 @@ const TransitionHome = ({ onComplete }) => {
     gsap.set("#sopradestra5",{y:-900,opacity:0})
     gsap.set("#sopradestra6",{y:-900,opacity:0})
 
-    gsap.set("#sopradestra9",{y:-900,opacity:0})
-    gsap.set("#sopradestra8",{y:-900,opacity:0})
     gsap.set("#sopradestra7",{y:-900, opacity:0})
+    gsap.set("#sopradestra8",{y:-900,opacity:0})
+    gsap.set("#sopradestra9",{y:-900,opacity:0})
+
+    gsap.set("#sat6661",{y:-900,opacity:0})
+    gsap.set("#sat6662",{y:-900,opacity:0})
+    gsap.set("#sat6663",{y:-900,opacity:0})
+
+    gsap.set("#Sopradestrah1",{y:-900,opacity:0})
+    gsap.set("#Sopradestrah2",{y:-900,opacity:0})
+    gsap.set("#Sopradestrah3",{y:-900,opacity:0})
+    gsap.set("#Sopradestrah4",{y:-900,opacity:0})
+
+    gsap.set("#homepiccola",{y:-900,opacity:0})
+    gsap.set("#homepiccola2",{y:-900,opacity:0})
+    gsap.set("#homepiccola3",{y:-900,opacity:0})
+    gsap.set("#homepiccola4",{y:-900,opacity:0})
+    gsap.set("#homepiccola5",{y:-900,opacity:0})
+
+    
+
+
+
 
 
 
@@ -260,24 +280,81 @@ tl.to("#sopradestra6",{
 },"<")
 
 tl.to("#sopradestra9",{
-
+  
   duration:1,
   y:0,
   opacity:1,
   esase:"powe2.out"
 },"<")
 
-gsap.to("#sopradestra8",{
+tl.to("#sopradestra8",{
   duration:1,
   y:0,
   opacity:1,
   ease:"power2.out"
 },"<")
-gsap.to("#sopradestra7",{
+
+tl.to("#sopradestra7",{
   duration:1,
   y:0,
   opacity:1,
   ease:"power2.out"
+},"<")
+
+tl.to("#sat6661",{
+   duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+})
+
+tl.to("#sat6662",{
+   duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+})
+
+tl.to("#sat6663",{
+   duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+})
+
+tl.to("#Sopradestrah1",{
+   duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+})
+
+tl.to("#Sopradestrah2",{
+   duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+})
+
+tl.to("#Sopradestrah3",{
+   duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+})
+
+tl.to("#Sopradestrah4",{
+   duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+})
+
+tl.to("#homepiccola",{
+  duration:1,
+  opacity:1,
+  y:0,
+  ease:"power2.in"
 },"<")
 
     // Step 3: Scroll automatico verso l'alto
@@ -340,6 +417,25 @@ gsap.to("#sopradestra7",{
  <img src="/public/SvgCode/HomePageSvg/Sopradestra7.svg" id="sopradestra7" alt="sopradestra7" className="w-[1600px] absolute hidden lg:block top-[-65px]" />
  <img src="/public/SvgCode/HomePageSvg/Sopradestra8svg.svg" id="sopradestra8" alt="sopradestra8" className="w-[1600px] absolute hidden lg:block top-[-65px]" />
  <img src="/public/SvgCode/HomePageSvg/Sopradestra9.svg" id="sopradestra9" alt="sopradestra9" className="w-[1600px] absolute hidden lg:block top-[-65px]"/>
+
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra666.svg" id="sat6661"  alt="6661" className="w-[1300px] absolute hidden lg:block left-[185px] top-[-18px]"/>
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra6662.svg" id="sat6662" alt="6662" className="w-[1300px] absolute hidden lg:block left-[185px] top-[-18px]"/>
+ <img src="/public/SvgCode/HomePageSvg/Sopradestra6663.svg" id="sat6663" alt="6663" className="w-[1300px] absolute hidden lg:block left-[185px] top-[-18px]"/>
+
+ <img src="/public/SvgCode/HomePageSvg/Sopradestrah1.svg" id="Sopradestrah1" alt="Sopradestrah1" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px]"/>
+ <img src="/public/SvgCode/HomePageSvg/Sopradestrah2.svg" id="Sopradestrah2" alt="Sopradestrah2" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px]"/>
+ <img src="/public/SvgCode/HomePageSvg/Sopradestrah3.svg" id="Sopradestrah3" alt="Sopradestrah3" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px]"/>
+ <img src="/public/SvgCode/HomePageSvg/Sopradestrah4.svg" id="Sopradestrah4" alt="Sopradestrah4" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px]"/>
+
+ <img src="/public/SvgCode/HomePageSvg/homepiccola.svg"    id="homepiccola" alt="homepiccola" className="w-[1600px] absolute hidden lg:block" />
+ <img src="/public/SvgCode/HomePageSvg/homepiccola2.svg"   id="homepiccola2" alt="homepiccola2" className="w-[1600px] absolute hidden lg:block" />
+ <img src="/public/SvgCode/HomePageSvg/homepiccola3.svg"   id="homepiccola3" alt="homepiccola3" className="w-[1600px] absolute hidden lg:block" />
+ <img src="/public/SvgCode/HomePageSvg/homepiccola4.svg"   id="homepiccola4" alt="homepiccola4" className="w-[1600px] absolute hidden lg:block" />
+ <img src="/public/SvgCode/HomePageSvg/homepiccola5.svg"   id="homepiccola5" alt="homepiccola5" className="w-[1600px] absolute hidden lg:block" />
+
+
+
+
 </div>
 
 
