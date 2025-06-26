@@ -64,6 +64,11 @@ const TransitionHome = ({ onComplete }) => {
     gsap.set("#homepiccola4",{y:-900,opacity:0})
     gsap.set("#homepiccola5",{y:-900,opacity:0})
 
+    gsap.set("#macchiesinistra1",{y:-900,opacity:0})
+    gsap.set("#macchiacentro2",{Y:-900,opacity:0})
+
+    
+
     
 
 
@@ -306,21 +311,23 @@ tl.to("#sat6661",{
   y:0,
   opacity:1,
   ease:"power2.out"
-})
+},"<")
 
 tl.to("#sat6662",{
+  delay:0.1,
    duration:1,
   y:0,
   opacity:1,
   ease:"power2.out"
-})
+},"<")
 
 tl.to("#sat6663",{
+  delay:0.1,
    duration:1,
   y:0,
   opacity:1,
   ease:"power2.out"
-})
+},"<")
 
 tl.to("#Sopradestrah1",{
    duration:1,
@@ -330,32 +337,86 @@ tl.to("#Sopradestrah1",{
 })
 
 tl.to("#Sopradestrah2",{
+  delay:0.2,
    duration:1,
   y:0,
   opacity:1,
   ease:"power2.out"
-})
+},"<")
 
 tl.to("#Sopradestrah3",{
+  delay:0.2,
    duration:1,
   y:0,
   opacity:1,
   ease:"power2.out"
-})
+},"<")
 
 tl.to("#Sopradestrah4",{
+  delay:0.1,
    duration:1,
   y:0,
   opacity:1,
   ease:"power2.out"
-})
+},"<")
 
 tl.to("#homepiccola",{
+
   duration:1,
   opacity:1,
   y:0,
   ease:"power2.in"
 },"<")
+
+tl.to("#homepiccola2",{
+  delay:0.1,
+  duration:1,
+  opacity:1,
+  y:0,
+  ease:"power2.in"
+},"<")
+
+tl.to("#homepiccola3",{
+  delay:0.1,
+  duration:1,
+  opacity:1,
+  y:0,
+  ease:"power2.in"
+},"<")
+
+tl.to("#homepiccola4",{
+  delay:0.1,
+  duration:1,
+  opacity:1,
+  y:0,
+  ease:"power2.in"
+},"<")
+
+tl.to("#homepiccola5",{
+  delay:0.1,
+  duration:1,
+  opacity:1,
+  y:0,
+  ease:"power2.in"
+},"<")
+
+tl.to("#macchiesinistra1",{
+  duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+},"<")
+
+tl.to("#macchiacentro2",{
+  DURATION:1,
+  Y:0,
+  opacity:1,
+  ease:"power2.out"
+})
+
+
+
+
 
     // Step 3: Scroll automatico verso l'alto
     tl.to(window, {
@@ -422,7 +483,8 @@ tl.to("#homepiccola",{
  <img src="/public/SvgCode/HomePageSvg/Sopradestra6662.svg" id="sat6662" alt="6662" className="w-[1300px] absolute hidden lg:block left-[185px] top-[-18px]"/>
  <img src="/public/SvgCode/HomePageSvg/Sopradestra6663.svg" id="sat6663" alt="6663" className="w-[1300px] absolute hidden lg:block left-[185px] top-[-18px]"/>
 
- <img src="/public/SvgCode/HomePageSvg/Sopradestrah1.svg" id="Sopradestrah1" alt="Sopradestrah1" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px]"/>
+{/* da agire su questi 4 sotto deve essere separato e piu fluida entrata*/}
+ <img src="/public/SvgCode/HomePageSvg/Sopradestrah1.svg" id="Sopradestrah1" alt="Sopradestrah1" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px] "/>
  <img src="/public/SvgCode/HomePageSvg/Sopradestrah2.svg" id="Sopradestrah2" alt="Sopradestrah2" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px]"/>
  <img src="/public/SvgCode/HomePageSvg/Sopradestrah3.svg" id="Sopradestrah3" alt="Sopradestrah3" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px]"/>
  <img src="/public/SvgCode/HomePageSvg/Sopradestrah4.svg" id="Sopradestrah4" alt="Sopradestrah4" className="w-[1200px] absolute hidden lg:block top-[-20px] left-[200px]"/>
@@ -432,6 +494,12 @@ tl.to("#homepiccola",{
  <img src="/public/SvgCode/HomePageSvg/homepiccola3.svg"   id="homepiccola3" alt="homepiccola3" className="w-[1600px] absolute hidden lg:block" />
  <img src="/public/SvgCode/HomePageSvg/homepiccola4.svg"   id="homepiccola4" alt="homepiccola4" className="w-[1600px] absolute hidden lg:block" />
  <img src="/public/SvgCode/HomePageSvg/homepiccola5.svg"   id="homepiccola5" alt="homepiccola5" className="w-[1600px] absolute hidden lg:block" />
+
+ <img src="/public/SvgCode/HomePageSvg/macchiesinistra1.svg" id="macchiesinistra1" alt="macchiesinistra1" className="w-[1300px] absolute hidden lg:block"/>
+
+ <img src="/public/SvgCode/HomePageSvg/macchiesinistra2.svg" id="macchiacentro2" alt="macchiacentro2" className="w-[1600px] absolute hidden lg:block top-[0px]" />
+
+ 
 
 
 
