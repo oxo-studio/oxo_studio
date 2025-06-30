@@ -85,7 +85,7 @@ const TransitionHome = ({ onComplete }) => {
       x: 0,
       opacity: 1,
       ease: "power2.out",
-    });
+    }, "<");
 
     tl.to("#odihome", {
       duration: 1.5,
@@ -213,7 +213,7 @@ const TransitionHome = ({ onComplete }) => {
   opacity: 1,
   duration: 1.5,
   ease: "power3.out",
-}, "<0.2"); 
+}, "<"); 
 
 tl.to("#Osoprasinistra",{
   scale:1,
@@ -221,21 +221,21 @@ tl.to("#Osoprasinistra",{
   duration:1.5,
   ease:"power3.out",
 
-},"<0.4")
+},"<")
 
 tl.to("#Msoprasinistra",{
   scale:1,
   opacity:1,
   duration:1.5,
   ease:"power3.out"
-},"<0.4")
+},"<")
 
 tl.to("#Esoprasinistra",{
     scale:1,
   opacity:1,
   duration:1.5,
   ease:"power3.out",
-},"<0.4")
+},"<")
 
 tl.to("#sopradadestra2",{
   duration:1,
@@ -334,7 +334,7 @@ tl.to("#Sopradestrah1",{
   y:0,
   opacity:1,
   ease:"power2.out"
-})
+}, "<")
 
 tl.to("#Sopradestrah2",{
   delay:0.2,
@@ -412,7 +412,7 @@ tl.to("#macchiacentro2",{
   Y:0,
   opacity:1,
   ease:"power2.out"
-})
+}, "<")
 
 
 

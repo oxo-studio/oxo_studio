@@ -27,6 +27,13 @@ const TransitionChiSiamo = ({onComplete})=>{
   skewX: 20     // effetto prospettiva
 });
 
+gsap.set("#olatodestro",{x:-900,opacity:1})
+gsap.set("#olatosinistro",{x:-900,opacity:1})
+gsap.set("#olatosotto",{x:-900,opacity:1})
+gsap.set("#o2",{x:-900,opacity:1})
+gsap.set("#ochi2",{x:-900,opacity:1})
+
+
 
 
 gsap.set("#mmezzo",{y:900,opacity:0})
@@ -40,12 +47,13 @@ gsap.set("#sottom5",{y:900,opacity:0})
 gsap.set("#sottom6",{y:900,opacity:0})
 
 gsap.set("#msopra",{y:-900,opacity:0})
+gsap.set("#msottosinistra",{y:-900,opacity:0})
 
 gsap.set("#linelatom1",{x:900,opacity:0})
 gsap.set("#linelatom2",{x:900,opacity:0})
 gsap.set("#linelatom3",{x:900,opacity:0})
 gsap.set("#linelatom4",{x:900,opacity:0})
-gsap.set("#linelatom5",{x:900,opacity:0})
+gsap.set("#linelatom5",{x:-900,opacity:0})
 
 
 
@@ -116,6 +124,13 @@ tl.fromTo("#chi", {
 }, "<"); // "<" lo sincronizza con le altre
 
 tl.to("#mmezzo",{
+  duration:1,
+  y:0,
+  opacity:1,
+  ease:"power2.out"
+},"<")
+
+tl.to("#msottosinistra",{
   duration:1,
   y:0,
   opacity:1,
@@ -211,6 +226,44 @@ x:0,
 ease:"power2.out"
 },"<")
 
+tl.to("#olatodestro",{
+  duration:1,
+  opacity:1,
+  x:0,
+  ease:"power2.in"
+},"<")
+
+tl.to("#olatosinistro",{
+  duration:1,
+  opacity:1,
+  x:0,
+  ease:"power2.in"
+},"<")
+
+tl.to("#olatosotto",{
+  duration:1,
+  opacity:1,
+  x:0,
+  ease:"power2.in"
+},"<")
+
+tl.to("#o2",{
+  duration:1,
+  opacity:1,
+  x:0,
+  ease:"power2.in"
+},"<")
+
+tl.to("#ochi2",{
+  duration:1,
+  opacity:1,
+  x:0,
+  ease:"power2.in"
+},"<")
+
+
+
+
 
 
   tl.to(window, {
@@ -239,21 +292,31 @@ ease:"power2.out"
       <img src="/public/SvgCode/ChiSiamoSvg/MACCHIEI2.svg" id='macchieI' alt="macchieI" className='w-[1600px] hidden lg:block absolute' />
       <img src="/public/SvgCode/ChiSiamoSvg/chisiamoa.svg" id='a1' alt="a" className='w-[1600px] absolute   hidden lg:block ' />
       <img src="/public/SvgCode/ChiSiamoSvg/m2.svg" id='msopra' alt="msopra" className='w-[1600px] absolute   hidden lg:block ' />
+      <img src="/public/SvgCode/ChiSiamoSvg/msottosinistra.svg" id='msottosinistra' alt="msottosinistra" className='w-[1600px] absolute   hidden lg:block ' />
+      
       <img src="/public/SvgCode/ChiSiamoSvg/olatodesto.svg" id='olatodestro' alt="olatodestro" className='w-[1600px] absolute   hidden lg:block '/>
       <img src="/public/SvgCode/ChiSiamoSvg/olatosinistro.svg" id='olatosinistro' alt="olatosinistro" className='w-[1600px] absolute   hidden lg:block '/> 
-      <img src="/public/SvgCode/ChiSiamoSvg/olatosotto.svg" id='olatosinistro' alt="olatosinistro" className='w-[1600px] absolute   hidden lg:block '/> 
+      
+      <img src="/public/SvgCode/ChiSiamoSvg/olatosotto.svg" id='olatosotto' alt="olatosotto" className='w-[1600px] absolute   hidden lg:block '/> 
+      <img src="/public/SvgCode/ChiSiamoSvg/chisiamoO2.svg" id='o2' alt="o2" className='w-[1600px] absolute   hidden lg:block '/> 
+      <img src="/public/SvgCode/ChiSiamoSvg/chisiamoai2.svg" id='ochi2' alt="ochi2" className='w-[1600px] absolute   hidden lg:block '/> 
+      <img src="/public/SvgCode/ChiSiamoSvg/olatosinistro2.svg" id='osinistro2' alt="osinistro2" className='w-[1600px] absolute   hidden lg:block '/> 
+      <img src="/public/SvgCode/ChiSiamoSvg/olatosinistro3.svg" id='osinistro3' alt="osinistro3" className='w-[1600px] absolute   hidden lg:block '/> 
+      
+      <img src="/public/SvgCode/ChiSiamoSvg/macchiesottoo.svg" id='macchiesotto' alt="macchiesotto" className='w-[1600px] absolute   hidden lg:block '/> 
 
       <img src="/public/SvgCode/ChiSiamoSvg/chisiamoa12.svg" id='a2' alt="a" className='w-[1600px] absolute   hidden lg:block ' />
       <img src="/public/SvgCode/ChiSiamoSvg/chisiamochi.svg" id='chi' alt="chi" className='w-[1600px] absolute   hidden lg:block ' />
       <img src="/public/SvgCode/ChiSiamoSvg/chisiamomsottomezzo.svg" id='mmezzo' alt="mmezzo"  className='w-[1600px] absolute   hidden lg:block '/>
-      <img src="/public/SvgCode/ChiSiamoSvg/chisiamomsottomezzo2.svg" id='mmezzo2' alt="mmezzo2"  className='w-[1600px] absolute   hidden lg:block '/>
+      <img src="/public/SvgCode/ChiSiamoSvg/olatosinistro.svg" id='mmezzo' alt="mmezzo"  className='w-[1600px] absolute   hidden lg:block '/>
+      <img src="/public/SvgCode/ChiSiamoSvg/osopramacchie.svg" id='osopramacchie' alt="osopramacchie"  className='w-[1600px] absolute   hidden lg:block '/>
      
-      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom1.svg" id='sottom1' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-10px]'/>
-      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom2.svg" id='sottom2' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-10px]'/>
-      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom3.svg" id='sottom3' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-10px]'/>
-      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom4.svg" id='sottom4' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-10px]'/>
-      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom5.svg" id='sottom5' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-10px]'/>
-      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom6.svg" id='sottom6' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-10px]'/>
+      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom1.svg" id='sottom1' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-8px]'/>
+      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom2.svg" id='sottom2' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-8px]'/>
+      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom3.svg" id='sottom3' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-8px]'/>
+      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom4.svg" id='sottom4' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-8px]'/>
+      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom5.svg" id='sottom5' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-8px]'/>
+      <img src="/public/SvgCode/ChiSiamoSvg/scrittasottom6.svg" id='sottom6' alt="sottomscritta"  className='w-[1600px] absolute   hidden lg:block top-[-8px]'/>
 
       <img src="/public/SvgCode/ChiSiamoSvg/mlinelato.svg"  id='linelatom1' alt="linelatom1"  className='w-[1600px] absolute   hidden lg:block '/>
       <img src="/public/SvgCode/ChiSiamoSvg/mlinelato2.svg" id='linelatom2' alt="linelatom2"  className='w-[1600px] absolute   hidden lg:block '/>
