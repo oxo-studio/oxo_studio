@@ -5,6 +5,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(ScrollToPlugin);
 
+
 const TransitionPortFolio = ({ onComplete }) => {
   const containerRef = useRef(null);
 
@@ -14,7 +15,7 @@ const TransitionPortFolio = ({ onComplete }) => {
     gsap.set("#sopra3",{y:900,opacity:0})
     gsap.set("#p",{opacity:0,scale:0,rotateZ:-360 })
     gsap.set("#o",{opacity:0,scale:0,rotateZ: 360 })
-    gsap.set("#r",{opacity:0,z:100, scale:0})
+    gsap.set("#r",{opacity:0,rotateZ:-360, scale:0})
 
     gsap.set("#t",{})
     gsap.set("#f",{})
@@ -79,7 +80,7 @@ const TransitionPortFolio = ({ onComplete }) => {
 
 tl.to("#r",{
   duration:1,
-  z:0,
+  rotateZ:0,
   opacity:1,
   transformOrigin:"center center",
   ease:"power2.in"
