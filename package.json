@@ -18,7 +18,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.1",
     "react-transition-group": "^4.4.5",
-    "three": "^0.176.0"
+    "three": "^0.176.0",
+    "treejs": "^0.6.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

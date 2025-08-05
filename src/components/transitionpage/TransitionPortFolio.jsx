@@ -10,137 +10,71 @@ const TransitionPortFolio = ({ onComplete }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    gsap.set("#sopra1",{y:-900, opacity:0})
-    gsap.set("#sopra2",{opacity:0,scale:0,rotateZ:-360})
-    gsap.set("#sopra3",{y:900,opacity:0})
-    gsap.set("#p",{opacity:0,scale:0,rotateZ:-360 })
-    gsap.set("#o",{opacity:0,scale:0,rotateZ: 360 })
-    gsap.set("#r",{opacity:0,rotateZ:-360, scale:0})
+  window.scrollTo(0, 0);
 
-    gsap.set("#t",{})
-    gsap.set("#f",{})
-    gsap.set("#o2",{})
-    gsap.set("#l",{})
+   const initialElements = [
+    // Testo principale
+    "#p", "#o", "#r", "#t", "#f", "#o2", "#l", "#x", "#x2", "#x3", "#i", "#o3",
 
-    gsap.set("#x",{})
-    gsap.set("#x2",{})
-    gsap.set("#x3",{})
+    // Sopra
+    "#sopra", "#sopra1", "#sopra2", "#sopra3", "#soprasinistra",
+    "#soprap", "#soprao", "#sopran", "#soprai",
 
-    gsap.set("#i",{})
-    gsap.set("#o3",{})
+    // Centro decorativi
+    "#sopracentro", "#sopracentro2", "#sopracentro3", "#sopracentro4", "#sopracentro5", "#sopracentro6",
 
-    gsap.set("#soprasinistra",{})
-    
+    // Caroselli
+    "#carosellolatodestro", "#carosellosinistro",
+
+    // Sotto
+    "#sottodestra", "#sotto2",
+
+    // Testi in basso
+    "#scrittasotto"
+  ];
 
 
-    window.scrollTo(0, 0); // forza subito top
-   
-    const tl = gsap.timeline();
-    
-    tl.to("#sopra1",{
-      duration:1,
-      y:0,
-      opacity:1,
-      ease:"power2.in"
-    },"<")
+  // Impostazioni iniziali: fuori vista e opache
+  initialElements.forEach((id, i ) => {
+    gsap.set(id, {
+      opacity: 0,
+      scale: 0.95,
+      y: 60,
+    },i * 0.09 );
+  });
 
-    tl.to("#sopra2",{
-     duration:1,
-     scale:1,
-     rotadeZ:0,
-     opacity:1,
-     ease:"power2.out",
-     transformOrigin:"center center"
-    },"<")
+  const tl = gsap.timeline();
 
-    tl.to("#sopra3",{
-      duration:1,
-      opacity:1,
-      y:0,
-      ease:"power2.in"
-    },"<")
+  // Fase 1: Fade-in armonico con delay tipo cascata
+  initialElements.forEach((id, i) => {
+    tl.to(id, {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power3.out",
+    }, i * 0.07); // cascata leggera
+  });
 
-    tl.to("#p",{
-       duration:1,
-     scale:1,
-     rotateZ:0,
-     opacity:1,
-     ease:"power2.out",
-     transformOrigin:"center center"
-    },"<")
+  // Fase 2: Scroll to top (già a 0, ma per sicurezza)
+  tl.to(window, {
+    scrollTo: { y: 0 },
+    duration: 0.5,
+    ease: "power1.inOut"
+  }, "+=0.2");
 
-    tl.to("#o",{
-       duration:1,
-     scale:1,
-     rotateZ:0,
-     opacity:1,
-     ease:"power2.out",
-     transformOrigin:"center center"
-    },"<")
+  // Fase 3: Uscita container fluida verso l’alto
+  tl.to(containerRef.current, {
+    y: "-100%",
+    duration: 1.2,
+    ease: "power4.inOut"
+  }, "+=0.3");
 
-tl.to("#r",{
-  duration:1,
-  rotateZ:0,
-  opacity:1,
-  transformOrigin:"center center",
-  ease:"power2.in"
-  
-},"<")
-
-tl.to("#t",{
- 
-})
-
-tl.to("#f",{
- 
-})
-
-tl.to("#o2",{
- 
-})
-
-tl.to("#l",{
- 
-})
-
-tl.to("#x",{
- 
-})
-
-tl.to("#x2",{
- 
-})
-
-tl.to("#x3",{
- 
-})
-
-tl.to("#i",{
- 
-})
-
-tl.to("#soprasinistra",{
- 
-})
-
-    tl.to(window, {
-      duration: 0.7,
-      scrollTo: { y: 0 },
-      ease: "power2.inOut"
-    }, "<");
-
-    tl.to(containerRef.current, {
-      duration: 0.7,
-      y: "-100%",
-      ease: "power2.in"
-    }, "+=0.3");
-
-    tl.eventCallback("onComplete", () => {
-      setTimeout(() => {
-        onComplete();
-      }, 100);
-    });
-  }, [onComplete]);
+  // Callback finale
+  tl.eventCallback("onComplete", () => {
+    setTimeout(onComplete, 100);
+  });
+}, [onComplete]);
 
   return (
     <div
@@ -186,7 +120,7 @@ tl.to("#soprasinistra",{
       <img src="/public/SvgCode/PortfolioSvg/portfoliosottodestra.svg" id="sottodestra" alt="sottodestra" className="w-[1800px] absolute top-0 hidden lg:block" />
       <img src="/public/SvgCode/PortfolioSvg/portfoliosotto2.svg" id="sotto2" alt="sotto2" className="w-[1800px] absolute top-0 hidden lg:block" />
 
-      <img src="/public/SvgCode/PortfolioSvg/portfoliocarosellolatosinistro.svg" id="carosellodestro" alt="carosellodestro" className="w-[1800px] absolute top-0 hidden lg:block" />
+      <img src="/public/SvgCode/PortfolioSvg/portfoliocarosellolatosinistro.svg" id="carosellosinistro" alt="carosellodestro" className="w-[1800px] absolute top-0 hidden lg:block" />
 
       <img src="/public/SvgCode/PortfolioSvg/portfolioscrittasotto1.svg" id="scrittasotto" alt="scrittasotto" className="w-[1800px] absolute top-0 hidden lg:block" />
       <img src="/public/SvgCode/PortfolioSvg/portfolioscrittasotto2.svg" id="scrittasotto" alt="scrittasotto" className="w-[1800px] absolute top-0 hidden lg:block" />

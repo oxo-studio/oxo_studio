@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-
 gsap.registerPlugin(ScrollToPlugin);
 
 const TransitionHome = ({ onComplete }) => {
@@ -12,33 +11,64 @@ const TransitionHome = ({ onComplete }) => {
   useEffect(() => {
     const tl = gsap.timeline();
 
-    gsap.set("#hdihome",{opacity:0,y:-900})
-    gsap.set("#hdihome2",{opacity:0,x:-900})
-    gsap.set("#homeo",{opacity:0,scale:0,rotateX:-360} )
+    // Inizializzazione: set di tutti gli elementi con trasformazioni base
+    gsap.set("#hdihome", { opacity: 0, y: -900 });
+    gsap.set("#hdihome2", { opacity: 0, x: -900 });
+    gsap.set("#homeo", { opacity: 0, scale: 0, rotateX: -360 });
 
-    tl.to("#hdihome",{
-      duration:1,
-      y:0,
-      opacity:1,
-      ease:"power2.in"
-    },"<")
+    gsap.set("#homeme", { opacity: 0, y: 100 });
+    gsap.set("#homelatodestro", { opacity: 0, x: 200 });
+    gsap.set("#homelatodestrosopra", { opacity: 0, y: -100 });
+    gsap.set("#homelatodestrosotto", { opacity: 0, y: 100 });
+    gsap.set("#homelatodestrosotto2", { opacity: 0, y: 100 });
+    gsap.set("#homelatodestrosottoh", { opacity: 0, y: 100 });
+    gsap.set("#homelatodestrosottoh2", { opacity: 0, y: 100 });
+    gsap.set("#homelatraheo", { opacity: 0, x: -100 });
 
-    tl.to("#hdihome2",{
-      duration:1,
-      opacity:1,
-      x:0,
-      ease:"power2.in"
-    },"<")
+    gsap.set("#homesopraheo", { opacity: 0, y: -100 });
+    gsap.set("#homecentroheo", { opacity: 0, scale: 0.8 });
+    gsap.set("#homelatoe", { opacity: 0, x: 100 });
+    gsap.set("#homelatoe2", { opacity: 0, x: 100 });
 
-    tl.to("#homeo",{
-      duration:1,
-      opacity:1,
-      scale:1,
-      rotateX:0,
-      ease:"power2.in",
+    // Timeline animazioni principali
+    tl.to("#hdihome", {
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      ease: "power2.in",
+    }, "<");
 
-    },"<")
+    tl.to("#hdihome2", {
+      duration: 1,
+      opacity: 1,
+      x: 0,
+      ease: "power2.in",
+    }, "<");
 
+    tl.to("#homeo", {
+      duration: 1,
+      opacity: 1,
+      scale: 1,
+      rotateX: 0,
+      ease: "power2.out",
+    }, "<");
+
+    // Sequenza fluida con delay progressivo
+    tl.to("#homeme", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "+=0.2");
+    tl.to("#homelatodestro", { opacity: 1, x: 0, duration: 0.8 }, "-=0.6");
+    tl.to("#homelatodestrosopra", { opacity: 1, y: 0, duration: 0.8 }, "-=0.7");
+    tl.to("#homelatodestrosotto", { opacity: 1, y: 0, duration: 0.8 }, "-=0.7");
+    tl.to("#homelatodestrosotto2", { opacity: 1, y: 0, duration: 0.8 }, "-=0.7");
+    tl.to("#homelatodestrosottoh", { opacity: 1, y: 0, duration: 0.8 }, "-=0.7");
+    tl.to("#homelatodestrosottoh2", { opacity: 1, y: 0, duration: 0.8 }, "-=0.7");
+    tl.to("#homelatraheo", { opacity: 1, x: 0, duration: 0.8 }, "-=0.7");
+
+    tl.to("#homesopraheo", { opacity: 1, y: 0, duration: 0.8 }, "-=0.6");
+    tl.to("#homecentroheo", { opacity: 1, scale: 1, duration: 0.8 }, "-=0.6");
+    tl.to("#homelatoe", { opacity: 1, x: 0, duration: 0.8 }, "-=0.6");
+    tl.to("#homelatoe2", { opacity: 1, x: 0, duration: 0.8 }, "-=0.6");
+
+    // Scroll to top e uscita finale
     tl.to(window, {
       duration: 0.7,
       scrollTo: { y: 0 },
@@ -54,7 +84,6 @@ const TransitionHome = ({ onComplete }) => {
     tl.eventCallback("onComplete", () => {
       onComplete();
     });
-
   }, [onComplete]);
 
   return (
@@ -62,7 +91,7 @@ const TransitionHome = ({ onComplete }) => {
       ref={containerRef}
       className="w-full h-full min-h-screen z-[9999] bg-white flex items-center relative justify-start overflow-hidden"
     >
-      <img src="/SvgCode/HomePageSvg/hdihome.svg" id="hdihome" alt="hdihome" className="w-[1800px] absolute top-0 hidden lg:block" />
+       <img src="/SvgCode/HomePageSvg/hdihome.svg" id="hdihome" alt="hdihome" className="w-[1800px] absolute top-0 hidden lg:block" />
       <img src="/SvgCode/HomePageSvg/hdihome2.svg" id="hdihome2" alt="hdihome2" className="w-[1800px] absolute top-0 hidden lg:block" />
       <img src="/SvgCode/HomePageSvg/homeo.svg" id="homeo" alt="homeo" className="w-[1800px] absolute top-0 hidden lg:block" />
       <img src="/SvgCode/HomePageSvg/homeme.svg" id="homeme" alt="homeme" className="w-[1800px] absolute top-0 hidden lg:block" />
@@ -79,6 +108,7 @@ const TransitionHome = ({ onComplete }) => {
       <img src="/SvgCode/HomePageSvg/homecentroheo.svg" id="homecentroheo" alt="homecentroheo" className="w-[2000px] absolute top-0 hidden lg:block" />
       <img src="/SvgCode/HomePageSvg/homelatoe.svg" id="homelatoe" alt="homelatoe" className="w-[2000px] absolute top-0 hidden lg:block right-[78px]"  />
       <img src="/public/SvgCode/HomePageSvg/homelatoe2.svg" id="homelatoe2" alt="homelatoe2" className="w-[2000px] absolute top-0 hidden lg:block right-[78px]"  />
+
     </div>
   );
 };

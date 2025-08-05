@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import TransitionChiSiamo from "../components/transitionpage/TransitionChiSiamo";
+import Sezione1ChiSiamo from "../components/ChiSiamo/Sezione1ChiSiamo";
 
 
 export default function Scroll() {
@@ -19,7 +20,7 @@ export default function Scroll() {
   <>
   {showTransition && <TransitionChiSiamo onComplete={handleTransitionEnd}/>}
   <main ref={mainRef}>
-
+    <Sezione1ChiSiamo/>
   </main>
   </>
   );

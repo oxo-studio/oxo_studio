@@ -1,6 +1,9 @@
 import {  useRef, useState } from "react";
 import Sezione1 from "../components/Home/Sezione1";
 import TransitionHome from "../components/transitionpage/TransitionHome"
+import SectionHome2 from "../components/Home/SectioHome2";
+import SezioneHome3 from "../components/Home/SezioneHome3";
+
 
 export default function Boxes() {
   const [showTransition, setShowTransition] = useState(true);
@@ -23,6 +26,8 @@ export default function Boxes() {
 
       <main ref={mainRef}>
         <Sezione1 />
+        <SectionHome2/>
+        <SezioneHome3/>
       </main>
     </>
   );
