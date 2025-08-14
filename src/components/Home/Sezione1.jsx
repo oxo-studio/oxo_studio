@@ -1,68 +1,75 @@
-import { useEffect, useRef, useState } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import gsap from 'gsap';
-import MouseBabble from '../shader/MouseBabble';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import MouseLight from "../shader/MauseLight"; // Assumendo questo il nome corretto
+import MauseBabble from '../shader/MouseBabble'
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Sezione1() {
-  const [showShader, setShowShader] = useState(true);
   const sectionRef = useRef(null);
-
-  const OxoStudioRef = useRef([])
+  const OxoStudioRef = useRef([]);
+  const CreativeStudio = useRef([]);
 
   useEffect(() => {
-    const trigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top top",
-      end: "bottom top",
-      onUpdate: (self) => {
-        if (self.progress > 0) {
-          setShowShader(false);
-        } else {
-          setShowShader(true);
+    const animateLetters3 = (letters, delay = 0) => {
+      gsap.fromTo(
+        letters,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.04,
+          delay,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 150%",
+            toggleActions: "play none none none",
+          },
         }
-      },
-      const animateLetters3 = (letters, delay = 0)=>{
-        gsap.fromTo(
-          letters,
-          {opacity:0, y:50},
-          {
-            opacity:1,
-            y:0,
-            stagger:0.04,
-            delay,
-            ease:"power3.out",
-            scrollTrigger:sectionRef.current,
-            start:"top 100%",
-            toggleActions: "play none none reverse"
-          }
-        )
-      }
-    });
-
-    return () => {
-      trigger.kill(); // Cleanup on unmount
+      );
     };
+
+    animateLetters3(OxoStudioRef.current);
+    animateLetters3(CreativeStudio.current);
   }, []);
 
-  return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden overlay-bg"
-    >
-      {/* Shader as background (conditionally rendered) */}
-      {showShader && (
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <MouseBabble />
-        </div>
-      )}
+  const splitText = (text, ref) =>
+    text.split("").map((char, i) => (
+      <span
+        key={i}
+        ref={(el) => (ref.current[i] = el)}
+        className="inline-block"
+      >
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ));
 
-      {/* Foreground text */}
-      <div className="relative z-10 text-center">
-        <h1 className="text-5xl md:text-7xl lg:text-9xl text-white">OXO STUDIO</h1>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl mt-4 text-white">Creative Studio</h2>
-      </div>
-    </section>
+  return (
+<section ref={sectionRef} className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+  {/* MauseBabble sopra MouseLight */}
+  <div style={{ position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" }}>
+    <MauseBabble />
+  </div>
+
+  <div style={{ position: "fixed", inset: 0, zIndex: 3, pointerEvents: "none" }}>
+    <MouseLight />
+  </div>
+
+
+  <div className="relative z-10 text-center" style={{ userSelect: "none" }}>
+    <h1 className="text-5xl md:text-7xl lg:text-9xl antonio2 drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
+  {splitText("OXO STUDIO", OxoStudioRef)}
+</h1>
+    <h2 className="text-3xl md:text-5xl lg:text-6xl mt-4 antonio2">
+      {splitText("Creative Studio", CreativeStudio)}
+    </h2>
+  </div>
+</section>
+
+
   );
 }

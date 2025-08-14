@@ -1,10 +1,10 @@
-import { useContext, useRef, useState, useEffect } from 'react';
+import { useContext, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import TransitionContext from '../Context/TransitionContext';
-import TransitionPortfolio from '../components/transitionpage/TransitionPortFolio';
+
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -13,18 +13,10 @@ export default function Layers() {
   const scrollTweenRef = useRef(null);
   const snapTriggersRef = useRef([]);
   const { completed } = useContext(TransitionContext);
-  const [showTransition, setShowTransition] = useState(true);
 
-  // Scroll to main section once transition is complete
-  useEffect(() => {
-    if (!showTransition && mainRef.current) {
-      mainRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [showTransition]);
 
-  const handleTransitionEnd = () => {
-    setShowTransition(false);
-  };
+ 
+
 
   const { contextSafe } = useGSAP(() => {
     if (!completed) return;
@@ -86,7 +78,8 @@ export default function Layers() {
 
   return (
     <>
-      {showTransition && <TransitionPortfolio onComplete={handleTransitionEnd} />}
+      
+       
       <main ref={mainRef}>
         <section className="description panel light h-screen flex flex-col items-center justify-center text-center z-10">
           <h1 className="text-5xl md:text-7xl lg:text-9xl">PORTFOLIO</h1>

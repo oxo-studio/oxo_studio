@@ -2,19 +2,20 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+
+
+
 gsap.registerPlugin(ScrollTrigger);
 
-const SectioHome2 = () => {
+const SectionHome2 = () => {
   const sectionRef = useRef(null);
 
-  // Titoli
   const titleRef = useRef([]);
   const refText2 = useRef([]);
   const refText3 = useRef([]);
   const refText4 = useRef([]);
   const refText5 = useRef([]);
 
-  // Paragrafi
   const refText6 = useRef([]);
   const refText7 = useRef([]);
   const refText8 = useRef([]);
@@ -60,14 +61,12 @@ const SectioHome2 = () => {
       );
     };
 
-    // Titoli
     animateLetters(titleRef.current);
     animateLetters(refText2.current, 0.1);
     animateLetters(refText3.current, 0.2);
     animateLetters(refText4.current, 0.3);
     animateLetters(refText5.current, 0.4);
 
-    // Paragrafi
     animateLetters2(refText6.current, 0.5);
     animateLetters2(refText7.current, 0.6);
     animateLetters2(refText8.current, 0.7);
@@ -76,70 +75,72 @@ const SectioHome2 = () => {
 
   const splitText = (text, ref) =>
     text.split('').map((char, i) => (
-      <span
-        key={i}
-        ref={(el) => (ref.current[i] = el)}
-        className="inline-block"
-      >
+      <span key={i} ref={(el) => (ref.current[i] = el)} className="inline-block">
         {char === ' ' ? '\u00A0' : char}
       </span>
     ));
 
   return (
-    <div
+    <section
       ref={sectionRef}
-      className="h-screen w-full relative flex items-center justify-center"
+      className="h-screen w-full relative flex items-center justify-center overflow-hidden "
     >
-      {/* Titolo centrale */}
-      <h1 className="text-9xl antonio2 text-center z-10">
-        {splitText('I NOSTRI SERVIZI', titleRef)}
-      </h1>
+      <div className="absolute inset-0 z-0 pointer-events-none">
+    
+      </div>
+      {/* Contenuto sopra lo shader */}
+      <div className="relative z-10 w-full h-full flex items-center justify-center flex-col">
+        {/* Titolo centrale */}
+        <h1 className="text-9xl antonio2 text-center">
+          {splitText('I NOSTRI SERVIZI', titleRef)}
+        </h1>
 
-      {/* Web design */}
-      <h1 className="absolute top-10 text-5xl antonio2">
-        {splitText('Web design', refText2)}
-      </h1>
-      <p className="absolute top-28 w-1/2 text-1xl text-white text-center">
-        {splitText(
-          'Creiamo interfacce intuitive, moderne e responsive che riflettono l’identità del tuo brand e migliorano l’esperienza utente su ogni dispositivo.',
-          refText6
-        )}
-      </p>
+        {/* Web design */}
+        <h1 className="absolute top-10 text-5xl antonio2">
+          {splitText('Web design', refText2)}
+        </h1>
+        <p className="absolute top-28 w-1/2 text-lg text-white text-center">
+          {splitText(
+            'Creiamo interfacce intuitive, moderne e responsive che riflettono l’identità del tuo brand e migliorano l’esperienza utente su ogni dispositivo.',
+            refText6
+          )}
+        </p>
 
-      {/* Web developer */}
-      <h1 className="absolute bottom-20 text-5xl antonio2">
-        {splitText('Web developer', refText3)}
-      </h1>
-      <p className="absolute bottom-2 w-1/2 text-1xl text-white text-center">
-        {splitText(
-          'Sviluppiamo siti performanti, scalabili e ottimizzati, utilizzando tecnologie moderne per garantire velocità, sicurezza e funzionalità avanzate.',
-          refText7
-        )}
-      </p>
+        {/* Web developer */}
+        <h1 className="absolute bottom-20 text-5xl antonio2">
+          {splitText('Web developer', refText3)}
+        </h1>
+        <p className="absolute bottom-2 w-1/2 text-lg text-white text-center">
+          {splitText(
+            'Sviluppiamo siti performanti, scalabili e ottimizzati, utilizzando tecnologie moderne per garantire velocità, sicurezza e funzionalità avanzate.',
+            refText7
+          )}
+        </p>
 
-      {/* Logo design */}
-      <h1 className="absolute left-[130px] top-1/2 -translate-y-1/2 text-5xl antonio2">
-        {splitText('Logo design', refText4)}
-      </h1>
-      <p className="absolute left-[120px] top-[60%] w-64 text-1xl text-white">
-        {splitText(
-          "Creiamo loghi distintivi e memorabili che rappresentano l'identità del tuo brand, combinando estetica e strategia visiva.",
-          refText8
-        )}
-      </p>
+        {/* Logo design */}
+        <h1 className="absolute left-[130px] top-[400px] -translate-y-1/2 text-5xl antonio2">
+          {splitText('Logo design', refText4)}
+        </h1>
+        <p className="absolute left-[120px] top-[450px] w-64 text-lg text-white">
+          {splitText(
+            "Creiamo loghi distintivi e memorabili che rappresentano l'identità del tuo brand, combinando estetica e strategia visiva.",
+            refText8
+          )}
+        </p>
 
-      {/* App developer */}
-      <h1 className="absolute right-20 top-1/2 -translate-y-1/2 text-5xl antonio2">
-        {splitText('App developer', refText5)}
-      </h1>
-      <p className="absolute right-20 top-[60%] w-64 text-1xl text-white text-right">
-        {splitText(
-          'Sviluppiamo applicazioni mobile su misura, performanti e intuitive, pensate per offrire esperienze utente fluide su ogni dispositivo.',
-          refText9
-        )}
-      </p>
-    </div>
+        {/* App developer */}
+        <h1 className="absolute right-20 top-[400px] -translate-y-1/2 text-5xl antonio2">
+          {splitText('App developer', refText5)}
+        </h1>
+        <p className="absolute right-20 top-[450px] w-64 text-lg text-white text-right">
+          {splitText(
+            'Sviluppiamo applicazioni mobile su misura, performanti e intuitive, pensate per offrire esperienze utente fluide su ogni dispositivo.',
+            refText9
+          )}
+        </p>
+      </div>
+    </section>
   );
 };
 
-export default SectioHome2;
+export default SectionHome2;

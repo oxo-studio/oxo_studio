@@ -1,52 +1,62 @@
-import { useEffect, useRef } from 'react';
+
+
+import  { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SectioHome3 = () => {
-  const sectionRef = useRef(null);
-  const lettersRef = useRef([]);
+  const wrapperRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    const letters = lettersRef.current;
+    const textElement = textRef.current;
+    const scrollLength = textElement.scrollWidth - window.innerWidth;
 
-    gsap.fromTo(
-      letters,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.05,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 100%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wrapperRef.current,
+        start: 'top top',
+        end: `+=${scrollLength}`,
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        markers: false, // true per debug
+      },
+    });
+
+    tl.to(textElement, {
+      x: -scrollLength,
+      ease: 'none',
+    });
+
+    return () => {
+      tl.scrollTrigger?.kill();
+    };
   }, []);
 
-  const text = 'LA NOSTRA VISIONE';
-
   return (
-    <div
-      ref={sectionRef}
-      className="h-screen w-full flex items-center justify-center"
-    >
-      <h1 className="text-9xl antonio2 text-center">
-        {text.split('').map((char, i) => (
-          <span
-            key={i}
-            ref={(el) => (lettersRef.current[i] = el)}
-            className="inline-block"
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </span>
-        ))}
-      </h1>
-    </div>
+    <>
+      <div
+        ref={wrapperRef}
+        className="w-full h-screen overflow-hidden flex items-center z-[999] relative top-[240px] "
+      >
+        <div
+          ref={textRef}
+          className="whitespace-nowrap text-[9.7vw] text-gray-600 px-4 antonio2 "
+        >
+         La nostra visione è creare un’esperienza unica, autentica, fatta su misura per te.&nbsp;
+        </div>
+        
+      </div>
+      
+
+      <div></div>
+
+
+    </>
   );
 };
 

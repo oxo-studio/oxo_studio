@@ -4,6 +4,7 @@ import TransitionComponent from '../components/Transition';
 import Home from '../Views/Home';
 import ChiSiamo from '../Views/ChiSiamo';
 import Portfolio from '../Views/Portfolio';
+import Contatti from '../Views/Contatti';
 
 const Router = () => {
   const location = useLocation();
@@ -34,6 +35,15 @@ const Router = () => {
               <Portfolio />
             </TransitionComponent>
           }
+        />
+
+      <Route
+      path='/Contatti'
+      element={
+        <TransitionComponent>
+          <Contatti/>
+        </TransitionComponent>
+      }
         />
       </Routes>
     </TransitionProvider>
