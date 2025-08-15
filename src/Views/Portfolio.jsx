@@ -4,6 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import TransitionContext from '../Context/TransitionContext';
+import Footer from '../components/Footer';
+import Sezione1Portfolio from '../components/Portfolio/Sezione1Portfolio';
+import Categorie from '../components/Portfolio/Categorie';
 
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -81,16 +84,16 @@ export default function Layers() {
       
        
       <main ref={mainRef}>
-        <section className="description panel light h-screen flex flex-col items-center justify-center text-center z-10">
-          <h1 className="text-5xl md:text-7xl lg:text-9xl">PORTFOLIO</h1>
-          <div className="mt-6 scroll-down">
-            Scroll down
-            <div className="arrow" />
-          </div>
+        <Categorie/>
+        <section className="description panel  h-screen flex flex-col items-center justify-center text-center z-10">
+          <Sezione1Portfolio/>
         </section>
         <section className="h-screen panel">uno</section>
         {/* Add more <section className="panel">...</section> here as needed */}
+
+         <Footer/>
       </main>
+
     </>
   );
 }

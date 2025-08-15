@@ -37,7 +37,7 @@ const SectionHome5 = () => {
 
   return (
     <section
-      className="relative z-[9999] flex flex-col items-center gap-16 h-[150vh] justify-center"
+      className="relative z-[9999] flex flex-col items-center gap-16 h-[120vh] justify-center "
     >
       {["EMPATIA", "CREATIVITA'", "PASSIONE"].map((text, i) => (
         <h1

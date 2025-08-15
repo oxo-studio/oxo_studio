@@ -1,6 +1,8 @@
+import Footer from "../components/Footer";
+
 const Contatti = () => {
   return (
-    <div className="py-20 pl-[220px] absolute z-[9999] w-full min-h-screen bg-black">
+    <div className="py-20 pl-[220px] absolute z-[9999] w-full h-[100vh] ">
       {/* Titolo */}
       <h1
         style={{ fontFamily: 'Human' }}
@@ -10,7 +12,7 @@ const Contatti = () => {
       </h1>
 
       {/* Griglia form + colonne */}
-      <div className="grid grid-cols-2 gap-16">
+      <div className="grid grid-cols-2 gap-16 mb-28">
         {/* Form */}
         <form className="max-w-2xl">
           {/* Nome */}
@@ -88,6 +90,8 @@ const Contatti = () => {
           </div>
         </div>
       </div>
+      
+       <Footer/>
     </div>
   );
 };

@@ -1,44 +1,162 @@
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const Sezione2ChiSiamo = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef([]);
+
+  // Array di ref per ogni h2 e ogni p
+  const h2Refs = useRef([]);
+  const pRefs = useRef([]);
+
+  // Funzione per creare refs dinamici (aggiungiamo se non esiste)
+  const addToRefs = (refArray, el) => {
+    if (el && !refArray.current.includes(el)) {
+      refArray.current.push(el);
+    }
+  };
+
+  useEffect(() => {
+    // Funzione che splitta un elemento in lettere (span)
+    const animateTextSpans = (element) => {
+      const letters = element.querySelectorAll("span");
+      return letters;
+    };
+
+    // Raccolgo tutte le lettere da tutti i refs in un unico array
+    const allLetters = [];
+
+    // Lettere titolo principale
+    titleRef.current.forEach((el) => {
+      allLetters.push(el);
+    });
+
+    // Lettere h2
+    h2Refs.current.forEach((h2) => {
+      const letters = animateTextSpans(h2);
+      letters.forEach((l) => allLetters.push(l));
+    });
+
+    // Lettere p
+    pRefs.current.forEach((p) => {
+      const letters = animateTextSpans(p);
+      letters.forEach((l) => allLetters.push(l));
+    });
+
+    gsap.fromTo(
+      allLetters,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        stagger: 0.01,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 40%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, []);
+
+  const splitText = (text) =>
+    text.split("").map((char, i) => (
+      <span key={i} className="inline-block">
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ));
+
   return (
-    <>
-    
-        <h1 className="text-[100px] pl-[70px] " style={{fontFamily:"Human"}}>Le mie skills</h1>
+    <div ref={sectionRef} className="relative mt-[100px]">
+      <h1
+        className="text-[100px] pl-[70px] text-white"
+        style={{ fontFamily: "Human" }}
+        ref={(el) => (titleRef.current = el ? Array.from(el.querySelectorAll("span")) : [])}
+      >
+        {splitText("Le mie skills")}
+      </h1>
 
-      
-    <section className="h-[60vh] pl-20 antonio2 text-white">
-      
+      <section className="h-[30vh] pl-20 antonio2 text-white relative mt-[50px]">
+        <div className="flex justify-around items-start space-x-8 pt-12">
+          <div className="text-center">
+            <h2
+              className="text-4xl text-gray-400"
+              ref={(el) => addToRefs(h2Refs, el)}
+            >
+              {splitText("Tecnologie")}
+            </h2>
+            {["React", "Next", "Typescript", "Tailwind", "React Native", "Vercel"].map((text, i) => (
+              <p
+                className="text-2xl"
+                key={i}
+                ref={(el) => addToRefs(pRefs, el)}
+              >
+                {splitText(text)}
+              </p>
+            ))}
+          </div>
 
-      <div className="flex justify-around items-start space-x-8">
-        <div className="text-center">
-          <h2 className="text-4xl text-gray-400">Tecnologie</h2>
-          <p className="text-2xl">React</p>
-          <p className="text-2xl">Next</p>
-          <p className="text-2xl">Typescript</p>
-          <p className="text-2xl">Tailwild</p>
-          <p className="text-2xl">Reactnative</p>
-          <p className="text-2xl">Vercel</p>
+          <div className="text-center">
+            <h2
+              className="text-4xl text-gray-400"
+              ref={(el) => addToRefs(h2Refs, el)}
+            >
+              {splitText("Creative Dev")}
+            </h2>
+            {["WebGL", "Three.js", "GSAP"].map((text, i) => (
+              <p
+                className="text-2xl"
+                key={i}
+                ref={(el) => addToRefs(pRefs, el)}
+              >
+                {splitText(text)}
+              </p>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <h2
+              className="text-4xl text-gray-400"
+              ref={(el) => addToRefs(h2Refs, el)}
+            >
+              {splitText("Database")}
+            </h2>
+            {["Supabase", "MongoDB", "MySQL"].map((text, i) => (
+              <p
+                className="text-2xl"
+                key={i}
+                ref={(el) => addToRefs(pRefs, el)}
+              >
+                {splitText(text)}
+              </p>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <h2
+              className="text-4xl text-gray-400"
+              ref={(el) => addToRefs(h2Refs, el)}
+            >
+              {splitText("Design & 3D")}
+            </h2>
+            {["Blender", "Figma", "Spline"].map((text, i) => (
+              <p
+                className="text-2xl"
+                key={i}
+                ref={(el) => addToRefs(pRefs, el)}
+              >
+                {splitText(text)}
+              </p>
+            ))}
+          </div>
         </div>
-        <div className="text-center">
-          <h2 className="text-4xl text-gray-400">Creative Dev</h2>
-          <p className="text-2xl">Webgl</p>
-          <p className="text-2xl">Threejs</p>
-          <p className="text-2xl">Gsap</p>
-        </div>
-        <div className="text-center">
-          <h2 className="text-4xl text-gray-400">Database</h2>
-          <p className="text-2xl">Supabase</p>
-          <p className="text-2xl">Mongo DB</p>
-          <p className="text-2xl">My SQL</p>
-        </div>
-        <div className="text-center">
-            <h2 className="text-4xl text-gray-400">Design & 3D</h2>
-            <p className="text-2xl">Blender</p>
-            <p className="text-2xl">Figma</p>
-            <p className="text-2xl">Spline</p>
-        </div>
-      </div>
-    </section>
-    </>
+      </section>
+    </div>
   );
 };
 

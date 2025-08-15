@@ -2,7 +2,8 @@
 
 import Sezione1ChiSiamo from "../components/ChiSiamo/Sezione1ChiSiamo";
 import Sezione2ChiSiamo from "../components/ChiSiamo/Sezione2ChiSiamo";
-import SezioneFinale from "../components/SezioneFinale";
+import SezioneFinale from "../components/ChiSiamo/SezioneFinaleChiSiamo";
+import  Footer from '../components/Footer'
 
 
 export default function Scroll() {
@@ -15,6 +16,8 @@ export default function Scroll() {
     <Sezione1ChiSiamo/>
     <Sezione2ChiSiamo/>
     <SezioneFinale/>
+     <Footer/>
+   
   </main>
   </>
   );
