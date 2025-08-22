@@ -50,15 +50,18 @@ const SezioneFinale = () => {
   return (
     <div
       ref={sectionRef2}
-      className="relative h-[50vh] w-full flex items-center justify-center pb-[400px] z-[9999]"
+      className="relative w-full flex items-center justify-center mt-[200px] pb-[300px] sm:pb-[200px] md:pb-[250px] min-h-[50vh]"
     >
+      {/* Titolo grande grigio */}
       <h1
         style={{ fontFamily: "Human" }}
-        className="absolute text-gray-700 text-[250px] text-center leading-none pointer-events-none opacity-20 z-[9999]"
+        className="absolute text-gray-400 text-[25vw] md:text-[23vw] lg:text-[250px] leading-none text-center pointer-events-none opacity-20 z-8"
       >
         {splitText("LAVORIAMO ASSIEME", text1)}
       </h1>
-      <p className="relative text-white text-3xl text-center z-10 max-w-[800px] px-4">
+
+      {/* Paragrafo bianco */}
+      <p className="relative text-white text-[3vw] md:text-[3vw] lg:text-3xl text-center z-10 max-w-[90vw] md:max-w-[800px] px-4">
         {splitText(
           "Hai qualcosa in mente? Realizziamolo insieme, con stile e originalità.",
           text2

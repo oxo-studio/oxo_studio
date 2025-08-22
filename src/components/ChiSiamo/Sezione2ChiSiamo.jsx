@@ -74,88 +74,90 @@ const Sezione2ChiSiamo = () => {
   return (
     <div ref={sectionRef} className="relative mt-[100px]">
       <h1
-        className="text-[100px] pl-[70px] text-white"
+        className="text-8xl md:text-8xl pl-[70px] text-white"
         style={{ fontFamily: "Human" }}
         ref={(el) => (titleRef.current = el ? Array.from(el.querySelectorAll("span")) : [])}
       >
         {splitText("Le mie skills")}
       </h1>
 
-      <section className="h-[30vh] pl-20 antonio2 text-white relative mt-[50px]">
-        <div className="flex justify-around items-start space-x-8 pt-12">
-          <div className="text-center">
-            <h2
-              className="text-4xl text-gray-400"
-              ref={(el) => addToRefs(h2Refs, el)}
-            >
-              {splitText("Tecnologie")}
-            </h2>
-            {["React", "Next", "Typescript", "Tailwind", "React Native", "Vercel"].map((text, i) => (
-              <p
-                className="text-2xl"
-                key={i}
-                ref={(el) => addToRefs(pRefs, el)}
-              >
-                {splitText(text)}
-              </p>
-            ))}
-          </div>
+     <section className="pl-4 pr-4 md:pl-20 md:pr-20 antonio2 text-white relative mt-[50px]">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pt-12">
+    {/* Skill Card */}
+    <div className="text-center">
+      <h2
+        className="text-4xl md:text-5xl text-gray-400 mb-2"
+        ref={(el) => addToRefs(h2Refs, el)}
+      >
+        {splitText("Tecnologie")}
+      </h2>
+      {["React", "Next", "Typescript", "Tailwind", "React Native", "Vercel"].map((text, i) => (
+        <p
+          className="text-xl md:text-2xl"
+          key={i}
+          ref={(el) => addToRefs(pRefs, el)}
+        >
+          {splitText(text)}
+        </p>
+      ))}
+    </div>
 
-          <div className="text-center">
-            <h2
-              className="text-4xl text-gray-400"
-              ref={(el) => addToRefs(h2Refs, el)}
-            >
-              {splitText("Creative Dev")}
-            </h2>
-            {["WebGL", "Three.js", "GSAP"].map((text, i) => (
-              <p
-                className="text-2xl"
-                key={i}
-                ref={(el) => addToRefs(pRefs, el)}
-              >
-                {splitText(text)}
-              </p>
-            ))}
-          </div>
+    <div className="text-center">
+      <h2
+        className="text-4xl md:text-5xl md:text-4xl text-gray-400 mb-2"
+        ref={(el) => addToRefs(h2Refs, el)}
+      >
+        {splitText("Creative Dev")}
+      </h2>
+      {["WebGL", "Three.js", "GSAP"].map((text, i) => (
+        <p
+          className="text-xl md:text-2xl"
+          key={i}
+          ref={(el) => addToRefs(pRefs, el)}
+        >
+          {splitText(text)}
+        </p>
+      ))}
+    </div>
 
-          <div className="text-center">
-            <h2
-              className="text-4xl text-gray-400"
-              ref={(el) => addToRefs(h2Refs, el)}
-            >
-              {splitText("Database")}
-            </h2>
-            {["Supabase", "MongoDB", "MySQL"].map((text, i) => (
-              <p
-                className="text-2xl"
-                key={i}
-                ref={(el) => addToRefs(pRefs, el)}
-              >
-                {splitText(text)}
-              </p>
-            ))}
-          </div>
+    <div className="text-center">
+      <h2
+        className="text-4xl md:text-5xl md:text-4xl text-gray-400 mb-2"
+        ref={(el) => addToRefs(h2Refs, el)}
+      >
+        {splitText("Database")}
+      </h2>
+      {["Supabase", "MongoDB", "MySQL"].map((text, i) => (
+        <p
+          className="text-xl md:text-2xl"
+          key={i}
+          ref={(el) => addToRefs(pRefs, el)}
+        >
+          {splitText(text)}
+        </p>
+      ))}
+    </div>
 
-          <div className="text-center">
-            <h2
-              className="text-4xl text-gray-400"
-              ref={(el) => addToRefs(h2Refs, el)}
-            >
-              {splitText("Design & 3D")}
-            </h2>
-            {["Blender", "Figma", "Spline"].map((text, i) => (
-              <p
-                className="text-2xl"
-                key={i}
-                ref={(el) => addToRefs(pRefs, el)}
-              >
-                {splitText(text)}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="text-center">
+      <h2
+        className="text-4xl md:text-5xl md:text-4xl text-gray-400 mb-2"
+        ref={(el) => addToRefs(h2Refs, el)}
+      >
+        {splitText("Design & 3D")}
+      </h2>
+      {["Blender", "Figma", "Spline"].map((text, i) => (
+        <p
+          className="text-xl md:text-2xl"
+          key={i}
+          ref={(el) => addToRefs(pRefs, el)}
+        >
+          {splitText(text)}
+        </p>
+      ))}
+    </div>
+  </div>
+</section>
+
     </div>
   );
 };

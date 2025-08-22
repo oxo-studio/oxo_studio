@@ -5,6 +5,12 @@ import Home from '../Views/Home';
 import ChiSiamo from '../Views/ChiSiamo';
 import Portfolio from '../Views/Portfolio';
 import Contatti from '../Views/Contatti';
+import AppDeveloper from '../components/CategoriePortfolio/AppDeveloper';
+import LogoDesign from '../components/CategoriePortfolio/LodoDesign'
+import WebDesign from '../components/CategoriePortfolio/WebDesign'
+import WebDeveloper from '../components/CategoriePortfolio/WebDeveloper'
+import SezioneUiPortfolio from '../components/Portfolio/SezioneUiPortfolio'
+import SingoloLavoro from '../components/CategoriePortfolio/PaginaSingoloLavoro.jsx/SingoloLavoro';
 
 const Router = () => {
   const location = useLocation();
@@ -45,8 +51,66 @@ const Router = () => {
         </TransitionComponent>
       }
         />
+
+        <Route
+         path="/src/components/CategoriePortfolio/AppDeveloper.jsx"
+         element={
+          <TransitionComponent>
+            <AppDeveloper />
+          </TransitionComponent>
+         }
+         />
+
+         <Route
+         path="/src/components/CategoriePortfolio/LodoDesign.jsx"
+         element={
+          <TransitionComponent>
+            <LogoDesign />
+          </TransitionComponent>
+         }
+         />
+
+         <Route
+         path="/src/components/CategoriePortfolio/WebDesign.jsx"
+         element={
+          <TransitionComponent>
+            <WebDesign />
+          </TransitionComponent>
+         }
+         />
+
+         <Route
+         path="/src/components/CategoriePortfolio/WebDeveloper.jsx"
+         element={
+          <TransitionComponent>
+            <WebDeveloper />
+          </TransitionComponent>
+         }
+         />
+
+         <Route
+         path="/src/components/Portfolio/SezioneUiPortfolio.jsx"
+         element={
+          <TransitionComponent>
+            <SezioneUiPortfolio />
+          </TransitionComponent>
+         }
+         />
+
+
+         <Route
+  path="/CategoriePortfolio/PaginaSingoloLavoro.jsx/SingoloLavoro.jsx"
+  element={
+    <TransitionComponent>
+      <SingoloLavoro />
+    </TransitionComponent>
+  }
+/>
+
       </Routes>
     </TransitionProvider>
+
+    
   );
 };
 

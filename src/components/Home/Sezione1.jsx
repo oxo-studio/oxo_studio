@@ -61,7 +61,7 @@ export default function Sezione1() {
 
 
   <div className="relative z-10 text-center" style={{ userSelect: "none" }}>
-    <h1 className="text-5xl md:text-7xl lg:text-9xl antonio2 drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
+    <h1 className="text-7xl md:text-9xl lg:text-9xl antonio2 drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
   {splitText("OXO STUDIO", OxoStudioRef)}
 </h1>
     <h2 className="text-3xl md:text-5xl lg:text-6xl mt-4 antonio2">

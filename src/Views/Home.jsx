@@ -4,9 +4,10 @@ import SectionHome2 from "../components/Home/SectioHome2";
 import SezioneHome3 from "../components/Home/SezioneHome3";
 import MauseBable from "../components/shader/MouseBabble"; // <- shader corretto
 import SectionHome4  from "../components/Home/SectionHome4";
-import SectionHome5 from "../components/Home/SezioneHome5";
+
 import SezioneFinaleHome from "../components/Home/SezioneFinaleHome"
 import Footer from '../components/Footer'
+import Sudime from "../components/Home/Sudime";
 
 
 export default function Boxes() {
@@ -25,8 +26,10 @@ export default function Boxes() {
     </div>
     <SectionHome4/>
     <SezioneHome3 />
+
+    <Sudime/>
     
-    <SectionHome5/>
+    
     
     <SezioneFinaleHome/>
     <Footer/>

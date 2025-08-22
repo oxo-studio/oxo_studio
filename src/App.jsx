@@ -6,7 +6,8 @@ import { useGSAP } from '@gsap/react';
 
 import Router from './Router/Router';
 import Header from './components/Header';
-import SplashScreen from "./components/SpashScreen";
+import SplashScreen from './components/SpashScreen';
+import ScrollToTop from '../src/components/ScrollToTop';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP);
 
@@ -24,6 +25,7 @@ function App() {
       ) : (
         <>
           <Header />
+          <ScrollToTop />
           <Router />
         </>
       )}

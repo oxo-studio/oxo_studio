@@ -50,15 +50,15 @@ const SezioneFinale = () => {
   return (
     <div
       ref={sectionRef2}
-      className="relative h-[80vh] w-full flex items-center justify-center  z-[9999]"
+      className="relative min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center z-[9999]"
     >
       <h1
         style={{ fontFamily: "Human" }}
-        className="absolute text-gray-700 text-[250px] text-center leading-none pointer-events-none opacity-20 z-[9999]"
+        className="absolute text-gray-700 text-[25vw] md:text-[200px] lg:text-[250px] leading-none pointer-events-none opacity-20 z-[5]"
       >
         {splitText("LAVORIAMO ASSIEME", text1)}
       </h1>
-      <p className="relative text-white text-3xl text-center z-10 max-w-[800px] px-4">
+      <p className="relative text-white text-[3vw] md:text-1xl lg:text-3xl max-w-[800px] z-10">
         {splitText(
           "Hai qualcosa in mente? Realizziamolo insieme, con stile e originalità.",
           text2
