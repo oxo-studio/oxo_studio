@@ -107,7 +107,20 @@ const Router = () => {
   }
 />
 
+{/* Route dinamica per singolo lavoro */}
+        <Route
+          path="/lavoro/:id"
+          element={
+            <TransitionComponent>
+              <SingoloLavoro />
+            </TransitionComponent>
+          }
+        />
       </Routes>
+
+   
+
+      
     </TransitionProvider>
 
     

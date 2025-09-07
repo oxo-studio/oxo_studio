@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl, faThLarge } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom'; // importa Link
+import { Link } from 'react-router-dom';
 
 const Categorie = () => {
   return (
-    <div className="flex justify-between items-start pt-[150px] px-[80px] w-full">
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-[180px] md:pt-[100px] lg:pt-[150px] px-4 md:px-10 lg:px-[80px] w-full gap-6">
 
-      {/* Icone a sinistra (ora sono link interni) */}
-      <div className="flex gap-6 pt-2">
+      {/* Icone a sinistra */}
+      <div className="flex gap-6">
         <Link to="/Portfolio" className="hover:text-white transition">
           <FontAwesomeIcon icon={faThLarge} className="text-gray-600 text-2xl" />
         </Link>
@@ -17,17 +17,17 @@ const Categorie = () => {
       </div>
 
       {/* Categorie a destra */}
-      <div className="flex gap-8 py-2">
-        <Link to="/src/components/CategoriePortfolio/WebDesign.jsx" className="text-gray-600 hover:no-underline px-1 hover:text-white transition">
+      <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-8 py-2">
+        <Link to="/src/components/CategoriePortfolio/WebDesign.jsx" className="text-gray-600 hover:text-white transition">
           Web Design
         </Link>
-        <Link to="/src/components/CategoriePortfolio/WebDeveloper.jsx" className="text-gray-600 hover:no-underline px-1 hover:text-white transition">
+        <Link to="/src/components/CategoriePortfolio/WebDeveloper.jsx" className="text-gray-600 hover:text-white transition">
           Web Developer
         </Link>
-        <Link to="/src/components/CategoriePortfolio/LodoDesign.jsx" className="text-gray-600 hover:no-underline px-1 hover:text-white transition">
+        <Link to="/src/components/CategoriePortfolio/LodoDesign.jsx" className="text-gray-600 hover:text-white transition">
           Logo Design
         </Link>
-        <Link to="/src/components/CategoriePortfolio/AppDeveloper.jsx" className="text-gray-600 hover:no-underline px-1 hover:text-white transition">
+        <Link to="/src/components/CategoriePortfolio/AppDeveloper.jsx" className="text-gray-600 hover:text-white transition">
           App Developer
         </Link>
       </div>

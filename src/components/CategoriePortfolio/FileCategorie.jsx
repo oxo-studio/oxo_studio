@@ -11,8 +11,15 @@ const categoriePortfolio = [
         id: "wd-01",
         titolo: "Crazy and Tina Tattoo",
         immagine: "/public/img/crazy2.png",
+        immagini: [
+          "/public/img/crazy2.png",
+          "/public/img/sezione1crazy.png",
+          "/public/img/sezionefinalecrazy.png"
+        
+        ],
         descrizione: "Un progetto moderno con focus sull'usabilità.",
-        data: "Maggio 2024"
+        data: "Maggio 2024",
+        tecnologie:"Figma"
       },
      
     ],
@@ -29,8 +36,15 @@ const categoriePortfolio = [
         id: "wd-01",
         titolo: "Crazy and Tina Tattoo",
         immagine: "/public/img/crazy2.png",
+        immagini: [
+          "/public/img/crazy2.png",
+          "/public/img/sezione1crazy.png",
+          "/public/img/sezionefinalecrazy.png"
+        
+        ],
         descrizione: "Un progetto moderno con focus sull'usabilità.",
-        data: "Maggio 2024"
+        data: "Maggio 2024",
+        tecnologie:"React Gsap"
       },
     ],
   },
@@ -47,7 +61,8 @@ const categoriePortfolio = [
         titolo: "Oxo Studio",
         immagine: "/public/SvgCode/logooxo.svg",
         descrizione: "Un progetto moderno con focus sull'usabilità.",
-        data: "Giugno 2025"
+        data: "Giugno 2025",
+        tecnologie:"Inlustratore"
       },
      
     ],

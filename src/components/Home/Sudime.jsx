@@ -60,33 +60,31 @@ const Sudime = () => {
     ));
 
   return (
-    <div
-      ref={sectionRef}
-      className="relative h-screen w-screen overflow-hidden"
-    >
-      <div className="absolute inset-0 flex justify-center items-center">
-
-        {/* Contenitore immagine responsivo */}
-        <div className="relative h-[70vh] w-[90vw] sm:w-[110vw] md:w-[90vw] lg:w-[150vh] overflow-hidden">
-          <img
-            ref={imageRef}
-            src="/img/solitudine-sulla-costa-una-persona-piedi-generata-dall-ia.jpg"
-            alt="Persona sulla costa"
-            className="absolute top-0 left-0 lg:h-[120%] md:h-[120%] md:w-[100%] lg:w-full object-cover"
-          />
-        </div>
-
-        {/* Testo sopra immagine */}
-        <h1
-          className="absolute text-white antonio2 top-[200px]
-            text-[9vw] sm:text-[8vw] md:text-[10vw] lg:text-9xl
-            text-center z-10 pointer-events-none select-none whitespace-nowrap"
-        >
-          {splitText("Sfumature personali", chiSiamo)}
-        </h1>
-      </div>
+<div ref={sectionRef} className="relative h-screen w-screen overflow-hidden">
+  <div className="absolute inset-0 flex justify-center items-center -translate-y-20 md:-translate-y-32 lg:-translate-y-40">
+    {/* Contenitore immagine responsivo */}
+    <div className="relative h-[70vh] w-[90vw] sm:w-[110vw] md:w-[90vw] lg:w-[170vh] lg:h-[100vh] mt-[-160px] overflow-hidden">
+      <img
+        ref={imageRef}
+        src="/img/solitudine-sulla-costa-una-persona-piedi-generata-dall-ia.jpg"
+        alt="Persona sulla costa"
+        className="w-full h-full object-cover object-center"
+      />
     </div>
-  );
+
+    {/* Testo sopra immagine */}
+    <h1
+      className="absolute text-white antonio2 
+        text-[9vw] sm:text-[8vw] md:text-[10vw] lg:text-9xl
+        text-center z-10 pointer-events-none select-none whitespace-nowrap"
+    >
+      {splitText("Sfumature personali", chiSiamo)}
+    </h1>
+  </div>
+</div>
+
+);
+
 };
 
 export default Sudime;

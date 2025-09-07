@@ -61,12 +61,12 @@ const SectionHome4 = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative w-full min-h-screen flex flex-col items-center justify-center mt-[200px] "
+      className="relative w-full min-h-screen flex flex-col items-center justify-center lg:mt-[200px] md:mt-[30px] mt-[60px] "
     >
       {/* Titolo animato */}
       <h1
         ref={textRef}
-        className="text-center antonio2  lg:text-9xl md:text-8xl text-5xl relative z-[9999] mb-16 flex flex-wrap justify-center"
+        className="text-center antonio2 text-6xl lg:text-9xl md:text-8xl trelative z-[9999] mb-16 flex flex-wrap justify-center"
       >
         {title.split('').map((char, i) => (
           <span

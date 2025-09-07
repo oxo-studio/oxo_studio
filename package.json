@@ -10,12 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@carousel-ui/react-spin-carousel-3d": "^1.0.18",
+    "@emailjs/browser": "^4.4.1",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@fortawesome/react-fontawesome": "^0.2.3",
     "@gsap/react": "^2.1.1",
     "@react-three/drei": "^9.32.5",
     "@react-three/fiber": "^8.13.5",
     "@vfx-js/core": "^0.8.0",
+    "emailjs": "^4.0.3",
     "gsap": "^3.13.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",

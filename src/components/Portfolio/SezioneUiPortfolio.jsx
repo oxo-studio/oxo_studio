@@ -1,39 +1,44 @@
-
-
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import categoriePortfolio from "../CategoriePortfolio/FileCategorie";
 import Categorie from "./Categorie";
 
 const SezioneUiPortfolio = () => {
   return (
     <div className="pt-[150px] px-[80px] text-white">
-        <div className="relative mt-[-100px]">
-      <Categorie/>
+      {/* Componente Categoria */}
+      <div className="relative mt-[-100px]">
+        <Categorie />
       </div>
+
+      {/* Sezione contenente le categorie e i loro lavori */}
       <div className="flex flex-col gap-16">
         {categoriePortfolio.map((categoria, index) => (
-          <div key={index} className="flex flex-col gap-4 border-b border-gray-700 pb-10">
+          <div
+            key={index}
+            className="flex flex-col gap-4 border-b border-gray-700 pb-10"
+          >
             {/* Nome categoria */}
-            <h2 className="text-2xl font-semibold">{categoria.nome}</h2>
+            <h2 className="text-2xl font-semibold antonio2">{categoria.nome}</h2>
 
             {/* Lista lavori */}
             <div className="flex flex-col gap-6">
               {categoria.lavori.map((lavoro) => (
                 <div
                   key={lavoro.id}
-                  className="flex items-center gap-6 p-4 bg-gray-800 rounded hover:bg-gray-700 transition"
+                  className="flex items-center justify-between gap-6 p-4 bg-transparent group"
                 >
-                  {/* Immagine */}
-                  <img
-                    src={lavoro.immagine}
-                    alt={lavoro.titolo}
-                    className="w-[150px] h-[100px] object-cover rounded"
-                  />
-
-                  {/* Dettagli */}
+                  {/* Dettagli lavoro */}
                   <div className="flex flex-col">
-                    <h3 className="text-xl font-medium">{lavoro.titolo}</h3>
-                    <p className="text-gray-400 text-sm">{lavoro.data}</p>
+                    <h3 className="text-xl font-medium antonio2 ">{lavoro.titolo}</h3>
+                    <p className="text-gray-400 text-sm antonio2 " >{lavoro.data}</p>
                   </div>
+
+                  {/* Freccia a destra */}
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="transition-transform duration-500 group-hover:-rotate-45"
+                  />
                 </div>
               ))}
             </div>

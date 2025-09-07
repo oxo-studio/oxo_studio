@@ -48,26 +48,32 @@ const SezioneFinale = () => {
     ));
 
   return (
-    <div
-      ref={sectionRef2}
-      className="relative w-full flex items-center justify-center mt-[200px] pb-[300px] sm:pb-[200px] md:pb-[250px] min-h-[50vh]"
-    >
-      {/* Titolo grande grigio */}
-      <h1
-        style={{ fontFamily: "Human" }}
-        className="absolute text-gray-400 text-[25vw] md:text-[23vw] lg:text-[250px] leading-none text-center pointer-events-none opacity-20 z-8"
-      >
-        {splitText("LAVORIAMO ASSIEME", text1)}
-      </h1>
+<div
+  ref={sectionRef2}
+  className="relative w-full flex items-center justify-center
+    mt-[10px] sm:mt-[100px] md:mt-[-70px] lg:mt-[-10px] lg:min-h-[40vh]
+    pb-[300px] sm:pb-[150px] md:pb-[120px]
+    min-h-[20vh]
+    -translate-y-10"   
+>
+  {/* Titolo grande grigio */}
+  <h1
+    style={{ fontFamily: "Human" }}
+    className="absolute text-gray-400 text-[25vw] md:text-[23vw] lg:text-[250px] leading-none text-center pointer-events-none opacity-20 z-8"
+  >
+    {splitText("LAVORIAMO ASSIEME", text1)}
+  </h1>
 
-      {/* Paragrafo bianco */}
-      <p className="relative text-white text-[3vw] md:text-[3vw] lg:text-3xl text-center z-10 max-w-[90vw] md:max-w-[800px] px-4">
-        {splitText(
-          "Hai qualcosa in mente? Realizziamolo insieme, con stile e originalità.",
-          text2
-        )}
-      </p>
-    </div>
+  {/* Paragrafo bianco */}
+  <p className="relative text-white text-[3vw] md:text-[3vw] lg:text-3xl text-center z-10 max-w-[90vw] md:max-w-[800px] px-4">
+    {splitText(
+      "Hai qualcosa in mente? Realizziamolo insieme, con stile e originalità.",
+      text2
+    )}
+  </p>
+</div>
+
+
   );
 };
 

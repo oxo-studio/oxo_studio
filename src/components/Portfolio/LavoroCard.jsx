@@ -16,13 +16,17 @@ const LavoroCard = ({ lavoro, dimensione = "grande" }) => {
     <div className="relative w-full h-full flex items-center justify-center">
       <div className={`relative group ${dimensioni[dimensione]} rounded overflow-visible`}>
         {/* Immagine */}
-        <Link to="../CategoriePortfolio/PaginaSingoloLavoro.jsx/SingoloLavoro.jsx">
-          <img
-            src={lavoro.immagine}
-            alt={lavoro.titolo}
-            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-          />
-        </Link>
+     <Link to={`/lavoro/${lavoro.id}`}>
+
+  <div className="w-full h-full flex items-center justify-center overflow-hidden rounded">
+    <img
+      src={lavoro.immagine}
+      alt={lavoro.titolo}
+      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+    />
+  </div>
+</Link>
+
 
         {/* Icona in alto a destra */}
         <FontAwesomeIcon
@@ -32,18 +36,18 @@ const LavoroCard = ({ lavoro, dimensione = "grande" }) => {
       </div>
 
       {/* Titolo in alto */}
-      <div className="absolute top-[5px] left-[3px]  md:left-[35px]">
+      <div className="absolute top-[5px] left-[3px]  mf:left-[35px] lg:mt-[-20px] lg:ml-[68px]">
         <h3 className="text-white text-3xl md:text-4xl font-bold antonio2">{lavoro.titolo}</h3>
       </div>
 
       {/* Categorie in basso a sinistra */}
       <div className="absolute bottom-1 left-[3px] md:left-[35px]">
-        <p className="text-gray-500 text-1xl md:text-2xl antonio2">{lavoro.categorie.join(", ")}</p>
+        <p className="text-gray-500 text-1xl md:text-2xl lg:ml-[38px] antonio2">{lavoro.categorie.join(", ")}</p>
       </div>
 
       {/* Data in basso a destra */}
       <div className="absolute bottom-1 right-[3px] md:right-[35px]">
-        <p className="text-gray-500 text-1xl md:text-2xl antonio2">{lavoro.data}</p>
+        <p className="text-gray-500 text-1xl md:text-2xl lg:mr-[55px] antonio2">{lavoro.data}</p>
       </div>
     </div>
   );

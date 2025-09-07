@@ -220,7 +220,7 @@ const SectionHome2 = () => {
       {/* VERSIONE MOBILE */}
       <section
         ref={sectionRefSm}
-        className="block lg:hidden w-full py-24 px-6"
+        className="block lg:hidden w-full lg:py-24 md:py-24 py-[50px] px-6"
       >
         <h1 className="text-5xl md:text-8xl antonio2 text-center mb-16">
           {splitWords('I NOSTRI SERVIZI', titleRefSm)}

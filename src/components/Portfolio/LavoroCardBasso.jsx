@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const LavoroCardBasso = ({ lavoro, dimensione = "medio" }) => {
@@ -12,12 +13,15 @@ const LavoroCardBasso = ({ lavoro, dimensione = "medio" }) => {
     <div className="relative w-full h-full flex items-center justify-center">
       <div className={`relative group ${dimensioni[dimensione]} rounded overflow-visible`}>
         {/* Immagine */}
+        <Link
+        to={`/lavoro/${lavoro.id}`}
+        >
         <img
           src={lavoro.immagine}
           alt={lavoro.titolo}
           className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
         />
-
+         </Link>
         {/* Icona in alto a destra */}
         <FontAwesomeIcon
           icon={faArrowRight}

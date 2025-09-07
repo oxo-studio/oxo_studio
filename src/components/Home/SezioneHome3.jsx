@@ -64,49 +64,51 @@ const SectioHome3 = () => {
   }, []);
 
   return (
-    <div className="relative z-[9999]">
-      <div
-        ref={containerRef}
-        className="wrapper relative w-full py-[40vh] overflow-hidden z-0"
-      >
-        {/* Overlay bianco */}
-        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-4 md:pr-[100px]">
-          <div className="relative w-full h-[100vh]">
-            {/* Titolo */}
-            <p
-              ref={headingRef}
-              className="text-white antonio2 text-[6.1vw] leading-tight text-center absolute left-1/2 top-[45%] transform -translate-x-1/2
-                         md:text-[4vw] md:text-right md:left-auto md:right-[230px] md:top-[400px] md:transform-none
-                         lg:text-[3vw] lg:right-[380px] lg:top-[370px]"
-            >
-              {splitText('MAKE IT POWERFUL')}
-            </p>
+   <div className="relative z-[9999]">
+  <div
+    ref={containerRef}
+    className="wrapper relative w-full py-[15vh] sm:py-[15vh] md:py-[15vh] lg:py-[30vh] overflow-hidden z-0"
+  >
+    {/* Overlay bianco */}
+    <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-4 md:pr-[100px]">
+      <div className="relative w-full h-[100vh]">
 
-            {/* Sottotitolo */}
-            <p
-              ref={subheadingRef}
-              className="text-white antonio2 text-[3vw] leading-snug text-center max-w-[90vw] absolute left-1/2 top-[52%] transform -translate-x-1/2
-                         md:text-[1.6vw] md:text-right md:left-auto md:right-[70px] md:top-[460px] md:max-w-[80vw] md:transform-none
-                         lg:text-[1.5vw] lg:right-[80px] lg:top-[460px]"
-            >
-              {splitText(
-                "Dal primo click all'ultima interazione, costruiamo esperienze su misura che parlano agli utenti."
-              )}
-            </p>
-          </div>
-        </div>
+        {/* Titolo */}
+        <p
+          ref={headingRef}
+          className="text-white antonio2 text-[6.1vw] leading-tight text-center absolute left-1/2 top-[43%] sm:top-[28%] transform -translate-x-1/2
+                     md:text-[4vw] md:text-right md:left-auto md:right-[230px] md:top-[520px] md:transform-none
+                     lg:text-[3vw] lg:right-[380px] lg:top-[400px]"
+        >
+          {splitText('MAKE IT POWERFUL')}
+        </p>
 
-        {/* Testi grigi in movimento */}
-        <div ref={textGroupRef} className="z-10 relative">
-          <p className="textItem text-[20vw] md:text-[15vw] lg:text-[10vw] text-gray-600 whitespace-nowrap antonio2 px-4">
-            MAKE IT POWERFUL  MAKE IT POWERFUL  MAKE IT POWERFUL
-          </p>
-          <p className="textItem text-[20vw] md:text-[15vw] lg:text-[10vw] text-gray-600 whitespace-nowrap antonio2 px-4">
-            Dal primo click all'ultima interazione, costruiamo esperienze su misura che parlano agli utenti.
-          </p>
-        </div>
+        {/* Sottotitolo */}
+        <p
+          ref={subheadingRef}
+          className="text-white antonio2 text-[3vw] leading-snug text-center max-w-[90vw] absolute left-1/2 top-[52%] sm:top-[35%] transform -translate-x-1/2
+                     md:text-[1.6vw] md:text-right md:left-auto md:right-[70px] md:top-[565px] md:max-w-[80vw] md:transform-none
+                     lg:text-[1.5vw] lg:right-[80px] lg:top-[470px]"
+        >
+          {splitText(
+            "Dal primo click all'ultima interazione, costruiamo esperienze su misura che parlano agli utenti."
+          )}
+        </p>
       </div>
     </div>
+
+    {/* Testi grigi in movimento */}
+    <div ref={textGroupRef} className="z-10 relative">
+      <p className="textItem text-[20vw] md:text-[15vw] lg:text-[10vw] text-gray-600 whitespace-nowrap antonio2 px-4">
+        MAKE IT POWERFUL  MAKE IT POWERFUL  MAKE IT POWERFUL
+      </p>
+      <p className="textItem text-[20vw] md:text-[15vw] lg:text-[10vw] text-gray-600 whitespace-nowrap antonio2 px-4">
+        Dal primo click all'ultima interazione, costruiamo esperienze su misura che parlano agli utenti.
+      </p>
+    </div>
+  </div>
+</div>
+
   );
 };
 

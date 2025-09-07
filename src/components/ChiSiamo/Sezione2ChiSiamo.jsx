@@ -104,7 +104,7 @@ const Sezione2ChiSiamo = () => {
 
     <div className="text-center">
       <h2
-        className="text-4xl md:text-5xl md:text-4xl text-gray-400 mb-2"
+        className="text-4xl md:text-5xl  text-gray-400 mb-2"
         ref={(el) => addToRefs(h2Refs, el)}
       >
         {splitText("Creative Dev")}
@@ -122,7 +122,7 @@ const Sezione2ChiSiamo = () => {
 
     <div className="text-center">
       <h2
-        className="text-4xl md:text-5xl md:text-4xl text-gray-400 mb-2"
+        className="text-4xl md:text-5xl  text-gray-400 mb-2"
         ref={(el) => addToRefs(h2Refs, el)}
       >
         {splitText("Database")}
@@ -140,7 +140,7 @@ const Sezione2ChiSiamo = () => {
 
     <div className="text-center">
       <h2
-        className="text-4xl md:text-5xl md:text-4xl text-gray-400 mb-2"
+        className="text-4xl md:text-5xl  text-gray-400 mb-2"
         ref={(el) => addToRefs(h2Refs, el)}
       >
         {splitText("Design & 3D")}
