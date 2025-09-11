@@ -27,11 +27,11 @@ const Contatti = () => {
       );
   };
   return (
-    <div className="relative z-[9999] w-full min-h-screen px-4 sm:px-8 md:px-12 lg:pl-[220px] py-20">
+    <div className="relative z-[9999] w-full min-h-screen px-4 sm:px-8 md:px-12 lg:pl-[220px] lg:mt-[0px] md:mt-0 mt-[90px] py-20">
       {/* Titolo */}
       <h1
         style={{ fontFamily: 'Human' }}
-        className="text-white text-[12vw] lg:text-[200px] leading-[1.1] antonio2 mb-16"
+        className="text-white text-[17vw] lg:text-[200px] md:text-[200px] leading-[1.1] antonio2 mb-16"
       >
         # RIMANIAMO IN CONTATTO
       </h1>

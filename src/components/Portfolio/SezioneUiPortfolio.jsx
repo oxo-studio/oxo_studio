@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import categoriePortfolio from "../CategoriePortfolio/FileCategorie";
 import Categorie from "./Categorie";
 
+
 const SezioneUiPortfolio = () => {
   return (
+    
     <div className="pt-[150px] px-[80px] text-white">
       {/* Componente Categoria */}
       <div className="relative mt-[-100px]">
@@ -24,28 +27,37 @@ const SezioneUiPortfolio = () => {
             {/* Lista lavori */}
             <div className="flex flex-col gap-6">
               {categoria.lavori.map((lavoro) => (
-                <div
+                <Link
                   key={lavoro.id}
-                  className="flex items-center justify-between gap-6 p-4 bg-transparent group"
+                  to={`/lavoro/${lavoro.id}`}
+                  className="group no-underline text-inherit hover:text-white"
                 >
-                  {/* Dettagli lavoro */}
-                  <div className="flex flex-col">
-                    <h3 className="text-xl font-medium antonio2 ">{lavoro.titolo}</h3>
-                    <p className="text-gray-400 text-sm antonio2 " >{lavoro.data}</p>
-                  </div>
+                  <div className="flex items-center justify-between gap-6 p-4 bg-transparent">
+                    {/* Dettagli lavoro */}
+                    <div className="flex flex-col">
+                      <h3 className="text-xl font-medium antonio2">{lavoro.titolo}</h3>
+                      <p className="text-gray-400 text-sm antonio2">{lavoro.data}</p>
+                    </div>
 
-                  {/* Freccia a destra */}
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className="transition-transform duration-500 group-hover:-rotate-45"
-                  />
-                </div>
+                    {/* Freccia a destra */}
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="transition-transform duration-500 group-hover:-rotate-45"
+                    />
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </div>  
+
+   
+      
+    
+    
+   
   );
 };
 

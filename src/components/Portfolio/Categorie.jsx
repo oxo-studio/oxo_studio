@@ -8,7 +8,7 @@ const Categorie = () => {
 
       {/* Icone a sinistra */}
       <div className="flex gap-6">
-        <Link to="/Portfolio" className="hover:text-white transition">
+        <Link to="/Portfolio" className="hover:text-white  transition">
           <FontAwesomeIcon icon={faThLarge} className="text-gray-600 text-2xl" />
         </Link>
         <Link to="/src/components/Portfolio/SezioneUiPortfolio.jsx" className="hover:text-white transition">
@@ -18,16 +18,16 @@ const Categorie = () => {
 
       {/* Categorie a destra */}
       <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-8 py-2">
-        <Link to="/src/components/CategoriePortfolio/WebDesign.jsx" className="text-gray-600 hover:text-white transition">
+        <Link to="/src/components/CategoriePortfolio/WebDesign.jsx" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
           Web Design
         </Link>
-        <Link to="/src/components/CategoriePortfolio/WebDeveloper.jsx" className="text-gray-600 hover:text-white transition">
+        <Link to="/src/components/CategoriePortfolio/WebDeveloper.jsx" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
           Web Developer
         </Link>
-        <Link to="/src/components/CategoriePortfolio/LodoDesign.jsx" className="text-gray-600 hover:text-white transition">
+        <Link to="/src/components/CategoriePortfolio/LodoDesign.jsx" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
           Logo Design
         </Link>
-        <Link to="/src/components/CategoriePortfolio/AppDeveloper.jsx" className="text-gray-600 hover:text-white transition">
+        <Link to="/src/components/CategoriePortfolio/AppDeveloper.jsx" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
           App Developer
         </Link>
       </div>

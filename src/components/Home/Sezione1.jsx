@@ -17,17 +17,18 @@ export default function Sezione1() {
     const animateLetters3 = (letters, delay = 0) => {
       gsap.fromTo(
         letters,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.04,
-          delay,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 150%",
-            toggleActions: "play none none none",
+            { opacity: 0, y: 30 },
+            {
+              duration: 0.4,
+              opacity: 1,
+              y: 0,
+              stagger: 0.01,
+              delay,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse',
           },
         }
       );
