@@ -10,30 +10,71 @@ const SezioneFinale = () => {
   const text2 = useRef([]);
 
   useEffect(() => {
-    const animateLetters = (letters, delay = 0) => {
-      if (!letters || letters.length === 0) return;
+    const mm = gsap.matchMedia();
 
-      gsap.fromTo(
-        letters,
-        { opacity: 0, y: 30 },
-        {
-          duration: 0.4,
-          opacity: 1,
-          y: 0,
-          stagger: 0.01,
-          delay,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: sectionRef2.current,
-            start: "top 70%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
+    mm.add(
+      {
+        // Desktop (lg e oltre)
+        isDesktop: "(min-width: 1024px)",
+        // Tablet e mobile
+        isMobile: "(max-width: 1023px)",
+      },
+      (context) => {
+        const { isDesktop, isMobile } = context.conditions;
+
+        const animateLetters = (letters, delay = 0) => {
+          if (!letters || letters.length === 0) return;
+
+          if (isDesktop) {
+            // Animazione più marcata su desktop
+            gsap.fromTo(
+              letters,
+              { opacity: 0, y: 30 },
+              {
+                duration: 0.4,
+                opacity: 1,
+                y: 0,
+                stagger: 0.01,
+                delay,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: sectionRef2.current,
+                  start: "top 70%",
+                  toggleActions: "play none none reverse",
+                },
+              }
+            );
+          } else if (isMobile) {
+            // Animazione più soft su tablet/mobile
+            gsap.fromTo(
+              letters,
+              { opacity: 0.6, y: 10 }, // partenza meno drastica
+              {
+                duration: 0.3,
+                opacity: 1,
+                y: 0,
+                stagger: 0.005,
+                delay,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: sectionRef2.current,
+                  start: "top 80%",
+                  toggleActions: "play none none reverse",
+                },
+              }
+            );
+          }
+        };
+
+        animateLetters(text1.current, 0);
+        animateLetters(text2.current, 0.3);
+      }
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      gsap.matchMedia().revert();
     };
-
-    animateLetters(text1.current, 0);
-    animateLetters(text2.current, 0.3);
   }, []);
 
   const splitText = (text, ref) =>

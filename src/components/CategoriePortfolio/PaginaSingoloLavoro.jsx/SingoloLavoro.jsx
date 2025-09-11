@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import categoriePortfolio from "../FileCategorie.jsx";
-import SezioneFinale from "./SezioneFinaleSingoloLavoro.jsx";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -90,13 +90,13 @@ const SingoloLavoro = () => {
       icon={faArrowLeft}
       className="text-gray-500 md:hidden hidden md:mt-[160px] md:ml-[-50px] absolute  left-0 lg:static lg:mt-[-120px] lg:mb-2 transition-transform duration-500 group-hover:-translate-x-2"
     />
-    <h2 className="text-4xl mt-[170px] md:text-6xl md:mt-[100px] font-bold  lg:mb-10 antonio2 text-center lg:text-left">
+    <h2 className="text-4xl mt-[170px] md:text-6xl md:mt-[100px] font-bold  lg:mb-10 antonio2 text-center lg:text-left lg:text-6xl">
       {lavoro.titolo}
     </h2>
   </Link>
 
   {/* MOSTRA SOLO SU lg */}
-  <div className="hidden lg:block w-full">
+  <div className="hidden lg:block w-full text-center">
     <h5 className="text-white antonio2 text-3xl mb-1">Categoria</h5>
     <p className="text-gray-400 mb-4 antonio2 text-2xl">{categorieDelLavoro.join(", ")}</p>
 
@@ -112,28 +112,66 @@ const SingoloLavoro = () => {
   </div>
 </div>
 
-        {/* Colonna centrale */}
-        <div className="w-full lg:w-[70%] h-[60vh] lg:h-screen overflow-y-scroll no-scrollbar">
-          <div
-            className="flex flex-col items-center justify-center space-y-4 lg:space-y-1 mt-6 lg:mt-14 px-4"
-            ref={containerRef}
-          >
-            {lavoro.immagini.map((img, index) => (
-              <div
-                key={index}
-                className="card w-full md:w-[90vw] lg:w-[150vh] h-[60vh] md:h-[70vh] lg:h-[60vh]"
-                ref={(el) => (cardsRef.current[index] = el)}
-              >
-                <img
-                  src={img}
-                  alt={`img-${index}`}
-                  className="w-full h-full object-contain rounded-xl pointer-events-none"
-                  draggable={false}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+     {/* Colonna centrale */}
+<div className="w-full lg:w-[70%] min-h-screen lg:h-screen overflow-y-scroll no-scrollbar">
+  {/* MOBILE (<md) */}
+  <div className="block md:hidden space-y-[-450px] px-4 mt-[-200px]">
+    {lavoro.immagini.map((img, index) => (
+      <div
+        key={index}
+        className="w-full min-h-[90vh] flex items-center justify-center"
+        ref={(el) => (cardsRef.current[index] = el)}
+      >
+        <img
+          src={img}
+          alt={`img-mobile-${index}`}
+          className="w-full h-auto max-h-[90vh] object-contain rounded-xl pointer-events-none"
+          draggable={false}
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* TABLET (md) */}
+  <div className="hidden md:block lg:hidden  px-6 -space-y-96 mt-[-150px]">
+    {lavoro.immagini.map((img, index) => (
+      <div
+        key={index}
+        className="w-full h-[80vh] flex items-center justify-center"
+        ref={(el) => (cardsRef.current[index] = el)}
+      >
+        <img
+          src={img}
+          alt={`img-md-${index}`}
+          className="w-full h-auto max-h-[80vh] object-contain rounded-xl pointer-events-none"
+          draggable={false}
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* DESKTOP (lg e oltre) */}
+  <div
+    className="hidden lg:flex flex-col items-center justify-center space-y-1 mt-14 px-4"
+    ref={containerRef}
+  >
+    {lavoro.immagini.map((img, index) => (
+      <div
+        key={index}
+        className="card w-full lg:w-[150vh] h-[60vh]"
+        ref={(el) => (cardsRef.current[index] = el)}
+      >
+        <img
+          src={img}
+          alt={`img-lg-${index}`}
+          className="w-full h-full object-contain rounded-xl pointer-events-none"
+          draggable={false}
+        />
+      </div>
+    ))}
+  </div>
+</div>
+
 
         {/* Info sotto immagini (solo md e sm) */}
 <div className="md:flex lg:hidden justify-around items-start  hidden px-4 flex-wrap gap-4 text-center">
@@ -155,7 +193,7 @@ const SingoloLavoro = () => {
 
 
 {/* Info sotto img - SOLO su mobile, in colonna e centrato */}
-<div className="flex flex-col items-center text-center gap-6 mt-[100px] px-6 lg:hidden">
+<div className="flex flex-col md:hidden  items-center text-center gap-6 mt-[-100px] px-6 lg:hidden">
   <div>
     <h5 className="text-white antonio2 text-2xl">Data</h5>
     <p className="text-gray-400 antonio2 text-xl">{lavoro.data}</p>
@@ -186,7 +224,7 @@ const SingoloLavoro = () => {
         </div>
       </div>
 
-      <SezioneFinale />
+      
     </>
   );
 };
