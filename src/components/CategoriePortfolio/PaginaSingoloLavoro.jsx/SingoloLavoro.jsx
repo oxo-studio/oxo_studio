@@ -32,41 +32,120 @@ const SingoloLavoro = () => {
         .map((t) => t.trim())
     ),
   ];
+  const sectionRef = useRef(null)
+  const sectionRefSm = useRef(null)
+  const categoria = useRef([])
+  const data = useRef([])
+  const tecnologie = useRef([])
+
+  const splitText = (text, ref)=>
+      text.split("").map((chart,i)=>(
+        <span
+          key={i}
+          ref={(el)=> (ref.current[i]=el)}
+          className="inline-block"
+        >
+
+        {chart === " " ? "\u00A0" :chart}
+
+        </span>
+      ))
 
   useEffect(() => {
-    if (!lavoro?.immagini) return;
+  if (!lavoro?.immagini) return;
 
-    cardsRef.current.forEach((card) => {
-      gsap.fromTo(
-        card,
-        { scale: 0.95 },
-        {
-          scale: 1.1,
-          scrollTrigger: {
-            trigger: card,
-            start: "center center",
-            end: "center center",
-            scrub: true,
-          },
-        }
-      );
-
-      gsap.to(card, {
-        scale: 0.8,
+  // DESKTOP ANIMATIONS
+  const animateLetters = (letters, delay = 0) => {
+    gsap.fromTo(
+      letters,
+      { opacity: 0, y: 30 },
+      {
+        duration: 0.4,
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        delay,
+        ease: "power2.out",
         scrollTrigger: {
-          trigger: card,
-          start: "top center",
-          end: "bottom center",
-          scrub: true,
+          trigger: sectionRef.current,
+          start: "top 80%",
           toggleActions: "play none none reverse",
         },
-      });
-    });
+      }
+    );
+  };
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-    };
-  }, [lavoro]);
+  // MOBILE/TABLET ANIMATIONS
+  const animateLettersSm = (letters, delay = 0) => {
+    gsap.fromTo(
+      letters,
+      { opacity: 0, y: 50 },
+      {
+        duration: 0.4,
+        opacity: 1,
+        y: 0,
+        stagger: 0.05,
+        delay,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRefSm.current,
+          start: "top 100%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  };
+
+  // IMAGE SCROLL ANIMATIONS
+  cardsRef.current.forEach((card) => {
+    gsap.fromTo(
+      card,
+      { scale: 0.95 },
+      {
+        scale: 1.1,
+        scrollTrigger: {
+          trigger: card,
+          start: "center center",
+          end: "center center",
+          scrub: true,
+        },
+      }
+    );
+
+    gsap.to(card, {
+      scale: 0.8,
+      scrollTrigger: {
+        trigger: card,
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
+
+  // Match media
+  ScrollTrigger.matchMedia({
+    // Desktop
+    "(min-width: 1024px)": () => {
+      animateLetters(categoria.current);
+      animateLetters(data.current, 0.1);
+      animateLetters(tecnologie.current, 0.2);
+    },
+
+    // Tablet e mobile
+    "(max-width: 1023px)": () => {
+      animateLettersSm(categoria.current);
+      animateLettersSm(data.current, 0.1);
+      animateLettersSm(tecnologie.current, 0.2);
+    },
+  });
+
+  return () => {
+    ScrollTrigger.getAll().forEach((st) => st.kill());
+  };
+}, [lavoro]);
+
 
   if (!lavoro) {
     return (
@@ -96,14 +175,14 @@ const SingoloLavoro = () => {
   </Link>
 
   {/* MOSTRA SOLO SU lg */}
-  <div className="hidden lg:block w-full text-center">
-    <h5 className="text-white antonio2 text-3xl mb-1">Categoria</h5>
+  <div className="hidden lg:block w-full text-center" ref={sectionRef}>
+    <h5 className="text-white antonio2 text-3xl mb-1">{splitText("Categorie", categoria)}</h5>
     <p className="text-gray-400 mb-4 antonio2 text-2xl">{categorieDelLavoro.join(", ")}</p>
 
-    <h5 className="text-white antonio2 text-3xl mb-1">Data</h5>
+    <h5 className="text-white antonio2 text-3xl mb-1">{splitText("Data", data)}</h5>
     <p className="text-gray-400 mb-4 antonio2 text-2xl">{lavoro.data}</p>
 
-    <h5 className="text-white antonio2 text-3xl mb-1">Tecnologie</h5>
+    <h5 className="text-white antonio2 text-3xl mb-1">{splitText("Tecnologie", tecnologie)}</h5>
     <p className="text-gray-400 antonio2 text-2xl">{tecnologieDelLavoro.join(", ")}</p>
   </div>
 
@@ -115,7 +194,7 @@ const SingoloLavoro = () => {
      {/* Colonna centrale */}
 <div className="w-full lg:w-[70%] min-h-screen lg:h-screen overflow-y-scroll no-scrollbar">
   {/* MOBILE (<md) */}
-  <div className="block md:hidden space-y-[-450px] px-4 mt-[-200px]">
+  <div className="block md:hidden space-y-[-450px] px-4 mt-[-200px] ">
     {lavoro.immagini.map((img, index) => (
       <div
         key={index}
@@ -177,15 +256,15 @@ const SingoloLavoro = () => {
 <div className="md:flex lg:hidden justify-around items-start  hidden px-4 flex-wrap gap-4 text-center">
  
   <div>
-    <h5 className="text-white antonio2 text-xl md:text-3xl">Data</h5>
+    <h5 className="text-white antonio2 text-xl md:text-3xl">{splitText("Data", data)}</h5>
     <p className="text-gray-400 antonio2 text-lg md:text-2xl">{lavoro.data}</p>
   </div>
    <div>
-    <h5 className="text-white antonio2 text-xl md:text-3xl">Categoria</h5>
+    <h5 className="text-white antonio2 text-xl md:text-3xl">{splitText("Categorie", categoria)}</h5>
     <p className="text-gray-400 antonio2 text-lg md:text-2xl">{categorieDelLavoro.join(", ")}</p>
   </div>
   <div>
-    <h5 className="text-white antonio2 text-xl md:text-3xl">Tecnologie</h5>
+    <h5 className="text-white antonio2 text-xl md:text-3xl">{splitText("Tecnologie", tecnologie)}</h5>
     <p className="text-gray-400 antonio2 text-lg md:text-2xl">{tecnologieDelLavoro.join(", ")}</p>
   </div>
 </div>
@@ -195,17 +274,17 @@ const SingoloLavoro = () => {
 {/* Info sotto img - SOLO su mobile, in colonna e centrato */}
 <div className="flex flex-col md:hidden  items-center text-center gap-6 mt-[-100px] px-6 lg:hidden">
   <div>
-    <h5 className="text-white antonio2 text-2xl">Data</h5>
+    <h5 className="text-white antonio2 text-2xl">{splitText("Data", data)}</h5>
     <p className="text-gray-400 antonio2 text-xl">{lavoro.data}</p>
   </div>
   
   <div>
-    <h5 className="text-white antonio2 text-2xl">Categoria</h5>
+    <h5 className="text-white antonio2 text-2xl">{splitText("Categorie", categoria)}</h5>
     <p className="text-gray-400 antonio2 text-xl">{categorieDelLavoro.join(", ")}</p>
   </div>
   
   <div>
-    <h5 className="text-white antonio2 text-2xl">Tecnologie</h5>
+    <h5 className="text-white antonio2 text-2xl">{splitText("Tecnologie", tecnologie)}</h5>
     <p className="text-gray-400 antonio2 text-xl">{tecnologieDelLavoro.join(", ")}</p>
   </div>
 </div>
