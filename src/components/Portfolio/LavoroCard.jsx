@@ -3,9 +3,14 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
+import "../CategoriePortfolio/FileCategorie.jsx"
+
 
 
 const LavoroCard = ({ lavoro, dimensione = "grande" }) => {
+
+    console.log(lavoro.immagine);
+
   const dimensioni = {
   grande: "w-[90vh] sm:w-[60vw] md:w-[80vw] lg:w-[80vw] h-[70vh] md:h-[75vh] lg:h-[75vh]",
   medio: "w-[90vh] sm:w-[90vw] md:w-[80vw] lg:w-[45vw] h-[40vh] md:h-[60vh] lg:h-[50vh]",
@@ -26,6 +31,8 @@ const LavoroCard = ({ lavoro, dimensione = "grande" }) => {
     />
   </div>
 </Link>
+
+ 
 
 
         {/* Icona in alto a destra */}
@@ -50,7 +57,9 @@ const LavoroCard = ({ lavoro, dimensione = "grande" }) => {
         <p className="text-gray-500 text-1xl md:text-2xl lg:mr-[55px] antonio2">{lavoro.data}</p>
       </div>
     </div>
+    
   );
+  
 };
 
 
