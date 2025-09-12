@@ -34,10 +34,6 @@ const WebDeveloper = () => {
   return (
     <div className="relative mt-[0px] flex flex-col items-center">
 
-      {/* Titolo pagina */}
-      <h1 style={{ fontFamily: "Human" }} className="text-center text-[300px] font-bold text-white mt-[100px] mb-[-150px]">
-        Web Developer
-      </h1>
 
       {/* Sezione categorie */}
       <Categorie categorie={[{ nome: "Web Design" }]} />

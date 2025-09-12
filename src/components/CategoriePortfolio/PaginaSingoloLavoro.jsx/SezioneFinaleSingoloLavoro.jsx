@@ -91,7 +91,7 @@ const SezioneFinale = () => {
   return (
     <div
       ref={sectionRef2}
-      className="relative min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center z-[9999] lg:mt-10 md:mt-[-120px]"
+      className="relative min-h-[70vh] w-full flex flex-col items-center justify-center px-4 text-center z-[9999] lg:mt-10 md:mt-[200px] mt-[450px]"
     >
       <h1
         style={{ fontFamily: "Human" }}

@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
+import SezioneFinale from "./SezioneFinaleSingoloLavoro.jsx"
 import categoriePortfolio from "../FileCategorie.jsx";
 
 import gsap from "gsap";
@@ -37,6 +37,9 @@ const SingoloLavoro = () => {
   const categoria = useRef([])
   const data = useRef([])
   const tecnologie = useRef([])
+  const categoriaP = useRef([])
+  const dataP = useRef([])
+  const tecnologieP = useRef([])
 
   const splitText = (text, ref)=>
       text.split("").map((chart,i)=>(
@@ -131,6 +134,9 @@ const SingoloLavoro = () => {
       animateLetters(categoria.current);
       animateLetters(data.current, 0.1);
       animateLetters(tecnologie.current, 0.2);
+      animateLetters(categoriaP.current,0.3)
+      animateLetters(dataP.current,0.4)
+      animateLetters(tecnologieP.current,0.5)
     },
 
     // Tablet e mobile
@@ -138,6 +144,9 @@ const SingoloLavoro = () => {
       animateLettersSm(categoria.current);
       animateLettersSm(data.current, 0.1);
       animateLettersSm(tecnologie.current, 0.2);
+      animateLettersSm(categoriaP.current,0.3)
+      animateLettersSm(dataP.current,0.4)
+      animateLettersSm(tecnologieP.current,0.5)
     },
   });
 
@@ -177,13 +186,13 @@ const SingoloLavoro = () => {
   {/* MOSTRA SOLO SU lg */}
   <div className="hidden lg:block w-full text-center" ref={sectionRef}>
     <h5 className="text-white antonio2 text-3xl mb-1">{splitText("Categorie", categoria)}</h5>
-    <p className="text-gray-400 mb-4 antonio2 text-2xl">{categorieDelLavoro.join(", ")}</p>
+    <p className="text-gray-400 mb-4 antonio2 text-2xl">{splitText (categorieDelLavoro.join(", "), categoriaP)}</p>
 
     <h5 className="text-white antonio2 text-3xl mb-1">{splitText("Data", data)}</h5>
-    <p className="text-gray-400 mb-4 antonio2 text-2xl">{lavoro.data}</p>
+    <p className="text-gray-400 mb-4 antonio2 text-2xl">{splitText (lavoro.data, dataP)}</p>
 
     <h5 className="text-white antonio2 text-3xl mb-1">{splitText("Tecnologie", tecnologie)}</h5>
-    <p className="text-gray-400 antonio2 text-2xl">{tecnologieDelLavoro.join(", ")}</p>
+    <p className="text-gray-400 antonio2 text-2xl">{splitText (tecnologieDelLavoro.join(", "), tecnologieP)}</p>
   </div>
 
   <div className="hidden lg:block">
@@ -194,7 +203,7 @@ const SingoloLavoro = () => {
      {/* Colonna centrale */}
 <div className="w-full lg:w-[70%] min-h-screen lg:h-screen overflow-y-scroll no-scrollbar">
   {/* MOBILE (<md) */}
-  <div className="block md:hidden space-y-[-450px] px-4 mt-[-200px] ">
+  <div className="block md:hidden space-y-[-450px] px-4 mt-[-200px]  ">
     {lavoro.immagini.map((img, index) => (
       <div
         key={index}
@@ -253,19 +262,19 @@ const SingoloLavoro = () => {
 
 
         {/* Info sotto immagini (solo md e sm) */}
-<div className="md:flex lg:hidden justify-around items-start  hidden px-4 flex-wrap gap-4 text-center">
+<div className="md:flex lg:hidden justify-around items-start md:mt-[-90px]  hidden px-4 flex-wrap gap-4 text-center">
  
   <div>
     <h5 className="text-white antonio2 text-xl md:text-3xl">{splitText("Data", data)}</h5>
-    <p className="text-gray-400 antonio2 text-lg md:text-2xl">{lavoro.data}</p>
+    <p className="text-gray-400 antonio2 text-lg md:text-2xl">{splitText (lavoro.data, dataP)}</p>
   </div>
    <div>
     <h5 className="text-white antonio2 text-xl md:text-3xl">{splitText("Categorie", categoria)}</h5>
-    <p className="text-gray-400 antonio2 text-lg md:text-2xl">{categorieDelLavoro.join(", ")}</p>
+    <p className="text-gray-400 antonio2 text-lg md:text-2xl">{splitText (categorieDelLavoro.join(", "), categoriaP)}</p>
   </div>
   <div>
     <h5 className="text-white antonio2 text-xl md:text-3xl">{splitText("Tecnologie", tecnologie)}</h5>
-    <p className="text-gray-400 antonio2 text-lg md:text-2xl">{tecnologieDelLavoro.join(", ")}</p>
+    <p className="text-gray-400 antonio2 text-lg md:text-2xl">{splitText (tecnologieDelLavoro.join(", "), tecnologieP)}</p>
   </div>
 </div>
 
@@ -275,17 +284,17 @@ const SingoloLavoro = () => {
 <div className="flex flex-col md:hidden  items-center text-center gap-6 mt-[-100px] px-6 lg:hidden">
   <div>
     <h5 className="text-white antonio2 text-2xl">{splitText("Data", data)}</h5>
-    <p className="text-gray-400 antonio2 text-xl">{lavoro.data}</p>
+    <p className="text-gray-400 antonio2 text-xl">{splitText (lavoro.data, dataP)}</p>
   </div>
   
   <div>
     <h5 className="text-white antonio2 text-2xl">{splitText("Categorie", categoria)}</h5>
-    <p className="text-gray-400 antonio2 text-xl">{categorieDelLavoro.join(", ")}</p>
+    <p className="text-gray-400 antonio2 text-xl">{splitText (categorieDelLavoro.join(", "), categoriaP)}</p>
   </div>
   
   <div>
     <h5 className="text-white antonio2 text-2xl">{splitText("Tecnologie", tecnologie)}</h5>
-    <p className="text-gray-400 antonio2 text-xl">{tecnologieDelLavoro.join(", ")}</p>
+    <p className="text-gray-400 antonio2 text-xl">{splitText (tecnologieDelLavoro.join(", "), tecnologieP)}</p>
   </div>
 </div>
 
@@ -303,7 +312,7 @@ const SingoloLavoro = () => {
         </div>
       </div>
 
-      
+      <SezioneFinale/>
     </>
   );
 };

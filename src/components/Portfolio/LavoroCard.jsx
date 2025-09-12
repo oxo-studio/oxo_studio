@@ -38,7 +38,7 @@ const LavoroCard = ({ lavoro, dimensione = "grande" }) => {
         {/* Icona in alto a destra */}
         <FontAwesomeIcon
           icon={faArrowRight}
-          className="text-gray-500 absolute top-[-50px] right-[-5px] md:top-[-50px] md:right-[-40px] md:text-2xl  text-3xl transition-transform duration-500 group-hover:-rotate-45"
+          className="text-gray-500 absolute top-[-50px] right-[-5px] md:top-[-50px] md:right-[-40px] lg:mt-[10px] md:text-2xl  text-3xl transition-transform duration-500 group-hover:-rotate-45"
         />
       </div>
 

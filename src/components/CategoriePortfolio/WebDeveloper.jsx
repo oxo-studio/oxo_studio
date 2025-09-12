@@ -34,17 +34,13 @@ const WebDeveloper = () => {
   return (
     <div className="relative mt-[0px] flex flex-col items-center">
 
-      {/* Titolo pagina */}
-      <h1 style={{ fontFamily: "Human" }} className="text-center text-[300px] font-bold text-white mt-[100px] mb-[-150px]">
-        Web Developer
-      </h1>
-
+   
       {/* Sezione categorie */}
       <Categorie categorie={[{ nome: "Web Developer" }]} />
 
       {/* Parte superiore */}
       <div className="relative z-10 w-[90vw] h-[100vh] border border-white overflow-hidden mt-[30px]">
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 p-[15px] transition-transform duration-500">
+        <div className="absolute inset-0 flex flex-col  items-center justify-center gap-6 p-[15px] transition-transform duration-500">
           {lavoriParteSuperiore.map((lavoro) => (
             <LavoroCard key={lavoro.id} lavoro={lavoro} dimensione="grande" />
           ))}

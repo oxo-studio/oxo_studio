@@ -33,10 +33,7 @@ const LogoDesign = () => {
   return (
     <div className="relative mt-[0px] flex flex-col items-center">
 
-      {/* Titolo */}
-      <h1 style={{ fontFamily: "Human" }} className="text-center text-[300px] font-bold text-white mt-[100px] mb-[-150px]">
-        Logo Design
-      </h1>
+    
 
       {/* Categorie */}
       <Categorie categorie={[{ nome: "Logo Design" }]} />
