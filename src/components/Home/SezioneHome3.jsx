@@ -74,26 +74,32 @@ const SectioHome3 = () => {
       <div className="relative w-full h-[100vh]">
 
         {/* Titolo */}
-        <p
-          ref={headingRef}
-          className="text-white antonio2 text-[6.1vw] leading-tight text-center absolute left-1/2 top-[43%] sm:top-[28%] transform -translate-x-1/2
-                     md:text-[4vw] md:text-right md:left-auto md:right-[230px] md:top-[520px] md:transform-none
-                     lg:text-[3vw] lg:right-[380px] lg:top-[400px]"
-        >
-          {splitText('MAKE IT POWERFUL')}
-        </p>
+       {/* Titolo */}
+<p
+  ref={headingRef}
+  className="text-white antonio2 text-3xl leading-tight text-center absolute left-1/2 top-[44%] sm:top-[28%] transform -translate-x-1/2
+             whitespace-nowrap 
+             md:text-6xl md:text-right md:left-auto md:right-[60px] md:top-[470px] md:transform-none
+             lg:text-8xl lg:right-[380px] lg:top-[340px] ombra"
+>
+  {splitText('MAKE IT POWERFUL')}
+</p>
 
-        {/* Sottotitolo */}
-        <p
-          ref={subheadingRef}
-          className="text-white antonio2 text-[3vw] leading-snug text-center max-w-[90vw] absolute left-1/2 top-[52%] sm:top-[35%] transform -translate-x-1/2
-                     md:text-[1.6vw] md:text-right md:left-auto md:right-[70px] md:top-[565px] md:max-w-[80vw] md:transform-none
-                     lg:text-[1.5vw] lg:right-[80px] lg:top-[470px]"
-        >
-          {splitText(
-            "Dal primo click all'ultima interazione, costruiamo esperienze su misura che parlano agli utenti."
-          )}
-        </p>
+
+{/* Sottotitolo */}
+<p
+  ref={subheadingRef}
+  className="text-white antonio text-[17px] leading-snug text-center absolute left-1/2 top-[50%] sm:top-[35%] transform -translate-x-1/2
+             px-4 max-w-[400px] w-[400px]
+             md:text-3xl md:w-[800px] md:max-w-[700px]  md:left-auto md:right-[-50px] md:top-[565px]  md:transform-none
+             lg:text-4xl lg:right-[270px] lg:top-[470px] lg:w-[2000px] lg:max-w-[1000px] ombra"
+>
+  {splitText(
+    "Dal primo click all'ultima interazione, costruiamo esperienze su misura che parlano agli utenti."
+  )}
+</p>
+
+
       </div>
     </div>
 

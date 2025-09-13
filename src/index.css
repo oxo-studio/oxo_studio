@@ -279,3 +279,18 @@ svg path {
   -ms-overflow-style: none; /* IE e Edge */
   scrollbar-width: none;    /* Firefox */
 }
+
+
+
+/*ombre*/
+
+.ombra{
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+.ombra2 {
+  text-shadow: 
+    0 0 4px rgba(0, 0, 0, 0.9),
+    1px 1px 6px rgba(0, 0, 0, 0.9),
+    2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+

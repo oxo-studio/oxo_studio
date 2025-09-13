@@ -3,6 +3,7 @@ import categoriePortfolio from "../CategoriePortfolio/FileCategorie";
 import LavoroCard from "../Portfolio/LavoroCard";
 import LavoroCardBasso from "../Portfolio/LavoroCardBasso";
 
+
 const WebDeveloper = () => {
   // Filtra solo le categorie legate al Web Developer
   const categoriaSelezionata = "Web Developer";
@@ -32,6 +33,8 @@ const WebDeveloper = () => {
   const colonnaDestra = lavoriParteInferiore.slice(Math.ceil(lavoriParteInferiore.length / 2));
 
   return (
+
+
     <div className="relative mt-[0px] flex flex-col items-center">
 
 
@@ -39,7 +42,7 @@ const WebDeveloper = () => {
       <Categorie categorie={[{ nome: "Web Design" }]} />
 
       {/* Parte superiore */}
-      <div className="relative z-10 w-[90vw] h-[100vh] border border-white overflow-hidden mt-[30px]">
+      <div className="relative z-10 w-[90vw] h-[90vh] border border-white overflow-hidden mt-[30px]">
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 p-[15px] transition-transform duration-500">
           {lavoriParteSuperiore.map((lavoro) => (
             <LavoroCard key={lavoro.id} lavoro={lavoro} dimensione="grande" />
@@ -67,6 +70,7 @@ const WebDeveloper = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

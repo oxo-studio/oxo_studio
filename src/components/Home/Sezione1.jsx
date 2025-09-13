@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Sezione1() {
   const sectionRef = useRef(null);
-  const OxoStudioRef = useRef([]);
+  const OxoStudioRef = useRef([]); 
   const CreativeStudio = useRef([]);
 
   useEffect(() => {
@@ -21,8 +21,8 @@ export default function Sezione1() {
             {
               duration: 0.4,
               opacity: 1,
-              y: 0,
-              stagger: 0.01,
+              y: 0, 
+              stagger: 0.06,
               delay,
               ease: 'power2.out',
               scrollTrigger: {
@@ -35,7 +35,7 @@ export default function Sezione1() {
     };
 
     animateLetters3(OxoStudioRef.current);
-    animateLetters3(CreativeStudio.current);
+    animateLetters3(CreativeStudio.current,0.2);
   }, []);
 
   const splitText = (text, ref) =>
@@ -56,16 +56,16 @@ export default function Sezione1() {
     <MauseBabble />
   </div>
 
-  <div style={{ position: "fixed", inset: 0, zIndex: 3, pointerEvents: "none" }}>
+  <div className="hidden lg:block" style={{ position: "fixed", inset: 0, zIndex: 3, pointerEvents: "none" }}>
     <MouseLight />
   </div>
 
 
   <div className="relative z-10 text-center" style={{ userSelect: "none" }}>
-    <h1 className="text-7xl md:text-9xl lg:text-9xl antonio2 drop-shadow-[0_0_10px_rgba(0,0,0,0.7)]">
+    <h1 className="text-7xl md:text-9xl lg:text-[150px] antonio2 ombra2">
   {splitText("OXO STUDIO", OxoStudioRef)}
 </h1>
-    <h2 className="text-3xl md:text-5xl lg:text-6xl mt-4 antonio2">
+    <h2 className="text-3xl md:text-5xl lg:text-6xl mt-4 antonio ombra2">
       {splitText("Creative Studio", CreativeStudio)}
     </h2>
   </div>

@@ -33,13 +33,15 @@ const WebDeveloper = () => {
 
   return (
     <div className="relative mt-[0px] flex flex-col items-center">
+       
+      <h1 className="text-white text-xl mt-4">Web Developer</h1>
 
    
       {/* Sezione categorie */}
       <Categorie categorie={[{ nome: "Web Developer" }]} />
-
+       
       {/* Parte superiore */}
-      <div className="relative z-10 w-[90vw] h-[100vh] border border-white overflow-hidden mt-[30px]">
+      <div className="relative z-10 w-[90vw] h-[90vh] border border-white overflow-hidden mt-[30px]">
         <div className="absolute inset-0 flex flex-col  items-center justify-center gap-6 p-[15px] transition-transform duration-500">
           {lavoriParteSuperiore.map((lavoro) => (
             <LavoroCard key={lavoro.id} lavoro={lavoro} dimensione="grande" />

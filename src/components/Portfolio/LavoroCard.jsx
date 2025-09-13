@@ -38,12 +38,12 @@ const LavoroCard = ({ lavoro, dimensione = "grande" }) => {
         {/* Icona in alto a destra */}
         <FontAwesomeIcon
           icon={faArrowRight}
-          className="text-gray-500 absolute top-[-50px] right-[-5px] md:top-[-50px] md:right-[-40px] lg:mt-[10px] md:text-2xl  text-3xl transition-transform duration-500 group-hover:-rotate-45"
+          className="text-gray-500 absolute top-[-50px] right-[-5px] md:top-[-50px] md:right-[-25px] lg:mt-[10px] md:text-2xl  text-3xl transition-transform duration-500 group-hover:-rotate-45"
         />
       </div>
 
       {/* Titolo in alto */}
-      <div className="absolute top-[5px] left-[3px]  mf:left-[35px] lg:mt-[-20px] lg:ml-[68px]">
+      <div className="absolute top-[5px] left-[3px]  md:left-[25px] md:mt-[-8px] lg:mt-[-20px] lg:ml-[50px]">
         <h3 className="text-white text-3xl md:text-4xl font-bold antonio2">{lavoro.titolo}</h3>
       </div>
 

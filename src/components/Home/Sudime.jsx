@@ -22,7 +22,7 @@ const Sudime = () => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 100%",
+            start: "top 70%",
             toggleActions: "play none none reverse",
           },
         }
@@ -61,7 +61,7 @@ const Sudime = () => {
 
   return (
 <div ref={sectionRef} className="relative h-screen w-screen overflow-hidden">
-  <div className="absolute inset-0 flex justify-center items-center -translate-y-20 md:-translate-y-32 lg:-translate-y-40">
+  <div className="absolute inset-0 flex justify-center items-center -translate-y-20 md:-translate-y-32 lg:-translate-y-40 z-[999]">
     {/* Contenitore immagine responsivo */}
     <div className="relative h-[70vh] w-[90vw] sm:w-[110vw] md:w-[90vw] lg:w-[170vh] lg:h-[100vh] mt-[-160px] overflow-hidden">
       <img
@@ -72,14 +72,19 @@ const Sudime = () => {
       />
     </div>
 
-    {/* Testo sopra immagine */}
+  <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none ">
     <h1
-      className="absolute text-white antonio2 
+      className="text-white antonio2 
         text-[9vw] sm:text-[8vw] md:text-[10vw] lg:text-9xl
-        text-center z-10 pointer-events-none select-none whitespace-nowrap"
+        text-center select-none whitespace-nowrap z- ombra2"
     >
-      {splitText("Sfumature personali", chiSiamo)}
+      {splitText("Sfumature personali", chiSiamo)} 
     </h1>
+    <h3 className="text-white text-[20px] w-[330px] md:text-3xl md:w-[600px] lg:max-w-[1000px] text-center lg:mt-10  text-shadow-black ombra2 antonio">
+  Da sempre appassionato di tecnologia, mi dedico allo sviluppo web e al design digitale. Amo creare progetti che combinano estetica e funzionalità, spingendomi sempre a innovare e migliorare.
+</h3>
+
+  </div>
   </div>
 </div>
 

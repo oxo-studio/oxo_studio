@@ -80,7 +80,7 @@ const SectionHome4 = () => {
       </h1>
 
       {/* Parte superiore dinamica con lavori grandi */}
-      <div className="relative z-10 w-[90vw] h-[90vh] border border-white overflow-hidden">
+      <div className="relative z-10 w-[90vw] h-[90vh]  border border-white overflow-hidden">
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 p-[15px] m-0 transition-transform duration-500">
           {lavoriParteSuperiore.map((lavoro) => (
             <LavoroCard key={lavoro.id} lavoro={lavoro} dimensione="grande" />

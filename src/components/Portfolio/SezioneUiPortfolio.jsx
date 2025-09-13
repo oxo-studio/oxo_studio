@@ -30,7 +30,7 @@ const SezioneUiPortfolio = () => {
                 <Link
                   key={lavoro.id}
                   to={`/lavoro/${lavoro.id}`}
-                  className="group no-underline text-inherit hover:text-white"
+                  className="group text-inherit hover:text-white hover:no-underline no-underline"
                 >
                   <div className="flex items-center justify-between gap-6 p-4 bg-transparent">
                     {/* Dettagli lavoro */}

@@ -59,13 +59,13 @@ const SezioneFinale = () => {
   {/* Titolo grande grigio */}
   <h1
     style={{ fontFamily: "Human" }}
-    className="absolute text-gray-400 text-[25vw] md:text-[23vw] lg:text-[250px] leading-none text-center pointer-events-none opacity-20 z-8"
+    className="absolute text-gray-400 text-[25vw] md:text-[25vw] lg:text-[250px] leading-none text-center pointer-events-none opacity-20 z-8"
   >
     {splitText("LAVORIAMO ASSIEME", text1)}
   </h1>
 
   {/* Paragrafo bianco */}
-  <p className="relative text-white text-[3vw] md:text-[3vw] lg:text-3xl text-center z-10 max-w-[90vw] md:max-w-[800px] px-4">
+  <p className="relative text-white text-[3vw] md:text-3xl lg:text-3xl text-center z-10 max-w-[90vw] md:max-w-[800px] px-4 antonio">
     {splitText(
       "Hai qualcosa in mente? Realizziamolo insieme, con stile e originalità.",
       text2

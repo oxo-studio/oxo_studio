@@ -169,7 +169,7 @@ const SingoloLavoro = () => {
   return (
     <>
      <Categorie/>
-      <div className="w-full h-screen text-white flex flex-col lg:flex-row">
+      <div className="w-full h-screen text-white flex flex-col lg:flex-row mt-[-130px] md:mt-[-70px] ">
        
        {/* Colonna sinistra */}
 <div className="w-full lg:w-[30%] p-6 lg:p-10 flex flex-col items-center justify-center relative">
@@ -266,7 +266,7 @@ const SingoloLavoro = () => {
 
 
         {/* Info sotto immagini (solo md e sm) */}
-<div className="md:flex lg:hidden justify-around items-start md:mt-[-90px]  hidden px-4 flex-wrap gap-4 text-center">
+<div className="md:flex lg:hidden justify-around items-start md:mt-[-90px]  hidden px-4 flex-wrap gap-4 text-center" ref={sectionRefSm}>
  
   <div>
     <h5 className="text-white antonio2 text-xl md:text-3xl">{splitText("Data", data)}</h5>
@@ -306,7 +306,7 @@ const SingoloLavoro = () => {
 
 
         {/* Colonna destra */}
-        <div className="w-full lg:w-[30%] mt-10 p-6 lg:p-10 flex justify-center items-start lg:mt-[100px] md:mt-[50px] md:ml-[-27px]">
+        <div className="w-full lg:w-[30%] mt-10 p-6 lg:p-10 flex justify-center items-start lg:mt-[100px] md:mt-[50px] md:ml-[-27px]" >
           <div>
             <h5 className="text-white antonio2 text-2xl md:text-3xl text-center lg:mb-5">Descrizione</h5>
             <p className="text-gray-300 leading-relaxed text-center antonio2 text-xl md:text-2xl">
