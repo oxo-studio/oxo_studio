@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import SezioneFinale from "./SezioneFinaleSingoloLavoro.jsx"
 import categoriePortfolio from "../FileCategorie.jsx";
+import Categorie from "../../Portfolio/Categorie.jsx";
+
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -166,7 +168,9 @@ const SingoloLavoro = () => {
 
   return (
     <>
+     <Categorie/>
       <div className="w-full h-screen text-white flex flex-col lg:flex-row">
+       
        {/* Colonna sinistra */}
 <div className="w-full lg:w-[30%] p-6 lg:p-10 flex flex-col items-center justify-center relative">
   {/* Titolo e freccia */}
