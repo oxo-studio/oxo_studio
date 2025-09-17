@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -50,28 +51,34 @@ const SezioneFinale = () => {
   return (
 <div
   ref={sectionRef2}
-  className="relative w-full flex items-center justify-center
+  className="relative w-full flex flex-col items-center justify-center
     mt-[10px] sm:mt-[100px] md:mt-[-70px] lg:mt-[-10px] lg:min-h-[40vh]
-    pb-[300px] sm:pb-[150px] md:pb-[120px]
-    min-h-[20vh]
-    -translate-y-10"   
+    pb-[150px] sm:pb-[150px] md:pb-[120px]
+    min-h-[20vh]"
 >
-  {/* Titolo grande grigio */}
   <h1
     style={{ fontFamily: "Human" }}
-    className="absolute text-gray-400 text-[25vw] md:text-[25vw] lg:text-[250px] leading-none text-center pointer-events-none opacity-20 z-8"
+    className="absolute text-gray-400 text-[25vw] md:text-[25vw] lg:text-[350px] leading-none text-center pointer-events-none opacity-20 z-[990]"
   >
     {splitText("LAVORIAMO ASSIEME", text1)}
   </h1>
 
-  {/* Paragrafo bianco */}
-  <p className="relative text-white text-[3vw] md:text-3xl lg:text-3xl text-center z-10 max-w-[90vw] md:max-w-[800px] px-4 antonio">
+  <p className="relative text-white text-[3vw] md:text-3xl lg:text-[40px] lg:max-w-[2000px] text-center z-[999] max-w-[90vw] md:max-w-[800px] px-4 antonio ">
     {splitText(
       "Hai qualcosa in mente? Realizziamolo insieme, con stile e originalità.",
       text2
     )}
   </p>
+
+<Link to="/contatti">
+  <button
+    className="relative z-20 text-white text-lg border border-white px-6 py-3 hover:bg-white hover:text-black transition-all duration-300 mt-8"
+  >
+    Contattaci
+  </button>
+  </Link>
 </div>
+
 
 
   );

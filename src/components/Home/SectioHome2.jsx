@@ -156,13 +156,16 @@ const SectionHome2 = () => {
     <span
       key={i}
       ref={(el) => (ref.current[i] = el)}
-      className="inline-block"
+      className="inline-block "
       style={{ whiteSpace: 'pre' }} // preserva spazi
     >
       {char}
     </span>
   ));
 };
+
+
+
 
 
   return (
@@ -175,7 +178,7 @@ const SectionHome2 = () => {
         <div className="absolute inset-0 z-0 pointer-events-none" />
         <div className="relative z-10 w-full h-full flex items-center justify-center flex-col">
           <h1 className="text-[230px] text-gray-700 antonio2 text-center -rotate-[25deg]">
-            {splitLetters('I NOSTRI SERVIZI', titleRefLg)}
+            {splitLetters ('I NOSTRI SERVIZI', titleRefLg)}
           </h1>
 
           <h1 className="absolute top-10 text-5xl antonio2">
@@ -191,7 +194,7 @@ const SectionHome2 = () => {
           <h1 className="absolute bottom-20 text-5xl antonio2">
             {splitLetters('Web developer', refText3Lg)}
           </h1>
-          <p className="absolute bottom-2 w-1/2 text-lg lg:text-2xl text-white text-center antonio">
+          <p className="absolute bottom-2 w-1/2 text-lg lg:text-2xl  text-white text-center antonio break-normal whitespace-normal">
             {splitLetters(
               'Sviluppiamo siti performanti, scalabili e ottimizzati, utilizzando tecnologie moderne per garantire velocità, sicurezza e funzionalità avanzate.',
               refText7Lg

@@ -59,7 +59,12 @@ const categoriePortfolio = [
       {
         id: "we-01",
         titolo: "Oxo Studio",
-        immagine: "/SvgCode/logooxo.svg",
+         immagini: [
+          "/SvgCode/logooxopersito.svg",
+         "/img/logopresentation-oxo.jpeg"
+        
+        ],
+        immagine: "/SvgCode/logooxopersito.svg",
         descrizione: "Un progetto moderno con focus sull'usabilità.",
         data: "Giugno 2025",
         tecnologie:"Inlustratore"

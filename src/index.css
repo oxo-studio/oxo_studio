@@ -294,3 +294,56 @@ svg path {
     2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
+button {
+  --glow-color: #149CEA; /* azzurro elettrico */
+  --glow-spread-color: rgba(20, 156, 234, 0.2); /* glow soft */
+  --btn-color: #000d1a; /* sfondo scuro per contrasto */
+
+  border: 0.25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 0.6em;
+  outline: none;
+
+  /* Glow molto controllato */
+  box-shadow:
+    inset 0 0 0.3em 0.1em var(--glow-color),
+    0 0 0.5em 0.1em var(--glow-spread-color);
+  
+  text-shadow: 0 0 0.2em var(--glow-color);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(0.3em);
+  opacity: 0.1;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+  pointer-events: none;
+}
+
+button:hover {
+  background-color: var(--glow-color);
+  color: var(--btn-color);
+  box-shadow:
+    inset 0 0 0.3em 0.1em var(--glow-color),
+    0 0 1em 0.2em var(--glow-color);
+  text-shadow: none;
+}
+
+button:active {
+  background-color: #0c7cc4;
+  box-shadow:
+    inset 0 0 0.4em 0.1em var(--glow-color),
+    0 0 0.5em 0.1em var(--glow-spread-color);
+}

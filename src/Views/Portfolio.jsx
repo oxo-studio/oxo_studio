@@ -6,6 +6,7 @@ import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import TransitionContext from '../Context/TransitionContext';
 import Footer from '../components/Footer';
 import Sezione1Portfolio from '../components/Portfolio/Sezione1Portfolio';
+import SezioneFinale from '../components/Portfolio/SezioneFinalePortfolio';
 import Categorie from '../components/Portfolio/Categorie';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -17,23 +18,31 @@ export default function Layers() {
   const observerRef = useRef(null);
   const { completed } = useContext(TransitionContext);
 
-  // Forza scroll top e refresh ScrollTrigger ad ogni montaggio del componente o cambio completed
+  // Forza scroll top e refresh ScrollTrigger ad ogni montaggio o cambio completed
   useEffect(() => {
     if (!completed) return;
 
-    // Piccolo delay per essere sicuri che il DOM sia montato e pronto
-    const timeout = setTimeout(() => {
-      window.scrollTo(0, 0);
-      ScrollTrigger.refresh();
-    }, 50);
+    // Scroll subito a top (senza delay)
+    window.scrollTo(0, 0);
 
-    return () => clearTimeout(timeout);
+    // Refresh ScrollTrigger nel prossimo frame
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
   }, [completed]);
 
   const { contextSafe } = useGSAP(() => {
     if (!completed) return;
 
-    // Prima di tutto kill di tutti i trigger e cleanup observer esistente
+    // Non iniziare se scroll non è ancora top
+    if (window.scrollY !== 0) {
+      // Scroll a top e refresh, poi skip setup ora
+      window.scrollTo(0, 0);
+      ScrollTrigger.refresh();
+      return;
+    }
+
+    // Pulisci trigger e observer esistenti
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     if (observerRef.current) {
       observerRef.current.kill();
@@ -59,11 +68,14 @@ export default function Layers() {
     ScrollTrigger.addEventListener('refresh', updateSnap);
     ScrollTrigger.refresh();
 
-    // Scroll snapping via wheel/touch
+    // Debounce per scroll snapping
+    let isScrolling = false;
+
     observerRef.current = ScrollTrigger.observe({
       type: 'wheel,touch',
       onChangeY(self) {
-        if (!scrollTweenRef.current) {
+        if (!scrollTweenRef.current && !isScrolling) {
+          isScrolling = true;
           const snapTo = snapScroll(
             self.scrollY() + self.deltaY,
             self.deltaY > 0 ? 1 : -1
@@ -72,6 +84,9 @@ export default function Layers() {
           if (targetIndex !== -1) {
             goToSection(targetIndex);
           }
+          setTimeout(() => {
+            isScrolling = false;
+          }, 1100);
         }
       },
     });
@@ -95,6 +110,7 @@ export default function Layers() {
       scrollTo: { y: snapTriggersRef.current[index]?.start || 0, autoKill: false },
       duration: 1,
       overwrite: true,
+      immediateRender: false,
       onComplete: () => (scrollTweenRef.current = null),
     });
   });
@@ -105,8 +121,10 @@ export default function Layers() {
       <section className="description panel h-screen flex flex-col items-center justify-center text-center z-10">
         <Sezione1Portfolio/>
       </section>
-      <section className="h-screen panel">uno</section>
-      {/* Add more <section className="panel">...</section> here as needed */}
+      <section className="h-screen panel">
+        <SezioneFinale/>
+      </section>
+       
       <Footer/>
     </main>
   );

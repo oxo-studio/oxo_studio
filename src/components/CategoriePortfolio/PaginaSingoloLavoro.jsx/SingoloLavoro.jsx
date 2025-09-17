@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import SezioneFinale from "./SezioneFinaleSingoloLavoro.jsx"
 import categoriePortfolio from "../FileCategorie.jsx";
-import Categorie from "../../Portfolio/Categorie.jsx";
+import Categorie from "./CategorieSingoloLavoro.jsx";
+import Footer from "./FooterSingoloLavoro.jsx";
+
 
 
 import gsap from "gsap";
@@ -205,7 +207,7 @@ const SingoloLavoro = () => {
 </div>
 
      {/* Colonna centrale */}
-<div className="w-full lg:w-[70%] min-h-screen lg:h-screen overflow-y-scroll no-scrollbar">
+<div className="w-full lg:w-[70%] min-h-screen lg:h-screen overflow-y-scroll no-scrollbar ">
   {/* MOBILE (<md) */}
   <div className="block md:hidden space-y-[-450px] px-4 mt-[-200px]  ">
     {lavoro.immagini.map((img, index) => (
@@ -317,6 +319,8 @@ const SingoloLavoro = () => {
       </div>
 
       <SezioneFinale/>
+
+     <Footer/>
     </>
   );
 };

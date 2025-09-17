@@ -11,6 +11,8 @@ const SectionHome4 = () => {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
 
+
+
   useEffect(() => {
     const letters = textRef.current.querySelectorAll('span');
 
@@ -89,7 +91,7 @@ const SectionHome4 = () => {
       </div>
 
       {/* Parte inferiore con due colonne dinamiche */}
-      <div className="relative z-10 w-[90vw] h-[55vh] border border-white overflow-hidden -mt-px grid grid-cols-2">
+      <div className="relative hidden md:blok md:grid md z-10 w-[90vw] h-[55vh] border border-white overflow-hidden -mt-px  grid-cols-2">
         {/* Colonna sinistra */}
         <div className="flex flex-col gap-6 p-4 overflow-y-auto">
           {colonnaSinistra.map((lavoro) => (

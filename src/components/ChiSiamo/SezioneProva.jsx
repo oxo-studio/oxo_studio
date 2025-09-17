@@ -23,10 +23,8 @@ const SezioneProva = () => {
         end: "+=150%",
         pin: true,
         scrub: true,
-        
       }
-    })
-    .to(split.words, {
+    }).to(split.words, {
       color: "#ffffff", // diventa bianco durante lo scroll
       stagger: 0.1,
       ease: "none"
@@ -36,13 +34,23 @@ const SezioneProva = () => {
   return (
     <div
       id="textSection"
-      className="relative z-50 mt-36 flex justify-center items-center text-center min-h-screen antonio2"
+      className="relative z-50 mt-36 flex justify-center items-center text-center min-h-screen antonio2 px-4"
     >
-      <h1 ref={textRef}>
-        Fin da piccolo sono stato affascinato dal mondo della tecnologia e dal modo in cui può trasformare le idee in realtà. 
-        Negli anni, questa curiosità si è trasformata in una vera e propria passione per lo sviluppo web, il design digitale e l’innovazione. 
-        Amo sperimentare, imparare continuamente e creare soluzioni che uniscano estetica e funzionalità. 
-        Ogni progetto è per me un’occasione per crescere, mettermi alla prova e dare forma a qualcosa di significativo.
+      <h1
+        ref={textRef}
+        className="text-lg md:text-2xl lg:text-6xl"
+      >
+        {/* testo diverso per mobile e desktop */}
+        <span className="block md:hidden">
+  Fin da giovane sono sempre stato affascinato dalla tecnologia e dal suo potere di trasformare le idee in realtà. La mia passione per lo sviluppo web, il design e l’innovazione cresce ogni giorno, spingendomi a creare soluzioni funzionali ed eleganti.
+</span>
+
+        <span className="hidden md:block ">
+          Fin da piccolo sono stato affascinato dal mondo della tecnologia e dal modo in cui può trasformare le idee in realtà. 
+          Negli anni, questa curiosità si è trasformata in una vera e propria passione per lo sviluppo web, il design digitale e l’innovazione. 
+          Amo sperimentare, imparare continuamente e creare soluzioni che uniscano estetica e funzionalità. 
+          Ogni progetto è per me un’occasione per crescere, mettermi alla prova e dare forma a qualcosa di significativo.
+        </span>
       </h1>
     </div>
   );

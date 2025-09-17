@@ -31,7 +31,7 @@ const Contatti = () => {
       {/* Titolo */}
       <h1
         style={{ fontFamily: 'Human' }}
-        className="text-white text-[17vw] lg:text-[200px] md:text-[200px] leading-[1.1] antonio2 mb-16"
+        className="text-gray-700 text-[17vw] lg:text-[200px] md:text-[130px] md:mt-10 leading-[1.1] antonio2 mb-16"
       >
         # RIMANIAMO IN CONTATTO
       </h1>
