@@ -21,37 +21,37 @@ const LavoroCard = ({ lavoro, dimensione = "grande" }) => {
 
 const imgAnimateRef = useRef(null)
 
-useEffect(()=>{
- 
-  gsap.registerPlugin(ScrollTrigger)
+useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
 
-    gsap.fromTo(".imgAnimate",
-      { opacity: 0, y: 350 },
-      {
-        opacity: 1,
-        duration: 1,
-        y: 0,
-        ease: "slow(1.5,1.5,false)",
-        scrollTrigger: {
-          trigger: imgAnimateRef.current,
-          start: "top 95%",
-          toggleActions: "play none none reverse"
-        }
-      }
-    );
+  gsap.fromTo(
+    imgAnimateRef.current, 
+    { opacity: 0, y: 350 },
+    {
+      opacity: 1,
+      duration: 1,
+      y: 0,
+      ease: "slow(1.5,1.5,false)",
+      scrollTrigger: {
+        trigger: imgAnimateRef.current,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    }
+  );
+}, []);
 
-  }, []);
 
 
 
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center imgAnimate" ref={imgAnimateRef}>
+    <div className="relative w-full h-full flex items-center justify-center " ref={imgAnimateRef}>
       <div className={`relative group ${dimensioni[dimensione]} rounded overflow-visible `} >
         {/* Immagine */}
      <Link to={`/lavoro/${lavoro.id}`}>
 
-  <div className="w-full h-full flex items-center justify-center overflow-hidden rounded transition-transform duration-500 group-hover:scale-105 imgAnimation">
+  <div className="w-full h-full flex items-center justify-center overflow-hidden rounded transition-transform duration-500 group-hover:scale-105">
     <img
       src={lavoro.immagine}
       alt={lavoro.titolo}
@@ -66,7 +66,7 @@ useEffect(()=>{
         {/* Icona in alto a destra */}
         <FontAwesomeIcon
           icon={faArrowRight}
-          className="text-gray-500 absolute top-[-50px] right-[-5px] md:top-[-50px] md:right-[-25px] lg:mt-[10px] lg:mr-[50px] md:text-2xl  text-3xl transition-transform duration-500 group-hover:-rotate-45"
+          className="text-gray-500 absolute top-[155px] right-[-5px] md:top-[150px] md:right-[-10px] lg:mt-[-195px] lg:mr-[50px] md:text-2xl  text-3xl transition-transform duration-500 group-hover:-rotate-45"
         />
       </div>
 

@@ -12,37 +12,38 @@ const LavoroCardBasso = ({ lavoro, dimensione = "medio" }) => {
     medio: "w-full sm:w-[90vw] md:w-[55vw] lg:w-[45vw] h-[30vh] md:h-[60vh] lg:h-[50vh]",
   };
   
-  const imgAnimateRef = useRef(null)
+  const imgAnimationRef = useRef(null)
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
 
-    gsap.fromTo(".imgAnimate",
-      { opacity: 0, y: 350 },
-      {
-        opacity: 1,
-        duration: 1,
-        y: 0,
-        ease: "slow(1.5,1.5,false)",
-        scrollTrigger: {
-          trigger: imgAnimateRef.current,
-          start: "top 95%",
-          toggleActions: "play none none reverse"
-        }
-      }
-    );
+  gsap.fromTo(
+    imgAnimationRef.current, 
+    { opacity: 0, y: 350 },
+    {
+      opacity: 1,
+      duration: 1,
+      y: 0,
+      ease: "slow(1.5,1.5,false)",
+      scrollTrigger: {
+        trigger: imgAnimationRef.current,
+        start: "top 90%",
+        toggleActions: "play none none reverse",
+      },
+    }
+  );
+}, []);
 
-  }, []);
 
   return (
-    <div className="hidden md:block relative md:w-[40vh] md:h-[60vh] md:overflow-hidden lg:w-[80vh] lg:h-[60vh] overflow-hidden  items-center justify-center imgAnimate" ref={imgAnimateRef}>
-      <div className={`relative group ${dimensioni[dimensione]} rounded`} >
+    <div className="hidden md:block relative md:w-[40vh] md:h-[60vh] md:overflow-hidden lg:w-[80vh] lg:h-[60vh] overflow-hidden  items-center justify-center " ref={imgAnimationRef}>
+      <div className={`relative group ${dimensioni[dimensione]} rounded `} >
         {/* Immagine */}
         <Link to={`/lavoro/${lavoro.id}`}>
           <img
             src={lavoro.immagine}
             alt={lavoro.titolo}
-            className=" relative object-contain w-full h-full transition-transform duration-500 lg:w-full lg:h-full lg:top-[20px] lg:right-[0px] md:right-[50px] md:top-[-40px]"
+            className=" relative object-contain w-full h-full  lg:w-full lg:h-full lg:top-[20px] lg:right-[0px] md:right-[50px] md:top-[-40px] transition-transform duration-500 group-hover:scale-105"
           />
         </Link>
 
