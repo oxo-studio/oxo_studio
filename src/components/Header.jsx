@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { Power2 } from 'gsap';
@@ -6,6 +6,20 @@ import CSSRulePlugin from 'gsap/CSSRulePlugin';
 import '../index.css';
 
 export default function Header() {
+  // Funzione per gestire la navigazione con reload
+  const handleNavigation = (path) => {
+    // Salva il percorso di destinazione
+    sessionStorage.setItem('destinationPath', path);
+    
+    // Se siamo già su questa pagina, forza il reload
+    if (window.location.pathname === path) {
+      window.location.reload();
+    } else {
+      // Altrimenti, naviga normalmente
+      window.location.href = path;
+    }
+  };
+
   useEffect(() => {
     const tl = gsap.timeline({ paused: true });
     const path = document.querySelector("path");
@@ -104,10 +118,42 @@ export default function Header() {
 
         <nav className="ml-auto">
           <ul className="gap-2 md:gap-8 lg:gap-8 md:mr-6 hidden md:flex">
-            <li><Link to="/" className="antonio roll-link" data-text="HOME"><span>HOME</span></Link></li>
-            <li><Link to="/ChiSiamo" className="antonio roll-link" data-text="CHI SIAMO"><span>CHI SIAMO</span></Link></li>
-            <li><Link to="/Portfolio" className="antonio roll-link" data-text="PORTFOLIO"><span>PORTFOLIO</span></Link></li>
-            <li><Link to="/Contatti" className="antonio roll-link" data-text="CONTATTI"><span>CONTATTI</span></Link></li>
+            <li>
+              <span 
+                onClick={() => handleNavigation('/')} 
+                className="antonio roll-link cursor-pointer" 
+                data-text="HOME"
+              >
+                <span>HOME</span>
+              </span>
+            </li>
+            <li>
+              <span 
+                onClick={() => handleNavigation('/ChiSiamo')} 
+                className="antonio roll-link cursor-pointer" 
+                data-text="CHI SIAMO"
+              >
+                <span>CHI SIAMO</span>
+              </span>
+            </li>
+            <li>
+              <span 
+                onClick={() => handleNavigation('/Portfolio')} 
+                className="antonio roll-link cursor-pointer" 
+                data-text="PORTFOLIO"
+              >
+                <span>PORTFOLIO</span>
+              </span>
+            </li>
+            <li>
+              <span 
+                onClick={() => handleNavigation('/Contatti')} 
+                className="antonio roll-link cursor-pointer" 
+                data-text="CONTATTI"
+              >
+                <span>CONTATTI</span>
+              </span>
+            </li>
           </ul>
         </nav>
        
@@ -134,11 +180,10 @@ export default function Header() {
 
       <div className="menu">
         <div className="menu-items flex flex-col justify-center items-center gap-8 h-screen text-white text-3xl antonio">
-          <Link to="/">HOME</Link>
-          <Link to="/ChiSiamo">CHI SIAMO</Link>
-          <Link to="/Portfolio">PORTFOLIO</Link>
-          <Link to="/Contatti">CONTATTI</Link>
-          
+          <span onClick={() => handleNavigation('/')} className="cursor-pointer">HOME</span>
+          <span onClick={() => handleNavigation('/ChiSiamo')} className="cursor-pointer">CHI SIAMO</span>
+          <span onClick={() => handleNavigation('/Portfolio')} className="cursor-pointer">PORTFOLIO</span>
+          <span onClick={() => handleNavigation('/Contatti')} className="cursor-pointer">CONTATTI</span>
         </div>
       </div>
     </>

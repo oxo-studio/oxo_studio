@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,43 +9,52 @@ const SezioneProva = () => {
   const textRef = useRef(null);
   const splitRef = useRef(null);
 
-  useEffect(() => {
-    // Prendi SOLO il testo visibile (quello con display != none)
-    const visibleTextElement = Array.from(textRef.current.children).find(
-      (el) => window.getComputedStyle(el).display !== "none"
-    );
+  useLayoutEffect(() => {
+    if (!textRef.current) return;
 
-    if (!visibleTextElement) return;
+    // Delay leggero per assicurarsi che CSS e media query siano applicati
+    const raf = requestAnimationFrame(() => {
+      const timeout = setTimeout(() => {
+        console.log("Mount SezioneProva, children:", textRef.current.children);
+        const visibleTextElement = Array.from(textRef.current.children).find(
+          (el) => window.getComputedStyle(el).display !== "none"
+        );
+        console.log("Visible text element:", visibleTextElement);
 
-    splitRef.current = new SplitText(visibleTextElement, {
-      type: "words",
-      wordsClass: "word",
+        if (!visibleTextElement) return;
+
+        splitRef.current = new SplitText(visibleTextElement, {
+          type: "words",
+          wordsClass: "word",
+        });
+
+        gsap.set(splitRef.current.words, { color: "#888888" });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#textSection",
+            start: "top top",
+            end: "+=150%",
+            pin: true,
+            scrub: true,     
+            invalidateOnRefresh: true,
+          }
+        });
+
+        tl.to(splitRef.current.words, {
+          color: "#ffffff",
+          stagger: 0.1,
+          ease: "none",
+        });
+
+        ScrollTrigger.refresh();
+      }, 50);
+
+      return () => clearTimeout(timeout);
     });
-
-    gsap.set(splitRef.current.words, { color: "#888888" }); // testo grigio iniziale
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#textSection",
-        start: "top top",
-        end: "+=150%",
-        pin: true,
-        scrub: true,
-        invalidateOnRefresh: true, // importante se cambia layout
-      },
-    });
-
-    tl.to(splitRef.current.words, {
-      color: "#ffffff",
-      stagger: 0.1,
-      ease: "none",
-    });
-
-    // Refresh ScrollTrigger per sicurezza
-    ScrollTrigger.refresh();
 
     return () => {
-      // Distruggi SplitText all'unmount
+      cancelAnimationFrame(raf);
       splitRef.current?.revert();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -57,7 +66,6 @@ const SezioneProva = () => {
       className="relative z-50 mt-36 flex justify-center items-center text-center min-h-screen antonio2 px-4"
     >
       <h1 ref={textRef} className="text-lg md:text-2xl lg:text-6xl">
-        {/* testo diverso per mobile e desktop */}
         <span className="block md:hidden">
           Fin da giovane sono sempre stato affascinato dalla tecnologia e dal suo
           potere di trasformare le idee in realtà. La mia passione per lo sviluppo

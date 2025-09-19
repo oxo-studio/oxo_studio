@@ -8,23 +8,24 @@ export default function SplashScreen({ onFinish }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-   // Fai apparire il logo (una volta sola)
-gsap.fromTo(".logo",
-  { opacity: 0 },
-  { opacity: 1, duration: 0.5 }
-);
+    // Animazione del logo
+    gsap.fromTo(".logo",
+      { opacity: 0 },
+      { opacity: 1, duration: 0.5 }
+    );
 
-// Rimbalzo avanti e indietro solo sullo z
-gsap.fromTo(".logo",
-  { z: -300 },
-  {
-    z: 300,
-    duration: 1,
-    ease: "bounce.out",
-    repeat: 3,
-    yoyo: true
-  }
-);
+    // Rimbalzo avanti e indietro solo sullo z
+    gsap.fromTo(".logo",
+      { z: -300 },
+      {
+        z: 300,
+        duration: 1,
+        ease: "bounce.out",
+        repeat: 3,
+        yoyo: true
+      }
+    );
+    
     gsap.fromTo(
       logoRef.current,
       { scale: 0, opacity: 0 },
@@ -54,7 +55,7 @@ gsap.fromTo(".logo",
           onFinish();
         }, 300);
       }
-    }, 20); // 100 * 20ms = 2s
+    }, 20);
 
     return () => clearInterval(interval);
   }, [onFinish]);
