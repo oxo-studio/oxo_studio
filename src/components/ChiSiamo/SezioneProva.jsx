@@ -73,7 +73,7 @@ const SezioneProva = () => {
           soluzioni funzionali ed eleganti.
         </span>
 
-        <span className="hidden md:block ">
+        <span className="hidden md:block  ">
           Fin da piccolo sono stato affascinato dal mondo della tecnologia e dal
           modo in cui può trasformare le idee in realtà. Negli anni, questa
           curiosità si è trasformata in una vera e propria passione per lo sviluppo
