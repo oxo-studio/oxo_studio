@@ -17,7 +17,7 @@ const Router = () => {
 
   return (
     <TransitionProvider>
-      <Routes location={location}>
+      <Routes location={location} key={location.pathname}>
         <Route
           index
           element={
@@ -36,6 +36,7 @@ const Router = () => {
         />
         <Route
           path="/Portfolio"
+          
           element={
             <TransitionComponent>
               <Portfolio />

@@ -3,12 +3,12 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
+
 import TransitionContext from '../Context/TransitionContext';
 import Footer from '../components/Footer';
 import Sezione1Portfolio from '../components/Portfolio/Sezione1Portfolio';
 import SezioneFinale from '../components/Portfolio/SezioneFinalePortfolio';
 import Categorie from '../components/Portfolio/Categorie';
-
 import SeoMetaTags from '../components/SeoMetaTags';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -36,15 +36,12 @@ export default function Layers() {
   const { contextSafe } = useGSAP(() => {
     if (!completed) return;
 
-    // Non iniziare se scroll non è ancora top
     if (window.scrollY !== 0) {
-      // Scroll a top e refresh, poi skip setup ora
       window.scrollTo(0, 0);
       ScrollTrigger.refresh();
       return;
     }
 
-    // Pulisci trigger e observer esistenti
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     if (observerRef.current) {
       observerRef.current.kill();
@@ -70,7 +67,6 @@ export default function Layers() {
     ScrollTrigger.addEventListener('refresh', updateSnap);
     ScrollTrigger.refresh();
 
-    // Debounce per scroll snapping
     let isScrolling = false;
 
     observerRef.current = ScrollTrigger.observe({
@@ -118,25 +114,26 @@ export default function Layers() {
   });
 
   return (
-
     <>
       <SeoMetaTags
         title="Portfolio Siti Web Realizzati - La Spezia | OXO Studio"
         description="Guarda i nostri lavori di web design e sviluppo siti web realizzati per clienti di La Spezia, Liguria e 5 Terre. Portfolio agenzia sviluppo web professionale."
         canonicalUrl="/Portfolio"
       />
-    
-    <main ref={mainRef}>
-      <Categorie/>
-      <section className="description panel h-screen flex flex-col items-center justify-center text-center z-10">
-        <Sezione1Portfolio/>
-      </section>
-      <section className="h-screen panel">
-        <SezioneFinale/>
-      </section>
-       
-      <Footer/>
-    </main>
+
+      <main ref={mainRef}>
+        {/* 🔽 Wrapper per animazioni globali */}
+        <div className="page-content">
+          <Categorie />
+          <section className="description panel h-screen flex flex-col items-center justify-center text-center z-10">
+            <Sezione1Portfolio />
+          </section>
+          <section className="h-screen panel">
+            <SezioneFinale />
+          </section>
+          <Footer />
+        </div>
+      </main>
     </>
   );
 }

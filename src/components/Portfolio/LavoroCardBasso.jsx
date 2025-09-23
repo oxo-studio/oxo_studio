@@ -32,6 +32,9 @@ useEffect(() => {
       },
     }
   );
+    return () => {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  };
 }, []);
 
 

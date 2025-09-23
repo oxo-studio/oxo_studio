@@ -7,44 +7,36 @@ import { useGSAP } from '@gsap/react';
 
 import Router from './Router/Router';
 import Header from './components/Header';
-import SplashScreen from './components/SpashScreen'; // Corretto il typo: SpashScreen → SplashScreen
-import ScrollToTop from '../src/components/ScrollToTop';
+import SplashScreen from './components/SpashScreen'; // Corretto typo
+import ScrollToTop from './components/ScrollToTop';
+import ScrollTriggerHandler from './components/ScrollTriggerHandler'; // importa il nuovo componente
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP);
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
-  const location = useLocation(); // Usa useLocation di React Router
+  const location = useLocation();
 
   const handleSplashFinish = () => {
     setShowSplash(false);
   };
 
-  // Gestisci il reset dello scroll e le animazioni quando cambia la route
-  useEffect(() => {
-    if (!showSplash) {
-      // Scrolla in alto quando cambia la route
-      window.scrollTo(0, 0);
-      
-      // Rianima gli elementi della nuova pagina
-      gsap.fromTo('.page-content', 
+  // Anima il fade-in al cambio pagina (dopo lo splash)
+useEffect(() => {
+  if (!showSplash) {
+    window.scrollTo(0, 0);
+    
+    requestAnimationFrame(() => {
+      gsap.fromTo(
+        '.page-content',
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
       );
-
-      // Ricalcola ScrollTrigger per la nuova pagina
       ScrollTrigger.refresh();
-    }
-  }, [location, showSplash]);
+    });
+  }
+}, [location, showSplash]);
 
-  // Cleanup delle animazioni quando il componente viene smontato
-  useEffect(() => {
-    return () => {
-      // Kill tutte le animazioni GSAP e ScrollTrigger
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      gsap.globalTimeline.clear();
-    };
-  }, []);
 
   return (
     <>
@@ -54,6 +46,8 @@ function App() {
         <>
           <Header />
           <ScrollToTop />
+          {/* Qui inseriamo il gestore globale di ScrollTrigger */}
+          <ScrollTriggerHandler location={location} active={!showSplash} />
           <Router />
         </>
       )}

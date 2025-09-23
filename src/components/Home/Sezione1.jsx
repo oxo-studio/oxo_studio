@@ -71,7 +71,7 @@ export default function Sezione1() {
           <span
             key={i}
             ref={xLetterRef}
-            className="inline-block text-blue-500" // Aggiungo colore per evidenziare
+            className="inline-block text-white ombra2" // Aggiungo colore per evidenziare
           >
             {char}
           </span>
@@ -101,10 +101,10 @@ export default function Sezione1() {
       </div>
 
       <div className="relative z-10 text-center" style={{ userSelect: "none" }}>
-        <h1 className="text-7xl md:text-9xl lg:text-[150px] antonio2 ombra2">
+        <h1 className="text-7xl md:text-9xl lg:text-[150px] antonio2 ombra2 text-white">
           {splitText("OXO STUDIO", OxoStudioRef)}
         </h1>
-        <h2 className="text-3xl md:text-5xl lg:text-6xl mt-4 antonio ombra2">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl mt-4 antonio ombra2 text-white">
           {splitText("Creative Studio", CreativeStudio)}
         </h2>
       </div>

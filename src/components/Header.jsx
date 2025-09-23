@@ -1,48 +1,11 @@
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { Power2 } from 'gsap';
 import CSSRulePlugin from 'gsap/CSSRulePlugin';
 import '../index.css';
 
 export default function Header() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  // Funzione per gestire la navigazione con React Router
-  const handleNavigation = (path) => {
-    // Chiudi il menu prima della navigazione
-    closeMenu();
-    
-    // Naviga usando React Router (senza ricaricamento della pagina)
-    if (location.pathname === path) {
-      // Se siamo già sulla stessa pagina, scrolla in alto
-      window.scrollTo(0, 0);
-    } else {
-      navigate(path);
-    }
-  };
-
-  // Funzione per chiudere il menu
-  const closeMenu = () => {
-    const hamburger = document.getElementById("hamburger");
-    const menu = document.querySelector(".menu");
-    const overlay = document.querySelector(".overlay");
-    
-    if (hamburger && hamburger.classList.contains("active")) {
-      hamburger.classList.remove("active");
-      menu.classList.remove("open");
-      overlay.classList.remove("active");
-      document.body.style.overflow = '';
-      document.body.classList.remove('menu-open');
-      
-      // Aggiungi qui la logica per invertire l'animazione GSAP
-      if (window.tl && !window.tl.reversed()) {
-        window.tl.reverse();
-      }
-    }
-  };
-
   useEffect(() => {
     const tl = gsap.timeline({ paused: true });
     const path = document.querySelector("path");
@@ -54,11 +17,8 @@ export default function Header() {
     const toggleBtn = document.getElementById("toggle-btn");
     const menu = document.querySelector(".menu");
     const overlay = document.querySelector(".overlay");
-    const menuLinks = document.querySelectorAll(".menu span"); // Cambiato da "a" a "span"
+    const menuLinks = document.querySelectorAll(".menu a");
     const chars = document.querySelectorAll("#oxo-studio .split-char");
-
-    // Salva la timeline in una variabile globale per poterla usare in closeMenu
-    window.tl = tl;
 
     tl.eventCallback("onReverseComplete", () => {
       if (window.innerWidth < 768) {
@@ -83,6 +43,7 @@ export default function Header() {
         document.body.style.overflow = isOpen ? 'hidden' : '';
         document.body.classList.toggle('menu-open', isOpen);
 
+        // Imposta z-index dinamico
         hamburger.style.zIndex = isOpen ? 1100 : 1001;
 
         if (tl.reversed()) {
@@ -96,13 +57,15 @@ export default function Header() {
       };
     }
 
-    // Modifica qui per usare handleNavigation
     menuLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        const path = e.target.getAttribute('data-path');
-        if (path) {
-          handleNavigation(path);
-        }
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        menu.classList.remove("open");
+        overlay.classList.remove("active");
+        if (!tl.reversed()) tl.reverse();
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        hamburger.style.zIndex = 1001;
       });
     });
 
@@ -124,73 +87,38 @@ export default function Header() {
     tl.to(path, 0.8, { attr: { d: end }, ease: Power2.easeIn }, "-=0.5");
 
     tl.reverse();
-
-    // Cleanup
-    return () => {
-      if (window.tl) {
-        window.tl.kill();
-        delete window.tl;
-      }
-    };
-  }, [location, navigate]);
+  }, []);
 
   return (
     <>
       <header className="w-full z-50 top-0 left-0 header lg:fixed relative px-4 py-2 flex justify-between items-center bg-black">
         <h1 className="lg:text-4xl md:text-4xl text-5xl mt-20 md:mt-2 lg:ml-6 md:ml-6 md:block">
-          {/* Usa Link per il logo */}
-          <Link to="/" className="antonio lg:inline text-white no-underline" id="oxo-studio">
+          <span className="antonio lg:inline text-white" id="oxo-studio">
             {"OXO-STUDIO".split("").map((char, i) => (
               <span key={i} className="split-char inline-block">
                 {char === " " ? "\u00A0" : char}
               </span>
             ))}
-          </Link>
+          </span>
         </h1>
 
         <nav className="ml-auto">
           <ul className="gap-2 md:gap-8 lg:gap-8 md:mr-6 hidden md:flex">
-            <li>
-              <Link 
-                to="/" 
-                className="antonio roll-link cursor-pointer no-underline" 
-                data-text="HOME"
-              >
-                <span>HOME</span>
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/ChiSiamo" 
-                className="antonio roll-link cursor-pointer no-underline" 
-                data-text="CHI SIAMO"
-              >
-                <span>CHI SIAMO</span>
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/Portfolio" 
-                className="antonio roll-link cursor-pointer no-underline" 
-                data-text="PORTFOLIO"
-              >
-                <span>PORTFOLIO</span>
-              </Link>
-            </li>
-            <li>
-              <Link 
-                to="/Contatti" 
-                className="antonio roll-link cursor-pointer no-underline" 
-                data-text="CONTATTI"
-              >
-                <span>CONTATTI</span>
-              </Link>
-            </li>
+            <li><Link to="/" className="antonio roll-link" data-text="HOME"><span>HOME</span></Link></li>
+            <li><Link to="/ChiSiamo" className="antonio roll-link" data-text="CHI SIAMO"><span>CHI SIAMO</span></Link></li>
+            <li><Link to="/Portfolio" className="antonio roll-link" data-text="PORTFOLIO"><span>PORTFOLIO</span></Link></li>
+            <li><Link to="/Contatti" className="antonio roll-link" data-text="CONTATTI"><span>CONTATTI</span></Link></li>
           </ul>
         </nav>
+       
       </header>
 
-      <div className="btn fixed top-4 right-4 z-[1100]" id="toggle-btn">
+      {/* Bottone Hamburger FIXED e con z-index alto */}
+      
+      <div
+        className="btn fixed top-4 right-4 z-[1100]"
+        id="toggle-btn"
+      >
         <div className="btn-outline btn-outline-1"></div>
         <div className="btn-outline btn-outline-2"></div>
         <div id="hamburger">
@@ -206,31 +134,11 @@ export default function Header() {
 
       <div className="menu">
         <div className="menu-items flex flex-col justify-center items-center gap-8 h-screen text-white text-3xl antonio">
-          {/* Aggiungi data-path per identificare il percorso */}
-          <span 
-            data-path="/" 
-            className="cursor-pointer"
-          >
-            HOME
-          </span>
-          <span 
-            data-path="/ChiSiamo" 
-            className="cursor-pointer"
-          >
-            CHI SIAMO
-          </span>
-          <span 
-            data-path="/Portfolio" 
-            className="cursor-pointer"
-          >
-            PORTFOLIO
-          </span>
-          <span 
-            data-path="/Contatti" 
-            className="cursor-pointer"
-          >
-            CONTATTI
-          </span>
+          <Link to="/">HOME</Link>
+          <Link to="/ChiSiamo">CHI SIAMO</Link>
+          <Link to="/Portfolio">PORTFOLIO</Link>
+          <Link to="/Contatti">CONTATTI</Link>
+          
         </div>
       </div>
     </>
