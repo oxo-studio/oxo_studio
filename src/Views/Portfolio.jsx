@@ -9,6 +9,8 @@ import Sezione1Portfolio from '../components/Portfolio/Sezione1Portfolio';
 import SezioneFinale from '../components/Portfolio/SezioneFinalePortfolio';
 import Categorie from '../components/Portfolio/Categorie';
 
+import SeoMetaTags from '../components/SeoMetaTags';
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Layers() {
@@ -116,6 +118,14 @@ export default function Layers() {
   });
 
   return (
+
+    <>
+      <SeoMetaTags
+        title="Portfolio Siti Web Realizzati - La Spezia | OXO Studio"
+        description="Guarda i nostri lavori di web design e sviluppo siti web realizzati per clienti di La Spezia, Liguria e 5 Terre. Portfolio agenzia sviluppo web professionale."
+        canonicalUrl="/Portfolio"
+      />
+    
     <main ref={mainRef}>
       <Categorie/>
       <section className="description panel h-screen flex flex-col items-center justify-center text-center z-10">
@@ -127,5 +137,6 @@ export default function Layers() {
        
       <Footer/>
     </main>
+    </>
   );
 }

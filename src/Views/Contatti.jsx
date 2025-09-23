@@ -1,6 +1,8 @@
 import Footer from "../components/Footer";
 import emailjs from "@emailjs/browser";
 
+import SeoMetaTags from "../components/SeoMetaTags";
+
 const Contatti = () => {
 
   const sendMail =(e)=>{
@@ -27,6 +29,14 @@ const Contatti = () => {
       );
   };
   return (
+
+     <>
+         <SeoMetaTags
+        title="Contatti - Agenzia Web La Spezia | OXO Studio"
+        description="Contatta OXO Studio per sviluppo siti web, SEO e design grafico a La Spezia. Preventivi gratuiti per progetti web e digitali in Liguria."
+        canonicalUrl="/Contatti"
+      />
+
     <div className="relative z-[9999] w-full min-h-screen px-4 sm:px-8 md:px-12 lg:pl-[220px] lg:mt-[0px] md:mt-0 mt-[90px] py-20">
       {/* Titolo */}
       <h1
@@ -122,6 +132,7 @@ const Contatti = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

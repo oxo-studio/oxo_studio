@@ -9,12 +9,22 @@ import SezioneFinaleHome from "../components/Home/SezioneFinaleHome"
 import Footer from '../components/Footer'
 import Sudime from "../components/Home/Sudime";
 
+import SeoMetaTags from "../components/SeoMetaTags";
+
+
+
 
 export default function Boxes() {
 
   return (
     
      <>
+
+       <SeoMetaTags
+        title="Agenzia Sviluppo Web La Spezia - Web Design Liguria"
+        description="OXO Studio: sviluppo siti web, SEO e design grafico a La Spezia. Servizi professionali per 5 Terre e Liguria. Creiamo siti moderni e performanti."
+        canonicalUrl="/"
+      />
   {/* SHADER BACKGROUND */}
   <MauseBable />
 
