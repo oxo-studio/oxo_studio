@@ -59,7 +59,7 @@ const Router = () => {
           }
         />
         <Route
-          path="/LogoDesign"
+          path="/LodoDesign"
           element={
             <TransitionComponent>
               <LogoDesign />

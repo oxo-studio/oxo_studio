@@ -11,7 +11,7 @@ const Categorie = () => {
         <Link to="/Portfolio" className="hover:text-white  transition">
           <FontAwesomeIcon icon={faThLarge} className="text-gray-600 text-2xl" />
         </Link>
-        <Link to="/src/components/Portfolio/SezioneUiPortfolio.jsx" className="hover:text-white transition">
+        <Link to="/SezioneUiPortfolio" className="hover:text-white transition">
           <FontAwesomeIcon icon={faListUl} className="text-gray-600 text-2xl" />
         </Link>
       </div>
@@ -21,7 +21,7 @@ const Categorie = () => {
         <Link to="/WebDesign" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
           Web Design
         </Link>
-        <Link to="/WebDeveloper." className="text-white hover:text-gray-600 hover:decoration-transparent transition">
+        <Link to="/WebDeveloper" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
           Web Developer
         </Link>
         <Link to="/LodoDesign" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
