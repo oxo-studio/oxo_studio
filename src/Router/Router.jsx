@@ -15,26 +15,92 @@ import SingoloLavoro from '../components/CategoriePortfolio/PaginaSingoloLavoro.
 const Router = () => {
   const location = useLocation();
 
-    return (
+  return (
     <TransitionProvider>
-      <TransitionComponent key={location.pathname}>
-        <Routes location={location}>
-          <Route index element={<Home />} />
-          <Route path="/ChiSiamo" element={<ChiSiamo />} />
-          <Route path="/Portfolio" element={<Portfolio />} />
-          <Route path="/Contatti" element={<Contatti />} />
-          <Route path="/AppDeveloper" element={<AppDeveloper />} />
-          <Route path="/LodoDesign" element={<LogoDesign />} />
-          <Route path="/WebDesign" element={<WebDesign />} />
-          <Route path="/WebDeveloper" element={<WebDeveloper />} />
-          <Route path="/SezioneUiPortfolio" element={<SezioneUiPortfolio />} />
-          <Route path="/lavoro/:id" element={<SingoloLavoro />} />
-        </Routes>
-      </TransitionComponent>
+      <Routes location={location}>
+        <Route
+          index
+          element={
+            <TransitionComponent>
+              <Home />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/ChiSiamo"
+          element={
+            <TransitionComponent>
+              <ChiSiamo />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/Portfolio"
+          element={
+            <TransitionComponent>
+              <Portfolio />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/Contatti"
+          element={
+            <TransitionComponent>
+              <Contatti />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/AppDeveloper"
+          element={
+            <TransitionComponent>
+              <AppDeveloper />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/LodoDesign"
+          element={
+            <TransitionComponent>
+              <LogoDesign />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/WebDesign"
+          element={
+            <TransitionComponent>
+              <WebDesign />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/WebDeveloper"
+          element={
+            <TransitionComponent>
+              <WebDeveloper />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/SezioneUiPortfolio"
+          element={
+            <TransitionComponent>
+              <SezioneUiPortfolio />
+            </TransitionComponent>
+          }
+        />
+        <Route
+          path="/lavoro/:id"
+          element={
+            <TransitionComponent>
+              <SingoloLavoro />
+            </TransitionComponent>
+          }
+        />
+      </Routes>
     </TransitionProvider>
   );
 };
-
-
 
 export default Router;
