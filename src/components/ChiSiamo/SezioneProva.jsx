@@ -1,95 +1,103 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import SplitText from "gsap/SplitText";
 
-gsap.registerPlugin(SplitText);
-
-const SezioneMaskReveal = () => {
+const MaskRevealText = () => {
   const containerRef = useRef(null);
-  const textRef = useRef(null);
-  const maskRef = useRef(null);
-  const maskTextRef = useRef(null);
-  const splitRef = useRef({ gray: null, white: null });
+  const whiteTextRef = useRef(null);
 
-  // Split the gray and white versions of the text
-  useLayoutEffect(() => {
-    if (!textRef.current || !maskTextRef.current) return;
-
-    splitRef.current.gray = new SplitText(textRef.current, {
-      type: "words",
-      wordsClass: "word",
-    });
-
-    splitRef.current.white = new SplitText(maskTextRef.current, {
-      type: "words",
-      wordsClass: "word",
-    });
-
-    gsap.set(splitRef.current.gray.words, { color: "#888888" });
-    gsap.set(splitRef.current.white.words, { color: "#ffffff" });
-
-    return () => {
-      splitRef.current.gray?.revert();
-      splitRef.current.white?.revert();
-    };
-  }, []);
-
-  // Mouse mask logic - CORRETTO per avere la maschera attaccata al mouse
   useEffect(() => {
     const container = containerRef.current;
+    const whiteText = whiteTextRef.current;
+    const radius = 100; // raggio del cerchio
 
-    const onMove = (e) => {
-      const rect = container.getBoundingClientRect();
-      
-      // Calcola la posizione CENTRATA sul mouse
-      const x = e.clientX - rect.left - 100; // 100 = metà della larghezza (200px/2)
-      const y = e.clientY - rect.top - 100;  // 100 = metà dell'altezza (200px/2)
+    const moveMask = (e) => {
+      const rect = whiteText.getBoundingClientRect();
 
-      // Muovi la maschera istantaneamente (senza animazione)
-      gsap.set(maskRef.current, { x, y });
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      gsap.to(whiteText, {
+        duration: 0.3,
+        ease: "power3.out",
+        clipPath: `circle(${radius}px at ${x}px ${y}px)`,
+        webkitClipPath: `circle(${radius}px at ${x}px ${y}px)`,
+      });
     };
 
-    container.addEventListener("mousemove", onMove);
-    
-    // Posiziona la maschera al centro all'inizio
-    const initialX = window.innerWidth / 2 - 100;
-    const initialY = window.innerHeight / 2 - 100;
-    gsap.set(maskRef.current, { x: initialX, y: initialY });
+    container.addEventListener("mousemove", moveMask);
 
-    return () => container.removeEventListener("mousemove", onMove);
+    gsap.set(whiteText, {
+      clipPath: `circle(0px at 0 0)`,
+      webkitClipPath: `circle(0px at 0 0)`,
+    });
+
+    return () => {
+      container.removeEventListener("mousemove", moveMask);
+    };
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden px-6 cursor-none"
-    >
-      {/* TEXT - BASE GRAY */}
-      <h1
-        ref={textRef}
-        className="text-4xl md:text-6xl lg:text-7xl font-bold antonio2 text-center max-w-4xl leading-snug z-10 text-gray-600"
-      >
-        Fin da giovane sono sempre stato affascinato dalla tecnologia e dal suo potere di trasformare le idee in realtà.
-      </h1>
+    <>
+      <style>{`
+      
+        .container {
+          position: relative;
+          height: 100vh;
+          overflow: auto;
+        }
+        .filled-text, .outlined-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-46%, -50%);
+          width: 100vw;
+          text-align: center;
+          font-size: 5rem;
+          font-weight: bold;
+          line-height: 4rem;
+          letter-spacing: -5px;
+          padding: 5rem;
+          pointer-events: none;
+          user-select: none;
+        }
+        @media screen and (max-width: 768px) {
+          .filled-text, .outlined-text {
+            font-size: 3rem;
+            line-height: 2.5rem;
+            padding: 5px;
+          }
+        }
+        .filled-text {
+          color: #374151; /* gray-700 */
+          z-index: 0;
+        }
+        .outlined-text {
+          color: white;
+          z-index: 2;
+          pointer-events: none;
+          clip-path: circle(0 at 0 0);
+          -webkit-clip-path: circle(0 at 0 0);
+          transition: clip-path 0.3s ease-out;
+        }
+      `}</style>
 
-      {/* MASK OVERLAY - reveals white version of the same text */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20">
-        <div
-          ref={maskRef}
-          className="w-[200px] h-[200px] rounded-full overflow-hidden absolute"
-        >
-          <div className="w-full h-full absolute flex items-center justify-center">
-            <h1
-              ref={maskTextRef}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold antonio2 text-white text-center max-w-4xl leading-snug"
-            >
-              Fin da giovane sono sempre stato affascinato dalla tecnologia e dal suo potere di trasformare le idee in realtà.
-            </h1>
-          </div>
-        </div>
+      <div ref={containerRef} className="container overflow-hidden lg:mt-[-100px]   ">
+        <span className="filled-text max-w-[1700px]" aria-hidden="true">
+          Sono appassionato di tecnologia.<br className="mb-6" />
+          Amo trasformare idee in realtà digitali.<br  className="mb-6"  />
+          Lo sviluppo informatico è la mia passione.<br  className="mb-6"  />
+          Creo esperienze innovative e funzionali.<br  className="mb-6"  />
+        </span>
+
+        <span ref={whiteTextRef} className="outlined-text max-w-[1700px]" aria-hidden="true">
+          Sono appassionato di tecnologia.<br  className="mb-6"  />
+          Amo trasformare idee in realtà digitali.<br  className="mb-6"  />
+          Lo sviluppo informatico è la mia passione.<br  className="mb-6"  />
+          Creo esperienze innovative e funzionali.<br  className="mb-6"  />
+        </span>
       </div>
-    </div>
+    </>
   );
 };
 
-export default SezioneMaskReveal;
+export default MaskRevealText;

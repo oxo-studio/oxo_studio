@@ -171,20 +171,20 @@ const SingoloLavoro = () => {
   return (
     <>
      <Categorie/>
-      <div className="w-full h-screen text-white flex flex-col lg:flex-row mt-[-130px] md:mt-[-70px] ">
+      <div className="w-full h-screen text-white flex flex-col lg:flex-row mt-[-130px] md:mt-[-70px]  ">
        
        {/* Colonna sinistra */}
-<div className="w-full lg:w-[30%] p-6 lg:p-10 flex flex-col items-center justify-center relative">
+<div className="w-full lg:w-[30%] p-6 lg:p-10  lg:mt-[-170px] flex flex-col items-center justify-center relative">
   {/* Titolo e freccia */}
   <Link
     to="https://www.crazyntinatattoo.it/"
-    className="text-white hover:decoration-transparent relative group"
+    className="text-white hover:decoration-transparent relative group "
   >
     <FontAwesomeIcon
       icon={faArrowLeft}
       className="text-gray-500 md:hidden hidden md:mt-[160px] md:ml-[-50px] absolute  left-0 lg:static lg:mt-[-120px] lg:mb-2 transition-transform duration-500 group-hover:-translate-x-2"
     />
-    <h2 className="text-4xl mt-[170px] md:text-6xl md:mt-[100px] font-bold  lg:mb-10 antonio2 text-center lg:text-left lg:text-6xl">
+    <h2 className="text-4xl mt-[170px] md:text-6xl md:mt-[100px]  font-bold  lg:mb-10 antonio2 text-center lg:text-left lg:text-6xl">
       {lavoro.titolo}
     </h2>
   </Link>
@@ -308,7 +308,7 @@ const SingoloLavoro = () => {
 
 
         {/* Colonna destra */}
-        <div className="w-full lg:w-[30%] mt-10 p-6 lg:p-10 flex justify-center items-start lg:mt-[100px] md:mt-[50px] md:ml-[-27px]" >
+        <div className="w-full lg:w-[30%] mt-10 p-6 lg:p-10 flex justify-center items-start lg:mt-[60px] md:mt-[50px] md:ml-[-27px]" >
           <div>
             <h5 className="text-white antonio2 text-2xl md:text-3xl text-center lg:mb-5">Descrizione</h5>
             <p className="text-gray-300 leading-relaxed text-center antonio2 text-xl md:text-2xl">
