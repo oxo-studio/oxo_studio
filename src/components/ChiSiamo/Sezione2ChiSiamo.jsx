@@ -1,8 +1,7 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import MouseLight from "../shader/MauseLight";
+import MauseLight from "../shader/MauseLight"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,8 +73,8 @@ const Sezione2ChiSiamo = () => {
     ));
 
   return (
-    <div ref={sectionRef} className="relative mt-[100px]">
-       <MouseLight />
+    <div ref={sectionRef} className="relative mt-[-50px]">
+       < MauseLight />
       <h1
         className="text-8xl md:text-8xl pl-[70px] text-white"
         style={{ fontFamily: "Human" }}
@@ -84,7 +83,7 @@ const Sezione2ChiSiamo = () => {
         {splitText("Le mie skills")}
       </h1>
 
-     <section className="pl-4 pr-4 md:pl-20 md:pr-20 antonio2 text-white relative mt-[50px]">
+     <section className="pl-4 pr-4 md:pl-20 md:pr-20 antonio2 text-white relative mb-[200px]">
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 pt-12">
     {/* Skill Card */}
     <div className="text-center">

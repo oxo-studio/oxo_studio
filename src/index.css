@@ -347,3 +347,12 @@ button:active {
     inset 0 0 0.4em 0.1em var(--glow-color),
     0 0 0.5em 0.1em var(--glow-spread-color);
 }
+
+
+
+/* Nessun CSS necessario se usi Tailwind, ma se usi SCSS o vuoi estendere: */
+
+.mask {
+  pointer-events: none;
+}
+

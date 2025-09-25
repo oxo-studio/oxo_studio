@@ -25,8 +25,9 @@ export default function Scroll() {
   <main>
    
     <Sezione1ChiSiamo/>
+     <SezioneProva/>
     <Sezione2ChiSiamo/>
-    <SezioneProva/>
+   
     <SezioneFinale/>
      <Footer/>
    
