@@ -42,7 +42,7 @@ export default function SplashScreen({ onFinish }) {
     >
       <video
         ref={videoRef}
-        src="/public/video/video.mp4"
+        src="/video/video.mp4"
         className="w-full h-full object-cover"
         playsInline
         muted
