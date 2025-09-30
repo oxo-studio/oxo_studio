@@ -150,38 +150,20 @@ const SectionHome2 = () => {
   }, []);
 
   // Funzione splitWords ora pulisce l'array di ref
-const splitLetters = (text, ref) => {
+ const splitLetters = (text, ref) => {
   ref.current = [];
-  const spans = [];
-
-  text.split(' ').forEach((word, wordIndex) => {
-    const wordSpans = word.split('').map((char, charIndex) => {
-      const index = ref.current.length;
-      const span = (
-        <span
-          key={`${wordIndex}-${charIndex}`}
-          ref={(el) => (ref.current[index] = el)}
-          className="inline"
-          style={{ whiteSpace: 'pre' }}
-        >
-          {char}
-        </span>
-      );
-      return span;
-    });
-
-    spans.push(
-      <span
-        key={`word-${wordIndex}`}
-        className="inline-block mr-[0.25em] whitespace-nowrap"
-      >
-        {wordSpans}
-      </span>
-    );
-  });
-
-  return spans;
+  return text.split('').map((char, i) => (
+    <span
+      key={i}
+      ref={(el) => (ref.current[i] = el)}
+      className="inline-block "
+      style={{ whiteSpace: 'pre' }} // preserva spazi
+    >
+      {char}
+    </span>
+  ));
 };
+
 
 
 

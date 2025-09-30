@@ -92,15 +92,19 @@ export default function Header() {
   return (
     <>
       <header className="w-full z-50 top-0 left-0 header lg:fixed relative px-4 py-2 flex justify-between items-center bg-black">
-        <h1 className="lg:text-4xl md:text-4xl text-5xl mt-20 md:mt-2 lg:ml-6 md:ml-6 md:block">
-          <span className="antonio lg:inline text-white" id="oxo-studio">
-            {"OXO-STUDIO".split("").map((char, i) => (
-              <span key={i} className="split-char inline-block">
-                {char === " " ? "\u00A0" : char}
-              </span>
-            ))}
-          </span>
-        </h1>
+      <h1 className="lg:text-3xl md:text-3xl text-5xl mt-20 md:mt-2 lg:ml-6 md:ml-6 md:block">
+  <a 
+    href="mailto:oxostudio.dev@gmail.com" 
+    className="antonio lg:inline text-white hover:text-gray-300 transition-colors cursor-pointer"
+    id="oxo-studio"
+  >
+    {"oxostudio.dev@gmail.com".split("").map((char, i) => (
+      <span key={i} className="split-char inline-block">
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ))}
+  </a>
+</h1>
 
         <nav className="ml-auto">
           <ul className="gap-2 md:gap-8 lg:gap-8 md:mr-6 hidden md:flex">

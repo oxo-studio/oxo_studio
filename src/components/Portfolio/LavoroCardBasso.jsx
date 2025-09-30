@@ -24,7 +24,7 @@ useEffect(() => {
       opacity: 1,
       duration: 1,
       y: 0,
-      ease: "slow(1.5,1.5,false)",
+      ease: "slow(3,3,false)",
       scrollTrigger: {
         trigger: imgAnimationRef.current,
         start: "top 90%",

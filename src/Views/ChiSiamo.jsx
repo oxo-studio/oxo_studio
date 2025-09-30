@@ -4,7 +4,7 @@ import Sezione1ChiSiamo from "../components/ChiSiamo/Sezione1ChiSiamo";
 import Sezione2ChiSiamo from "../components/ChiSiamo/Sezione2ChiSiamo";
 import SezioneFinale from "../components/ChiSiamo/SezioneFinaleChiSiamo";
 import SezioneProva from "../components/ChiSiamo/SezioneProva"
-import  Footer from '../components/Footer'
+
 
 import SeoMetaTags from "../components/SeoMetaTags";
 
@@ -29,7 +29,7 @@ export default function Scroll() {
     <Sezione2ChiSiamo/>
    
     <SezioneFinale/>
-     <Footer/>
+  
    
   </main>
   </>

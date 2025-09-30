@@ -51,9 +51,9 @@ vec3 BlurredPixel(in sampler2D channel, in vec2 uv, float sigma) {
 
 // Plasma con blu elettrico → viola → grigio
 vec3 plasmaColor(float value, vec2 uv, float t) {
-  vec3 colA = vec3(0.294, 0.38, 0.82); // Savoy blue #4B61D1
-  vec3 colB = vec3(0.44, 0.26, 0.76);   // viola acceso (accanto)
-  vec3 colC = vec3(0.26);              // grigio #424242
+vec3 colA = vec3(0.0, 0.8, 1.0);       // Azzurro elettrico #00CCFF
+vec3 colB = vec3(0.8, 0.2, 1.0);       // Viola neon #CC33FF
+vec3 colC = vec3(0.95, 0.95, 0.0);     // Giallo shock #F2F200
 
   float f = smoothstep(0.0, 1.0, value); // maggiore luminosità = più colore
 
