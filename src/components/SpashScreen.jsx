@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import gsap from 'gsap';
+import oxomp4 from '../../public/Video/oxomp4.mp4'
 
 export default function SplashScreen({ onFinish }) {
   const videoRef = useRef(null);
@@ -40,15 +41,14 @@ export default function SplashScreen({ onFinish }) {
       ref={containerRef}
       className="fixed inset-0 z-50 bg-black flex items-center justify-center"
     >
-     <video
-  ref={videoRef}
-  src="/video/oxomp4.mp4" // <-- senza "/public"
-  className="w-full h-full object-cover"
-  playsInline
-  muted
-  autoPlay
-/>
-
+      <video
+        ref={videoRef}
+        src={oxomp4}
+        className="w-full h-full object-cover"
+        playsInline
+        muted
+        autoPlay
+      />
     </div>
   );
 }
