@@ -40,14 +40,15 @@ export default function SplashScreen({ onFinish }) {
       ref={containerRef}
       className="fixed inset-0 z-50 bg-black flex items-center justify-center"
     >
-      <video
-        ref={videoRef}
-        src="/public/video/oxomp4.mp4"
-        className="w-full h-full object-cover"
-        playsInline
-        muted
-        autoPlay
-      />
+     <video
+  ref={videoRef}
+  src="/video/oxomp4.mp4" // <-- senza "/public"
+  className="w-full h-full object-cover"
+  playsInline
+  muted
+  autoPlay
+/>
+
     </div>
   );
 }
