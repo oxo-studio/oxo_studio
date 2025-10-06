@@ -130,11 +130,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="overlay">
-        <svg viewBox="0 0 1000 1000">
-          <path d="M0 -100 S175 -330 500 -330 s500 230 500 230 V0 H0 Z"></path>
-        </svg>
-      </div>
+      
 
       <div className="menu">
         <div className="menu-items flex flex-col justify-center items-center gap-8 h-screen text-white text-3xl antonio">
