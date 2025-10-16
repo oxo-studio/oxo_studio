@@ -5,11 +5,13 @@ import { useGSAP } from '@gsap/react';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
 import TransitionContext from '../Context/TransitionContext';
-import Footer from '../components/Footer';
+
 import Sezione1Portfolio from '../components/Portfolio/Sezione1Portfolio';
+import Footer from '../components/Portfolio/FooterPortfolio';
 import SezioneFinale from '../components/Portfolio/SezioneFinalePortfolio';
 import Categorie from '../components/Portfolio/Categorie';
 import SeoMetaTags from '../components/SeoMetaTags';
+
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -123,16 +125,16 @@ export default function Layers() {
 
       <main ref={mainRef}>
         {/* 🔽 Wrapper per animazioni globali */}
-        <div className="page-content">
+        
           <Categorie />
-          <section className="description panel h-screen flex flex-col items-center justify-center text-center z-10">
+        
             <Sezione1Portfolio />
-          </section>
-          <section className="h-screen panel">
+        
+         
             <SezioneFinale />
-          </section>
-          <Footer />
-        </div>
+          
+          <Footer/>
+       
       </main>
     </>
   );

@@ -26,7 +26,7 @@ const SezioneFinale = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef2.current,
-            start: "top 70%",
+            start: "top 80%",
             toggleActions: "play none none reverse",
           },
         }
@@ -53,18 +53,18 @@ const SezioneFinale = () => {
 <div
   ref={sectionRef2}
   className="relative w-full flex flex-col items-center justify-center
-    mt-[10px] sm:mt-[100px] md:mt-[-70px] lg:mt-[100px] lg:min-h-[40vh]
-    pb-[150px] sm:pb-[150px] md:pb-[120px]
+    mt-[10px] sm:mt-[100px] md:mt-[-70px] lg:mt-[300px] lg:min-h-[40vh]
+    pb-[150px] sm:pb-[150px] md:pb-[120px] lg:pb-80
     min-h-[20vh]"
 >
   <h1
     style={{ fontFamily: "Human" }}
-    className="absolute text-gray-400 text-[25vw] md:text-[25vw] lg:text-[350px] leading-none text-center pointer-events-none opacity-20 z-[990]"
+    className="absolute text-gray-700 text-[25vw] md:text-[25vw] lg:text-[350px] leading-none text-center pointer-events-none opacity-1 "
   >
     {splitText("LAVORIAMO ASSIEME", text1)}
   </h1>
 
-  <p className="relative text-white text-[3vw] md:text-3xl lg:text-[40px] lg:max-w-[2000px] text-center z-[999] max-w-[90vw] md:max-w-[800px] px-4 antonio ">
+  <p className="relative text-white text-[3vw] md:text-3xl lg:text-[40px] mt-16 lg:mt-0 lg:max-w-[2000px] text-center z-[999] max-w-[90vw] md:max-w-[800px] px-4 antonio ">
     {splitText(
       "Hai qualcosa in mente? Realizziamolo insieme, con stile e originalità.",
       text2
@@ -72,11 +72,17 @@ const SezioneFinale = () => {
   </p>
 
 <Link to="/contatti">
-  <button
-    className="relative z-20 text-white text-lg border border-white px-6 py-3 hover:bg-white hover:text-black transition-all duration-300 mt-8"
-  >
-    Contattaci
-  </button>
+   <button
+  className="relative z-20 text-white 
+    text-sm sm:text-base md:text-lg 
+    border border-white 
+    px-4 sm:px-6 md:px-8 
+    py-2 sm:py-3 
+    hover:bg-white hover:text-black 
+    transition-all duration-300 mt-8"
+>
+  Contattaci
+</button>
   </Link>
 </div>
 

@@ -39,16 +39,16 @@ const AppDeveloper = () => {
       <Categorie categorie={[{ nome: "App Developer" }]} />
 
       {/* Parte superiore */}
-      <div className="relative z-10 w-[90vw] h-[90vh] border border-white overflow-hidden mt-[30px]">
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 p-[15px] transition-transform duration-500">
-          {lavoriParteSuperiore.map((lavoro) => (
-            <LavoroCard key={lavoro.id} lavoro={lavoro} dimensione="grande" />
-          ))}
-        </div>
-      </div>
+        <div className="relative z-10 w-[90vw] h-[40vh] md:w-[90vw] md:h-[60vh] lg:w-[90vw] lg:h-[90vh]  border border-white overflow-hidden">
+             <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 p-[15px] m-0 transition-transform duration-500">
+               {lavoriParteSuperiore.map((lavoro) => (
+                 <LavoroCard key={lavoro.id} lavoro={lavoro} dimensione="grande" />
+               ))}
+             </div>
+           </div>
 
       {/* Parte inferiore */}
-      <div className="relative z-10 w-[90vw] h-[55vh] border border-white overflow-hidden -mt-px grid grid-cols-2">
+      <div className="relative z-10 w-[90vw] h-[55vh] border border-white overflow-hidden hidden md:block -mt-px grid-cols-2">
         {/* Colonna sinistra */}
         <div className="flex flex-col gap-6 p-4">
           {colonnaSinistra.map((lavoro) => (

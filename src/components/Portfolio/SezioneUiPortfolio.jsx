@@ -8,14 +8,14 @@ import Categorie from "./Categorie";
 const SezioneUiPortfolio = () => {
   return (
     
-    <div className="pt-[150px] px-[80px] text-white">
+    <div className="pt-[150px]  text-white">
       {/* Componente Categoria */}
-      <div className="relative mt-[-100px]">
+      <div className=" mt-[-180px] md:mt-[-100px]">
         <Categorie />
       </div>
 
       {/* Sezione contenente le categorie e i loro lavori */}
-      <div className="flex flex-col gap-16">
+      <div className="flex flex-col gap-16 px-[40px] lg:mt-10 mt-10">
         {categoriePortfolio.map((categoria, index) => (
           <div
             key={index}

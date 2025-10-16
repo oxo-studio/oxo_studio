@@ -73,7 +73,7 @@ const Sezione2ChiSiamo = () => {
     ));
 
   return (
-    <div ref={sectionRef} className="relative mt-[-50px]">
+    <div ref={sectionRef} className="relative lg:mt-[200px]">
        < MauseLight />
       <h1
         className="text-8xl md:text-8xl pl-[70px] text-white"
@@ -147,7 +147,7 @@ const Sezione2ChiSiamo = () => {
       >
         {splitText("Design & 3D")}
       </h2>
-      {["Blender", "Figma", "Spline"].map((text, i) => (
+      {["Blender", "Figma", "Spline","Adobe"].map((text, i) => (
         <p
           className="text-xl md:text-2xl"
           key={i}

@@ -63,7 +63,7 @@ const SezioneFinale = () => {
     {splitText("LAVORIAMO ASSIEME", text1)}
   </h1>
 
-  <p className="relative text-white text-[3vw] md:text-3xl lg:text-[40px] lg:max-w-[2000px] text-center z-[999] max-w-[90vw] md:max-w-[800px] px-4 antonio ">
+  <p className="relative text-white text-[3vw] md:text-3xl lg:text-[40px] mt-14 lg:max-w-[2000px]  text-center z-[999] max-w-[90vw] md:max-w-[800px] px-4 antonio ">
     {splitText(
       "Hai qualcosa in mente? Realizziamolo insieme, con stile e originalità.",
       text2
@@ -71,11 +71,18 @@ const SezioneFinale = () => {
   </p>
 
 <Link to="/contatti">
-  <button
-    className="relative z-20 text-white text-lg border border-white px-6 py-3 hover:bg-white hover:text-black transition-all duration-300 mt-8"
-  >
-    Contattaci
-  </button>
+ <button
+  className="relative z-20 text-white 
+    text-sm sm:text-base md:text-lg 
+    border border-white 
+    px-4 sm:px-6 md:px-8 
+    py-2 sm:py-3 
+    hover:bg-white hover:text-black 
+    transition-all duration-300 mt-8"
+>
+  Contattaci
+</button>
+
   </Link>
 </div>
 

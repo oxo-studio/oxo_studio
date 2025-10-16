@@ -2,7 +2,7 @@ import { FaFacebookF, FaInstagram, FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="text-white relative md:-mt-24 mb-6">
+    <footer className="text-white relative mt-28 md:-mt-24 mb-6">
       <div className="container mx-auto px-4 flex justify-between items-center py-4  rounded-lg shadow-lg">
         
         {/* Left Side: Text Info */}

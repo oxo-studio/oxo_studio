@@ -24,6 +24,9 @@ const imgAnimateRef = useRef(null)
 useEffect(() => {
   gsap.registerPlugin(ScrollTrigger);
 
+  const isMobile = window.innerWidth <= 640; // breakpoint sm Tailwind (640px)
+  const startValue = isMobile ? "top 95%" : "top 80%";
+
   gsap.fromTo(
     imgAnimateRef.current, 
     { opacity: 0, y: 350 },
@@ -34,16 +37,17 @@ useEffect(() => {
       ease: "slow(3,3,false)",
       scrollTrigger: {
         trigger: imgAnimateRef.current,
-        start: "top 80%",
+        start: startValue,
         toggleActions: "play none none reverse",
       },
     }
-
   );
-    return () => {
+
+  return () => {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   };
 }, []);
+
 
 
 
@@ -70,13 +74,13 @@ useEffect(() => {
         {/* Icona in alto a destra */}
         <FontAwesomeIcon
           icon={faArrowRight}
-          className="text-gray-500 absolute top-[155px] right-[-5px] md:top-[150px] md:right-[-10px] lg:mt-[-195px] lg:mr-[50px] md:text-2xl  text-3xl transition-transform duration-500 group-hover:-rotate-45"
+          className="text-gray-500 absolute top-[163px] right-[5px] md:top-[150px] md:right-[-10px] lg:mt-[-195px] lg:mr-[50px] text-[20px] md:text-2xl  transition-transform duration-500 group-hover:-rotate-45"
         />
       </div>
 
       {/* Titolo in alto */}
       <div className="absolute top-[5px] left-[3px]  md:left-[25px] md:mt-[25px] lg:mt-[-20px] lg:ml-[140px]">
-        <h3 className="text-white text-3xl md:text-4xl font-bold antonio2">{lavoro.titolo}</h3>
+        <h3 className="text-white text-2xl md:text-4xl font-bold antonio2">{lavoro.titolo}</h3>
       </div>
 
       {/* Categorie in basso a sinistra */}

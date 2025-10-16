@@ -8,7 +8,7 @@
 }
 
 header {
-  position: fixed !important;
+
   top: 0;
   left: 0;
   width: 100%;
@@ -101,7 +101,7 @@ svg path {
 
 /* Toggle Button Container */
 #toggle-btn {
-  position: fixed;
+  position: absolute;
   top: 2rem;
   right: 2rem;
   width: 100px;
@@ -355,4 +355,70 @@ button:active {
 .mask {
   pointer-events: none;
 }
+
+/* Utility classes per effetti 3D */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Animazioni personalizzate */
+@keyframes floatInFromLeft {
+  0% {
+    transform: translateX(-100px) translateZ(-100px) rotateY(-45deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) translateZ(0) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes floatInFromRight {
+  0% {
+    transform: translateX(100px) translateZ(-100px) rotateY(45deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) translateZ(0) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes depthZoom {
+  0% {
+    transform: translateZ(-200px) scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Effetto testo liquido */
+.liquid-text {
+  background: linear-gradient(45deg, #00ffff, #0080ff, #8000ff, #00ff80);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: liquidShift 3s ease-in-out infinite;
+}
+
+@keyframes liquidShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+
+
 

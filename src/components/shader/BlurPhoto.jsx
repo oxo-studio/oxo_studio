@@ -1,9 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
-import PropTypes from "prop-types";
 
-// Vertex Shader
-const vertexShader =  /* glsl */`
+const vertexShader = /* glsl */`
   varying vec2 vUv;
   void main() {
     vUv = uv;
@@ -11,8 +9,7 @@ const vertexShader =  /* glsl */`
   }
 `;
 
-// Fragment Shader
-const fragmentShader =  /* glsl */`
+const fragmentShader = /* glsl */`
 precision highp float;
 
 uniform sampler2D iChannel0;
@@ -49,58 +46,81 @@ vec3 BlurredPixel(in sampler2D channel, in vec2 uv, float sigma) {
   return ret / total;
 }
 
-// Plasma con blu elettrico → viola → grigio
 vec3 plasmaColor(float value, vec2 uv, float t) {
-vec3 colA = vec3(0.0, 0.8, 1.0);       // Azzurro elettrico #00CCFF
-vec3 colB = vec3(0.8, 0.2, 1.0);       // Viola neon #CC33FF
-vec3 colC = vec3(0.95, 0.95, 0.0);     // Giallo shock #F2F200
+  vec3 electricBlue = vec3(0.0, 0.9, 1.0);
+  vec3 neonPurple = vec3(0.9, 0.1, 1.0);
+  vec3 shockPink = vec3(1.0, 0.0, 0.8);
+  vec3 laserGreen = vec3(0.2, 1.0, 0.3);
+  vec3 hotCyan = vec3(0.0, 1.0, 0.9);
+  
+  float f = smoothstep(0.0, 1.0, value);
+  
+  float cycle1 = sin(t * 2.0 + uv.x * 5.0) * 0.5 + 0.5;
+  float cycle2 = cos(t * 1.7 + uv.y * 4.0) * 0.5 + 0.5;
+  float cycle3 = sin(t * 3.0 + (uv.x + uv.y) * 6.0) * 0.5 + 0.5;
+  
+  vec3 mix1 = mix(electricBlue, neonPurple, cycle1);
+  vec3 mix2 = mix(shockPink, laserGreen, cycle2);
+  vec3 mix3 = mix(mix1, mix2, cycle3);
+  vec3 finalMix = mix(mix3, hotCyan, f * 0.7);
+  
+  float sparkle = sin(t * 10.0 + uv.x * 20.0 + uv.y * 15.0) * 0.3 + 0.7;
+  finalMix *= sparkle;
+  
+  return finalMix * (1.2 + f * 0.8);
+}
 
-  float f = smoothstep(0.0, 1.0, value); // maggiore luminosità = più colore
-
-  vec3 mixAB = mix(colA, colB, f);
-  return mix(mixAB, colC, 0.2 + 0.2 * sin(t * 0.5 + uv.x * 3.0 + uv.y * 3.0));
+vec2 meltingDistortion(vec2 uv, vec3 col, float t) {
+  float distortionPower = 3.0;
+  
+  float wave1 = sin(t * 3.0 + uv.x * 8.0 + col.r * 5.0) * 0.1;
+  float wave2 = cos(t * 2.5 + uv.y * 6.0 + col.g * 4.0) * 0.08;
+  float wave3 = sin(t * 4.0 + (uv.x + uv.y) * 10.0 + col.b * 6.0) * 0.12;
+  
+  vec2 distortion = vec2(
+    (col.r - col.g) * distortionPower + wave1 + wave3,
+    (col.b - col.r) * distortionPower + wave2 - wave3
+  );
+  
+  return distortion * (1.0 - col.g) * 2.5;
 }
 
 void main() {
   vec2 uv = gl_FragCoord.xy / iResolution.xy;
   float t = iTime;
 
-  // Blur dell'immagine
-  vec3 col0 = BlurredPixel(iChannel0, uv, 5.0);
+  vec3 col0 = BlurredPixel(iChannel0, uv, 6.0);
 
-  // Calcolo UV distorto (come prima)
-  vec2 dif = col0.rr * (col0.b - col0.g) * vec2(sin(t), cos(t));
-  vec2 uv2 = uv + dif * (1.0 - col0.g) * 2.0;
+  vec2 distortion = meltingDistortion(uv, col0, t);
+  vec2 uv2 = uv + distortion * 0.03;
 
-  // Prende colore sfocato e distorto
   vec3 blurred = texture(iChannel0, uv2).rgb;
 
-  // Calcolo luminosità
   float brightness = dot(blurred, vec3(0.299, 0.587, 0.114));
   float inverted = 1.0 - brightness;
+  float contrastInverted = inverted * inverted * 1.5;
 
-  // Plasma mapping
-  vec3 plasma = plasmaColor(inverted, uv, t);
+  vec3 plasma = plasmaColor(contrastInverted, uv, t);
 
-  // Fade out progressivo in base a iTime (durata 2 secondi)
+  float glow = pow(contrastInverted, 3.0) * 2.0;
+  plasma += glow * vec3(0.5, 0.8, 1.0);
+
   float fadeDuration = 2.0;
   float timeFade = clamp(1.0 - (t / fadeDuration), 0.0, 1.0);
 
-  // Alpha finale = plasma visibility * hoverAmount * fade out
-  float alpha = smoothstep(0.05, 0.5, inverted) * hoverAmount * timeFade;
+  float alpha = smoothstep(0.1, 0.7, contrastInverted) * hoverAmount * timeFade;
 
-  // Colore originale nitido senza deformazioni
   vec3 original = texture(iChannel0, uv).rgb;
 
-  // Mix tra plasma e immagine originale in base a alpha (plasma sopra)
-  vec3 finalColor = mix(original, plasma, alpha);
+  vec3 finalColor = mix(original, plasma, alpha * 1.2);
+
+  float vibration = sin(t * 20.0) * 0.01 * hoverAmount;
+  finalColor = texture(iChannel0, uv + vec2(vibration)).rgb * (1.0 - alpha) + plasma * alpha;
+
+  finalColor = pow(finalColor, vec3(0.9));
 
   gl_FragColor = vec4(finalColor, 1.0);
 }
-
-
-
-
 `;
 
 const BlurPhoto = ({ imageSrc, width = 512, height = 512 }) => {
@@ -114,7 +134,11 @@ const BlurPhoto = ({ imageSrc, width = 512, height = 512 }) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ 
+      antialias: true, 
+      alpha: true,
+      powerPreference: "high-performance"
+    });
     renderer.setSize(width, height);
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
@@ -137,7 +161,7 @@ const BlurPhoto = ({ imageSrc, width = 512, height = 512 }) => {
           iChannel0: { value: texture },
           iResolution: { value: new THREE.Vector2(width, height) },
           iTime: { value: 0 },
-          hoverAmount: { value: 1 }, // parte sfocato
+          hoverAmount: { value: 1 },
           iMouse: { value: new THREE.Vector2(0, 0) },
         },
         vertexShader,
@@ -159,12 +183,10 @@ const BlurPhoto = ({ imageSrc, width = 512, height = 512 }) => {
         mat.uniforms.iTime.value = elapsed;
         mat.uniforms.iMouse.value.set(mousePos.current[0], mousePos.current[1]);
 
-        // Dissolvenza iniziale (nei primi 2 secondi)
         if (elapsed < 2) {
           const smooth = 1 - Math.min(elapsed / 2, 1);
           mat.uniforms.hoverAmount.value = smooth;
         } else {
-          // Normale comportamento hover
           mat.uniforms.hoverAmount.value = hover ? 1 : 0;
         }
 
@@ -197,18 +219,17 @@ const BlurPhoto = ({ imageSrc, width = 512, height = 512 }) => {
   return (
     <div
       ref={containerRef}
-      style={{ width, height, cursor: "pointer" }}
+      style={{ 
+        width, 
+        height, 
+        cursor: "pointer",
+        background: "black"
+      }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onMouseMove={handleMouseMove}
     />
   );
-};
-
-BlurPhoto.propTypes = {
-  imageSrc: PropTypes.string.isRequired,
-  width: PropTypes.number,
-  height: PropTypes.number,
 };
 
 export default BlurPhoto;

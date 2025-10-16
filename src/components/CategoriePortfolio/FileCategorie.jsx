@@ -73,16 +73,7 @@ const categoriePortfolio = [
     ],
   },
 
-  /*Categoria App Developer*/
-
-  {
-    id: 1,
-    nome: "App Developer",
-    slug: "app-developer",
-    lavori: [
-    
-    ],
-  },
+ 
 
 ];
 

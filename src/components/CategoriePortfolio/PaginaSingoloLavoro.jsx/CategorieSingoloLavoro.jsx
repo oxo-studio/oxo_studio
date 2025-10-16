@@ -27,9 +27,7 @@ const Categorie = () => {
         <Link to="/LodoDesign" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
           Logo Design
         </Link>
-        <Link to="/AppDeveloper" className="text-white hover:text-gray-600 hover:decoration-transparent transition">
-          App Developer
-        </Link>
+      
       </div>
     </div>
   );
