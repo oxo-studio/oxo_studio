@@ -164,6 +164,20 @@ const SectionHome2 = () => {
   ));
 };
 
+const splitWords = (text, ref) => {
+  ref.current = [];
+  return text.split(' ').map((word, i) => (
+    <span
+      key={i}
+      ref={(el) => (ref.current[i] = el)}
+      className="inline-block"
+      style={{ whiteSpace: 'pre' }}
+    >
+      {word + ' '}
+    </span>
+  ));
+};
+
 
 
 
@@ -181,41 +195,42 @@ const SectionHome2 = () => {
             {splitLetters ('I NOSTRI SERVIZI', titleRefLg)}
           </h1>
 
-          <h1 className="absolute top-10 text-5xl antonio2">
+          <h1 className="absolute top-10 text-5xl antonio2  text-gray-400">
             {splitLetters('Web design', refText2Lg)}
           </h1>
           <p className="absolute top-28 w-1/2 text-lg lg:text-2xl text-white text-center antonio">
-            {splitLetters(
+            {splitWords(
               'Creiamo interfacce intuitive, moderne e responsive che riflettono l’identità del tuo brand e migliorano l’esperienza utente su ogni dispositivo.',
               refText6Lg
             )}
           </p>
 
-          <h1 className="absolute bottom-20 text-5xl antonio2">
+          <h1 className="absolute bottom-20 text-5xl antonio2 text  text-gray-400">
             {splitLetters('Web developer', refText3Lg)}
           </h1>
           <p className="absolute bottom-2 w-1/2 text-lg lg:text-2xl  text-white text-center antonio break-normal whitespace-normal">
-            {splitLetters(
+            {splitWords(
               'Sviluppiamo siti performanti, scalabili e ottimizzati, utilizzando tecnologie moderne per garantire velocità, sicurezza e funzionalità avanzate.',
               refText7Lg
             )}
           </p>
 
-          <h1 className="absolute left-[150px] top-[400px] -translate-y-1/2 text-5xl antonio2">
+          <h1 className="absolute left-[150px] top-[400px] -translate-y-1/2 text-5xl antonio2  text-gray-400">
             {splitLetters('Logo design', refText4Lg)}
           </h1>
           <p className="absolute left-[20px] top-[450px]  max-w-[500px] text-lg lg:text-2xl text-white antonio text-center">
-            {splitLetters(
+            {splitWords(
               "Creiamo loghi distintivi e memorabili che rappresentano l'identità del tuo brand, combinando estetica e strategia visiva.",
               refText8Lg
             )}
           </p>
 
-          <h1 className="absolute right-32 top-[400px] -translate-y-1/2 text-5xl antonio2">
+          <h1 className="absolute right-32 top-[400px] -translate-y-1/2 text-5xl antonio2  text-gray-400
+          ">
             {splitLetters('App developer', refText5Lg)}
           </h1>
           <p className="absolute right-[20px] top-[450px] text-lg lg:text-2xl max-w-[500px] text-white text-center antonio">
-  {splitLetters(
+  {splitWords(
     'Sviluppiamo applicazioni mobile su misura, performanti e intuitive, pensate per offrire esperienze utente fluide su ogni dispositivo.',
     refText9Lg
   )}

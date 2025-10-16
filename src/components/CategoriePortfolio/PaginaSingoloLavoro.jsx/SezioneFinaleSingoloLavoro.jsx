@@ -52,7 +52,7 @@ const SezioneFinale = () => {
 <div
   ref={sectionRef2}
   className="relative w-full flex flex-col items-center justify-center
-    mt-[10px] sm:mt-[100px] md:mt-[-70px] lg:mt-[-10px] lg:min-h-[100vh]
+    mt-[10px] sm:mt-[100px] md:mt-[500px] lg:mt-[-10px] lg:min-h-[100vh]
     pb-[150px] sm:pb-[150px] md:pb-[120px]
     min-h-[20vh]"
 >

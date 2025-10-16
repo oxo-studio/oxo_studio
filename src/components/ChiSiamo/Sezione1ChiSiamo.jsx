@@ -6,6 +6,7 @@ const Sezione1ChiSiamo = () => {
   const [isVisible, setIsVisible] = useState(false);
   const poliRef = useRef(null);
   const matteoRef = useRef(null);
+  const matteo2Ref = useRef(null);
   const imageRef = useRef(null);
   const sectionRef = useRef(null);
 
@@ -81,14 +82,14 @@ const Sezione1ChiSiamo = () => {
       </div>
 
       {/* Contenuto principale */}
-      <div className="relative z-[9999] h-full">
-        <div className="max-w-7xl mx-auto h-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 md:px-12 lg:px-0 lg:ml-[50px]">
+      <div className="relative   h-full z-[9999]">
+        <div className="max-w-7xl mx-auto h-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 md:px-12 lg:px-0 lg:ml-[50px] ">
           
           {/* Testo a sinistra */}
-          <div className="relative text-center md:text-left space-y-4">
+          <div className="relative text-center md:text-left space-y-4  lg:mt-[0px] md:mt-[-300px] mt-[-100px]  ">
             <h1
                ref={matteoRef}
-              className="text-white font-bold  text-[15vw] md:text-[180px] lg:text-[400px] antonio leading-none transition-all duration-1000 ease-out"
+              className="text-white font-bold  ml-[-50px] text-[80px] md:text-[180px] lg:text-[400px] md:ml-[-60px]  lg:block  antonio leading-none transition-all duration-1000 ease-out"
               style={{
                 transform: "translateX(-100px) translateZ(-50px)",
                 opacity: 0,
@@ -97,9 +98,12 @@ const Sezione1ChiSiamo = () => {
               MATTEO
             </h1>
 
+  
+
+
             <h1
                ref={poliRef}
-              className="text-white font-bold text-[15vw] md:text-[180px] lg:text-[450px] lg:ml-[100px] antonio leading-none transition-all duration-1000 ease-out z-50"
+              className="text-white font-bold text-[80px] ml-[20px]  md:text-[180px] lg:text-[450px] lg:ml-[100px] md:ml-[-100px]   antonio leading-none transition-all duration-1000 ease-out z-50"
               style={{
                 transform: "translateX(100px) translateZ(-50px)",
                 opacity: 0,
@@ -115,19 +119,19 @@ const Sezione1ChiSiamo = () => {
 {/* SVG a destra con overlay gradiente */}
 <div
   ref={imageRef}
-  className="flex  justify-center md:justify-start md:items-start md:mt-[-250px]
-             w-full lg:ml-[300px] lg:top-[200px] relative transition-all duration-1200 ease-out"
+  className="flex  justify-center md:justify-start md:items-start  md:mt-[-250px]  
+             w-full lg:ml-[250px] lg:top-[-90px] relative transition-all duration-1200 ease-out "
   style={{
     opacity: 0,
     transform: "scale(0.3) translateZ(-30px)",
   }}
 >
   {/* Contenitore SVG */}
-  <div className="absolute ml-[-550px] mt-[-850px]">
+  <div className="absolute ml-[-550px] mt-[-800px]">
     <img
       src="/SvgCode/mia.svg"
       alt="Illustrazione SVG"
-      className="lg:w-[1600px] lg:h-[1600px] md:w-[1500px] md:h-[1500px]  -z-20  object-contain max-w-none"
+      className="lg:w-[1700px] lg:h-[1700px] md:w-[1200px] md:h-[1200px] lg:ml-[0] w-[850px] h-[850px]  ml-[550px] mt-[270px]  md:mt-[290px] md:ml-[120px]    object-contain max-w-none"
     />
 
     {/* Gradiente opzionale sopra */}

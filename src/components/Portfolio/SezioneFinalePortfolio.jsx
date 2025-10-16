@@ -54,7 +54,7 @@ const SezioneFinale = () => {
   ref={sectionRef2}
   className="
     relative w-full flex flex-col items-center justify-center
-   mt-32  md:mt-[-70px] lg:mt-[30px] lg:min-h-[110vh]
+   mt-32  md:mt-[100px] md:mb-[70px] lg:mt-[30px] lg:min-h-[110vh]
      md:pb-[120px]
   "
 >

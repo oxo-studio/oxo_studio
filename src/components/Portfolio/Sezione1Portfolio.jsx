@@ -26,7 +26,7 @@ const Sezione1Portfolio = () => {
   const colonnaDestra = lavoriParteInferiore.slice(Math.ceil(lavoriParteInferiore.length / 2));
 
   return (
-    <div className="relative mt-[10px] md:mt-[530px] lg:mt-[40px] flex flex-col items-center">
+    <div className="relative mt-[10px] md:mt-[50px] lg:mt-[40px] flex flex-col items-center">
       {/* Parte superiore */}
       <div className="relative z-10 w-[90vw] h-[40vh] md:w-[90vw] md:h-[60vh] lg:w-[90vw] lg:h-[90vh]  border border-white overflow-hidden">
              <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 p-[15px] m-0 transition-transform duration-500">
