@@ -15,17 +15,15 @@ const Contatti = () => {
         e.target,
         import.meta.env.VITE_PUBLIC_MAILJS
       )
-      .then(
-        (result) => {
-          console.log("Email inviata con successo", result.text);
-          alert("Email inviata con successo");
-          e.target.reset(); // reset solo dopo invio andato a buon fine
-        },
-        (error) => {
-          console.error("Errore nell'invio della mail", error);
-          alert(`Errore nell'invio della mail: ${error.text || error.message}`);
-        }
-      );
+      .then((result) => {
+        console.log("Email inviata con successo", result.text);
+        alert("Email inviata con successo");
+        e.target.reset();
+      })
+      .catch((error) => {
+        console.error("Errore nell'invio della mail", error);
+        alert(`Errore nell'invio della mail: ${error.text || error.message || error}`);
+      });
   };
 
   return (
@@ -48,7 +46,7 @@ const Contatti = () => {
         {/* Griglia form + colonne */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-28">
           {/* Form */}
-          <form
+          <form 
             onSubmit={sendMail}
             className="w-full max-w-2xl"
           >
