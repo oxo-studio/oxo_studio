@@ -209,22 +209,21 @@ const SingoloLavoro = () => {
      {/* Colonna centrale */}
 <div className="w-full lg:w-[70%] min-h-screen lg:h-screen overflow-y-scroll no-scrollbar ">
   {/* MOBILE (<md) */}
-  <div className="block md:hidden space-y-[-450px] px-4 mt-[-200px]  ">
-    {lavoro.immagini.map((img, index) => (
-      <div
-        key={index}
-        className="w-full min-h-[90vh] flex items-center justify-center"
-        ref={(el) => (cardsRef.current[index] = el)}
-      >
-        <img
-          src={img}
-          alt={`img-mobile-${index}`}
-          className="w-full h-auto max-h-[90vh] object-contain rounded-xl pointer-events-none"
-          draggable={false}
-        />
-      </div>
-    ))}
-  </div>
+<div className="block md:hidden px-4 space-y-4 leading-none">
+  {lavoro.immagini.map((img, index) => (
+    <img
+      key={index}
+      src={img}
+      alt={`img-mobile-${index}`}
+      className="w-full h-auto block p-0 m-0 align-top rounded-xl pointer-events-none"
+      draggable={false}
+      ref={(el) => (cardsRef.current[index] = el)}
+    />
+  ))}
+</div>
+
+
+
 
   {/* TABLET (md) */}
   <div className="hidden md:block lg:hidden  px-6 -space-y-96 mt-[-150px]">
@@ -287,22 +286,35 @@ const SingoloLavoro = () => {
 
 
 {/* Info sotto img - SOLO su mobile, in colonna e centrato */}
-<div className="flex flex-col md:hidden  items-center text-center gap-6 mt-[-100px] px-6 lg:hidden">
+<div className="flex flex-col md:hidden items-center text-center gap-4 mt-2 px-4">
   <div>
-    <h5 className="text-white antonio2 text-2xl">{splitText("Data", data)}</h5>
-    <p className="text-gray-400 antonio2 text-xl">{splitText (lavoro.data, dataP)}</p>
+    <h5 className="text-white antonio2 text-2xl">
+      {splitText("Data", data)}
+    </h5>
+    <p className="text-gray-400 antonio2 text-xl">
+      {splitText(lavoro.data, dataP)}
+    </p>
   </div>
-  
+
   <div>
-    <h5 className="text-white antonio2 text-2xl">{splitText("Categorie", categoria)}</h5>
-    <p className="text-gray-400 antonio2 text-xl">{splitText (categorieDelLavoro.join(", "), categoriaP)}</p>
+    <h5 className="text-white antonio2 text-2xl">
+      {splitText("Categorie", categoria)}
+    </h5>
+    <p className="text-gray-400 antonio2 text-xl">
+      {splitText(categorieDelLavoro.join(", "), categoriaP)}
+    </p>
   </div>
-  
+
   <div>
-    <h5 className="text-white antonio2 text-2xl">{splitText("Tecnologie", tecnologie)}</h5>
-    <p className="text-gray-400 antonio2 text-xl">{splitText (tecnologieDelLavoro.join(", "), tecnologieP)}</p>
+    <h5 className="text-white antonio2 text-2xl">
+      {splitText("Tecnologie", tecnologie)}
+    </h5>
+    <p className="text-gray-400 antonio2 text-xl">
+      {splitText(tecnologieDelLavoro.join(", "), tecnologieP)}
+    </p>
   </div>
 </div>
+
 
 
 
