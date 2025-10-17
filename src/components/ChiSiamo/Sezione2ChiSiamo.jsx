@@ -73,7 +73,7 @@ const Sezione2ChiSiamo = () => {
     ));
 
   return (
-    <div ref={sectionRef} className="relative lg:mt-[200px]">
+    <div ref={sectionRef} className="relative hidden md:block lg:mt-[200px]">
        < MauseLight />
       <h1
         className="text-8xl md:text-8xl pl-[70px] text-white"
