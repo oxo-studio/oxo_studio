@@ -17,7 +17,7 @@ const Footer = () => {
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
             <FaFacebookF className="text-2xl hover:text-blue-600 transition-colors" />
           </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/oxo_studio_oxo/" target="_blank" rel="noopener noreferrer">
             <FaInstagram className="text-2xl hover:text-pink-500 transition-colors" />
           </a>
           <a href="https://github.com/tuo-username" target="_blank" rel="noopener noreferrer">
