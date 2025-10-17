@@ -60,8 +60,9 @@ const categoriePortfolio = [
         id: "we-01",
         titolo: "Oxo Studio",
          immagini: [
+         
           "/SvgCode/logooxopersito.svg",
-         "/img/logopresentation-oxo.jpeg"
+         
         
         ],
         immagine: "/SvgCode/logooxopersito.svg",
