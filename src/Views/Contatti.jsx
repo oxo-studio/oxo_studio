@@ -8,13 +8,13 @@ const Contatti = () => {
   const sendMail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_SERVICE_MAILJS,
-        import.meta.env.VITE_TEMPLATE_MAILJS,
-        e.target,
-        import.meta.env.VITE_PUBLIC_MAILJS
-      )
+   emailjs.sendForm(
+  import.meta.env.VITE_SERVICE_MAILJS,
+  import.meta.env.VITE_TEMPLATE_MAILJS,
+  e.target,
+  "UruDroFqgckgp1flO"  // inserisci qui la chiave pubblica per test
+)
+
       .then((result) => {
         console.log("Email inviata con successo", result.text);
         alert("Email inviata con successo");
