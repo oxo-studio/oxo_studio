@@ -82,7 +82,7 @@ const Sezione1ChiSiamo = () => {
       </div>
 
       {/* Contenuto principale */}
-      <div className="relative   h-full ">
+      <div className="relative z-hidden md:z-[9999]  h-full ">
         <div className="max-w-7xl mx-auto h-full grid grid-cols-1 md:grid-cols-2 items-center gap-6 px-4 md:px-12 lg:px-0 lg:ml-[50px] ">
           
           {/* Testo a sinistra */}
@@ -120,7 +120,7 @@ const Sezione1ChiSiamo = () => {
 <div
   ref={imageRef}
   className="flex  justify-center md:justify-start md:items-start  md:mt-[-250px]  
-             w-full lg:ml-[250px] lg:top-[-90px] relative transition-all duration-1200 ease-out "
+             w-full lg:ml-[250px] lg:top-[-90px] relative transition-all duration-1200 ease-out z-hidden md:z-[9999]  "
   style={{
     opacity: 0,
     transform: "scale(0.3) translateZ(-30px)",
