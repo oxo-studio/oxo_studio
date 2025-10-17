@@ -79,7 +79,7 @@ const Sudime = () => {
     <div ref={sectionRef} className="relative h-screen w-screen overflow-hidden">
       <div className="absolute inset-0 flex justify-center items-center -translate-y-20 md:-translate-y-32 lg:-translate-y-40 z-[999]">
         {/* Contenitore immagine responsivo */}
-        <div className="relative h-[70vh] w-[90vw] sm:w-[110vw] md:w-[90vw] lg:w-[170vh] lg:h-[100vh] mt-[-160px] overflow-hidden">
+        <div className="relative h-[70vh] w-[90vw] sm:w-[110vw] md:w-[90vw] lg:w-[170vh] lg:h-[100vh] mt-[160px] overflow-hidden">
           <img
             ref={imageRef}
             src="/img/solitudine-sulla-costa-una-persona-piedi-generata-dall-ia.jpg"

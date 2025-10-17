@@ -74,10 +74,10 @@ const SectioHome3 = () => {
   }, []);
 
   return (
-    <div className="relative z-[9999]">
+    <div className="relative z-[9999] ">
       <div
         ref={containerRef}
-        className="wrapper relative w-full py-[15vh] sm:py-[15vh] md:py-[15vh] lg:py-[30vh] overflow-hidden z-0"
+        className="wrapper relative w-full py-[0vh] sm:py-[15vh] md:py-[15vh] lg:py-[30vh] overflow-hidden z-0"
       >
         {/* Overlay bianco */}
         <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-4 md:pr-[100px]">

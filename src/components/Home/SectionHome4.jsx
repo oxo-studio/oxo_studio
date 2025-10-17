@@ -63,7 +63,7 @@ const SectionHome4 = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative w-full min-h-screen flex flex-col items-center justify-center lg:mt-[200px] md:mt-[30px] mt-[60px] "
+      className="relative w-full min-h-screen flex flex-col items-center justify-center lg:mt-[200px] md:mt-[30px] mt-[-100px] "
     >
       {/* Titolo animato */}
       <h1
